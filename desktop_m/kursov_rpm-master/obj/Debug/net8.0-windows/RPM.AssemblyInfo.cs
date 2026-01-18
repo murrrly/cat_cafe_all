@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RPM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15bfd5a123f687661a5f67dcbcbeef51e08b96f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("RPM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RPM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
