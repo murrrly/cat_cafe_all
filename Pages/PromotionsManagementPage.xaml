@@ -1,0 +1,86 @@
+﻿<Page x:Class="RPM.PromotionsManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Акции и скидки">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок и кнопка добавления -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
+            <TextBlock Text="Управление акциями" Style="{StaticResource HeaderTextStyle}"/>
+            <Button Content="🎯 Создать акцию" Style="{StaticResource BurgundyButtonStyle}" 
+                    Margin="20,0,0,0" Click="AddPromotion_Click"/>
+        </StackPanel>
+
+        <!-- Статистика акций -->
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
+            <Border Style="{StaticResource CardStyle}" Width="180" Height="93" Margin="0,0,15,0">
+                <StackPanel>
+                    <TextBlock Text="Активных акций" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                    <TextBlock Text="3" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BurgundyMainBrush}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource CardStyle}" Width="180" Height="92" Margin="0,0,15,0">
+                <StackPanel>
+                    <TextBlock Text="Скоро истекают" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                    <TextBlock Text="2" FontSize="24" FontWeight="Bold" Foreground="Orange"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource CardStyle}" Width="180" Height="94">
+                <StackPanel>
+                    <TextBlock Text="Всего акций" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                    <TextBlock Text="8" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextDarkBrush}"/>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+
+        <!-- Список акций -->
+        <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Список акций" Style="{StaticResource SubHeaderTextStyle}"/>
+                    <CheckBox x:Name="ActiveOnlyCheckBox" Content="Только активные" 
+                              Margin="20,0,0,0" VerticalAlignment="Center"
+                              Checked="ActiveOnlyCheckBox_Changed" Unchecked="ActiveOnlyCheckBox_Changed"/>
+                </StackPanel>
+
+                <DataGrid Grid.Row="1" x:Name="PromotionsGrid" Style="{StaticResource ModernDataGridStyle}"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="150"/>
+                        <DataGridTextColumn Header="Промокод" Binding="{Binding PromoCode}" Width="100"/>
+                        <DataGridTextColumn Header="Скидка" Binding="{Binding Discount, StringFormat={}{0}%}" Width="70"/>
+                        <DataGridTextColumn Header="Начало" Binding="{Binding StartDate, StringFormat={}{0:dd.MM.yy}}" Width="80"/>
+                        <DataGridTextColumn Header="Окончание" Binding="{Binding EndDate, StringFormat={}{0:dd.MM.yy}}" Width="80"/>
+                        <DataGridCheckBoxColumn Header="Активна" Binding="{Binding IsActive}" Width="60"/>
+                        <DataGridTemplateColumn Header="Действия" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="✏️" ToolTip="Редактировать" 
+                                                Click="EditPromotion_Click" Margin="2" Padding="5"
+                                                Background="Transparent" BorderThickness="0"/>
+                                        <Button Content="❌" ToolTip="Удалить" 
+                                                Click="DeletePromotion_Click" Margin="2" Padding="5"
+                                                Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
