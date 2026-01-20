@@ -1,0 +1,82 @@
+﻿<Page x:Class="RPM.StatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Аналитика">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="15">
+            <!-- Заголовок -->
+            <TextBlock Text="Аналитика и статистика" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,20"/>
+
+            <!-- Основная статистика -->
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Border Style="{StaticResource CardStyle}" Width="220" Height="117" Margin="0,0,15,15">
+                    <StackPanel>
+                        <TextBlock Text="Выручка за сегодня" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                        <TextBlock Text="45,230 ₽" FontSize="28" FontWeight="Bold" Foreground="{StaticResource BurgundyMainBrush}" Margin="0,5,0,0"/>
+                        <TextBlock Text="+12% за неделю" FontSize="10" Foreground="Green" Margin="0,5,0,0" Height="22"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}" Width="220" Height="119" Margin="0,0,15,15">
+                    <StackPanel>
+                        <TextBlock Text="Заказы за сегодня" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                        <TextBlock Text="127" FontSize="28" FontWeight="Bold" Foreground="{StaticResource BurgundyMainBrush}" Margin="0,5,0,0"/>
+                        <TextBlock Text="Средний чек: 356 ₽" FontSize="10" Foreground="{StaticResource TextLightBrush}" Margin="0,5,0,0" Height="27"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}" Width="220" Height="118" Margin="0,0,15,15">
+                    <StackPanel>
+                        <TextBlock Text="Активные заказы" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                        <TextBlock Text="15" FontSize="28" FontWeight="Bold" Foreground="{StaticResource BurgundyMainBrush}" Margin="0,5,0,0"/>
+                        <TextBlock Text="Требуют внимания" FontSize="10" Foreground="Orange" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}" Width="220" Height="118" Margin="0,0,15,15">
+                    <StackPanel>
+                        <TextBlock Text="Новых клиентов" FontSize="11" Foreground="{StaticResource TextLightBrush}"/>
+                        <TextBlock Text="23" FontSize="28" FontWeight="Bold" Foreground="{StaticResource BurgundyMainBrush}" Margin="0,5,0,0"/>
+                        <TextBlock Text="за сегодня" FontSize="10" Foreground="{StaticResource TextLightBrush}" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <!-- Детальная статистика -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,10,0,15">
+                <StackPanel>
+                    <TextBlock Text="Статистика заказов по дням" Style="{StaticResource SubHeaderTextStyle}" Margin="0,0,0,15"/>
+
+                    <DataGrid x:Name="DailyStatsGrid" Style="{StaticResource ModernDataGridStyle}"
+                              Height="200" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="100"/>
+                            <DataGridTextColumn Header="Заказы" Binding="{Binding Orders}" Width="80"/>
+                            <DataGridTextColumn Header="Выручка" Binding="{Binding Revenue, StringFormat={}{0}₽}" Width="100"/>
+                            <DataGridTextColumn Header="Средний чек" Binding="{Binding AverageOrder, StringFormat={}{0}₽}" Width="100"/>
+                            <DataGridTextColumn Header="Новые клиенты" Binding="{Binding NewCustomers}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- Популярные блюда -->
+            <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Популярные блюда" Style="{StaticResource SubHeaderTextStyle}" Margin="0,0,0,15"/>
+
+                    <DataGrid x:Name="PopularDishesGrid" Style="{StaticResource ModernDataGridStyle}"
+                              Height="200" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Блюдо" Binding="{Binding DishName}" Width="150"/>
+                            <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="100"/>
+                            <DataGridTextColumn Header="Кол-во заказов" Binding="{Binding OrderCount}" Width="100"/>
+                            <DataGridTextColumn Header="Общая выручка" Binding="{Binding TotalRevenue, StringFormat={}{0}₽}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
