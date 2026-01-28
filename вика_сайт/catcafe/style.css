@@ -1,3 +1,23 @@
-ськи
-бебебе
-ляляляghgjhgyhbnbns
+
+.decor-circle {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background-color: #E84C34;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.7;
+    z-index: 0;
+}
+
+/* Слева - адаптируем под размер экрана */
+.decor-circle.left {
+    top: -120px;
+    left: -140px;
+}
+
+/* Справа - адаптируем под размер экрана */
+.decor-circle.right {
+    bottom: -140px;
+    right: -160px;
+}
