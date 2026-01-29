@@ -122,16 +122,6 @@
                    HorizontalAlignment="Left"
                    Margin="12,12,0,0" />
 
-		<!-- Декоративная линия -->
-		<Rectangle Width="200" Height="1"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Margin="0,120,0,0"
-                   Opacity="0.3">
-			<Rectangle.Effect>
-				<BlurEffect Radius="10"/>
-			</Rectangle.Effect>
-		</Rectangle>
 
 		<!-- ПРЯМОУГОЛЬНИК С РАЗМЫТИЕМ -->
 		<Border Width="560" Height="400"
@@ -145,106 +135,103 @@
 			</Border.Effect>
 		</Border>
 
-		<!-- ============================================ -->
-		<!-- ВЕСЬ ТЕКСТ И ЭЛЕМЕНТЫ УПРАВЛЕНИЯ ОТДЕЛЬНО -->
-		<!-- ============================================ -->
+
 
 		<!-- Основной контейнер для текста -->
-		<Grid Width="560" Height="400"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center">
+		<!-- Основной контейнер для текста -->
+		<Grid Width="560" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
 
 			<!-- Заголовок формы -->
-			<TextBlock Text="ENTRANCE" 
-                       Style="{StaticResource BalooFontStyle}"
-                       FontSize="36"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top"
-                       Margin="0,40,0,0"/>
+			<TextBlock Text="ВХОД В СИСТЕМУ" 
+               Style="{StaticResource BalooFontStyle}"
+               FontSize="36"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="0,40,0,0"/>
 
 			<!-- Контейнер для полей ввода -->
-			<StackPanel VerticalAlignment="Center" 
-                        HorizontalAlignment="Center"
-                        Width="450">
+			<Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
 
 				<!-- Логин -->
-				<Grid Height="70" Margin="0,0,0,15">
-					<TextBlock Text="Login:" 
-                               Style="{StaticResource BalooFontStyle}"
-                               FontSize="32"
-                               VerticalAlignment="Top"/>
-
-					<TextBox x:Name="UsernameTextBox" 
-                             Style="{StaticResource PlaceholderTextBoxStyle}"
-                             VerticalAlignment="Top"
-                             Height="45"
-                             GotFocus="UsernameTextBox_GotFocus"
-                             LostFocus="UsernameTextBox_LostFocus" Margin="0,35,0,0"/>
-				</Grid>
+				<TextBlock Text="Логин:" 
+                   Style="{StaticResource BalooFontStyle}"
+                   FontSize="32"
+                   VerticalAlignment="Center"
+                   Grid.Row="0" Grid.Column="0" Margin="0,0,10,0"/>
+				<TextBox x:Name="UsernameTextBox" 
+                 Style="{StaticResource PlaceholderTextBoxStyle}"
+                 Height="45"
+                 VerticalAlignment="Center"
+                 Grid.Row="0" Grid.Column="1"
+                 GotFocus="UsernameTextBox_GotFocus"
+                 LostFocus="UsernameTextBox_LostFocus"/>
 
 				<!-- Пароль -->
-				<Grid Height="70">
-					<TextBlock Text="Password:" 
-                               Style="{StaticResource BalooFontStyle}"
-                               FontSize="32"
-                               VerticalAlignment="Top"/>
-
-					<PasswordBox x:Name="PasswordBox" 
-                                 Style="{StaticResource PlaceholderPasswordBoxStyle}"
-                                 VerticalAlignment="Bottom"
-                                 Height="45"
-                                 PasswordChar="•"
-                                 GotFocus="PasswordBox_GotFocus"
-                                 LostFocus="PasswordBox_LostFocus"/>
-				</Grid>
-			</StackPanel>
+				<TextBlock Text="Пароль:" 
+                   Style="{StaticResource BalooFontStyle}"
+                   FontSize="32"
+                   VerticalAlignment="Center"
+                   Grid.Row="1" Grid.Column="0" Margin="0,10,10,0"/>
+				<PasswordBox x:Name="PasswordBox" 
+                     Style="{StaticResource PlaceholderPasswordBoxStyle}"
+                     Height="45"
+                     VerticalAlignment="Center"
+                     Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"
+                     PasswordChar="•"
+                     GotFocus="PasswordBox_GotFocus"
+                     LostFocus="PasswordBox_LostFocus"/>
+			</Grid>
 
 			<!-- Нижняя панель с кнопками -->
-			<Grid VerticalAlignment="Bottom" 
-                  Height="80"
-                  Margin="0,0,0,15">
+			<Grid VerticalAlignment="Bottom" Height="80" Margin="0,0,0,20">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
 
-				<!-- Левая часть - "Создать" -->
-				<StackPanel HorizontalAlignment="Left" 
-                            VerticalAlignment="Center"
-                            Margin="40,0,0,0"/>
+				<!-- Кнопка выхода слева -->
+				<StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+					<Button x:Name="ExitButton"
+                    Content="Выход"
+                    Style="{StaticResource EnterButtonStyle}"
+                    Click="ExitButton_Click"/>
+					<Rectangle Width="150" Height="2" Fill="#ED442A" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+				</StackPanel>
 
-				<!-- Разделительная линия слева -->
-
-				<!-- Кнопка входа -->
-				<Button x:Name="LoginButton"
-                        Content="Enter"
-                        Style="{StaticResource EnterButtonStyle}"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Margin="0,0,80,0"
-                        Click="LoginButton_Click">
-					<Button.ToolTip>
-						<ToolTip>
-							<TextBlock Text="Логин: admin, Пароль: admin"
-                                       Foreground="Black"
-                                       Background="White"/>
-						</ToolTip>
-					</Button.ToolTip>
-				</Button>
-
-				<!-- Разделительная линия справа (красная) -->
-				<Rectangle Width="150" Height="2"
-                           Fill="#ED442A"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
-                           Margin="373,55,0,0"/>
+				<!-- Кнопка входа справа -->
+				<StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+					<Button x:Name="LoginButton"
+                    Content="Вход"
+                    Style="{StaticResource EnterButtonStyle}"
+                    Click="LoginButton_Click">
+						<Button.ToolTip>
+							<ToolTip>
+								<TextBlock Text="Логин: admin, Пароль: admin" Foreground="Black" Background="White"/>
+							</ToolTip>
+						</Button.ToolTip>
+					</Button>
+					<Rectangle Width="150" Height="2" Fill="#ED442A" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+				</StackPanel>
 			</Grid>
 
 			<!-- Сообщение об ошибке -->
 			<TextBlock x:Name="ErrorText" 
-                       Text="" 
-                       Foreground="Red" 
-                       FontSize="12"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Bottom"
-                       Margin="0,0,0,70"
-                       Visibility="Collapsed"/>
+               Text="" 
+               Foreground="Red" 
+               FontSize="12"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Bottom"
+               Margin="0,0,0,100"
+               Visibility="Collapsed"/>
 		</Grid>
+
 	</Grid>
 </Window>

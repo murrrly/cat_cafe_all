@@ -67,14 +67,7 @@
         </Style>
 
         <!-- Стиль для карточек -->
-        <Style x:Key="CardStyle" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource BeigeLightBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BeigeDarkBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="8"/>
-            <Setter Property="Padding" Value="15"/>
-        </Style>
-
+     
         <!-- Стиль для DataGrid -->
         <Style x:Key="ModernDataGridStyle" TargetType="DataGrid">
             <Setter Property="Background" Value="White"/>
@@ -112,12 +105,25 @@
         </Style>
 
         <!-- Стиль для статусов в DataGrid -->
-        <Style x:Key="StatusTextStyle" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="5,2"/>
-            <Setter Property="Background" Value="{StaticResource BeigeMediumBrush}"/>
-            <Setter Property="Foreground" Value="{StaticResource BurgundyMainBrush}"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-        </Style>
-    </Application.Resources>
+		<Style x:Key="StatusTextStyle" TargetType="TextBlock">
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="5,2"/>
+			<Setter Property="Background" Value="{StaticResource BeigeMediumBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource BurgundyMainBrush}"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style>
+
+		<Style x:Key="CardStyle" TargetType="Border">
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="CornerRadius" Value="10"/>
+			<Setter Property="Padding" Value="15"/>
+			<Setter Property="Margin" Value="10"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</Application.Resources>
 </Application>

@@ -1,93 +1,93 @@
 ﻿<Window x:Class="RPM.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="🍔 FastFood Admin Panel" Height="700" Width="1000"
+        Title="🐱 Sushi Cats Cafe — Admin Panel"
+        Height="720" Width="1100"
         WindowStartupLocation="CenterScreen"
-        Background="{StaticResource BeigeLightBrush}">
+        Background="#FFF4F1ED">
 
-    <Window.Resources>
-        <!-- Стиль для активной кнопки навигации -->
-        <Style x:Key="NavButtonActiveStyle" TargetType="Button" BasedOn="{StaticResource NavButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource BurgundyMainBrush}"/>
-            <Setter Property="Foreground" Value="White"/>
-        </Style>
-    </Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="70"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+		<!-- HEADER -->
+		<Border Background="#7B2D26" Grid.Row="0">
+			<Grid Margin="25,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
 
-        <!-- Header - обновленный с новой цветовой схемой -->
-        <Border Grid.Row="0" Background="{StaticResource BurgundyMainBrush}" Padding="20" CornerRadius="0,0,10,10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+					<TextBlock Text="🐱" FontSize="28" Margin="0,0,10,0"/>
+					<TextBlock Text="Sushi Cats Cafe — Admin"
+                               Foreground="White"
+                               FontSize="20"
+                               FontWeight="Bold"/>
+				</StackPanel>
 
-                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="🍔" FontSize="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="FastFood Admin Panel" 
-                              Foreground="White" FontSize="20" FontWeight="Bold"/>
-                </StackPanel>
+				<TextBlock Grid.Column="1"
+                           Text="Администратор: Система"
+                           Foreground="#FFE6D8CE"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
 
-                <TextBlock Grid.Column="1" x:Name="CurrentUserText" Text="Администратор: Система" 
-                          Foreground="#FFE0D5C2" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+					<TextBlock Text="🟢" Margin="0,0,6,0"/>
+					<TextBlock Text="Система онлайн" Foreground="#FFE6D8CE"/>
+				</StackPanel>
+			</Grid>
+		</Border>
 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="🟢" FontSize="10" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                    <TextBlock Text="Система онлайн" Foreground="#FFE0D5C2" FontSize="11"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+		<!-- MAIN -->
+		<Grid Grid.Row="1" Margin="15">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="240"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
 
-        <!-- Main Content -->
-        <Grid Grid.Row="1" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+			<!-- SIDEBAR -->
+			<Border Background="White" CornerRadius="10" Padding="15">
+				<StackPanel>
 
-            <!-- Navigation Menu - обновленный -->
-            <Border Grid.Column="0" Background="{StaticResource BeigeMediumBrush}" 
-                    BorderBrush="{StaticResource BeigeDarkBrush}" BorderThickness="0,0,1,0"
-                    CornerRadius="8,0,0,8" Margin="0,0,10,0">
-                <StackPanel Margin="10">
-                    <TextBlock Text="Панель управления" Foreground="{StaticResource TextLightBrush}" 
-                              FontSize="11" FontWeight="Bold" Margin="10,5" Opacity="0.7"/>
+					<TextBlock Text="Управление"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               Foreground="#AA000000"
+                               Margin="5"/>
 
-                    <Button x:Name="DashboardBtn" Content="📊 Дашборд" 
-                            Style="{StaticResource NavButtonStyle}" Click="DashboardBtn_Click"/>
-                    <Button x:Name="OrdersBtn" Content="📦 Управление заказами" 
-                            Style="{StaticResource NavButtonStyle}" Click="OrdersBtn_Click"/>
-                    <Button x:Name="MenuBtn" Content="🍕 Меню и блюда" 
-                            Style="{StaticResource NavButtonStyle}" Click="MenuBtn_Click"/>
-                    <Button x:Name="PromotionsBtn" Content="🎯 Акции и скидки" 
-                            Style="{StaticResource NavButtonStyle}" Click="PromotionsBtn_Click"/>
-                    <Button x:Name="StatisticsBtn" Content="📈 Аналитика" 
-                            Style="{StaticResource NavButtonStyle}" Click="StatisticsBtn_Click"/>
-                    <Button x:Name="UsersBtn" Content="👥 Сотрудники" 
-                            Style="{StaticResource NavButtonStyle}" Click="UsersBtn_Click"/>
+					<Button Content="📊 Дашборд" Click="DashboardBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="📦 Заказы" Click="OrdersBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="🍣 Меню" Click="MenuBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="🎯 Акции" Click="PromotionsBtn_Click" Style="{StaticResource NavButtonStyle}"/>
 
-                    <Separator Margin="5,15" Background="{StaticResource BeigeDarkBrush}"/>
+					<Separator Margin="10"/>
 
-                    <TextBlock Text="Система" Foreground="{StaticResource TextLightBrush}" 
-                              FontSize="11" FontWeight="Bold" Margin="10,5" Opacity="0.7"/>
+					<TextBlock Text="Структура кафе"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               Foreground="#AA000000"
+                               Margin="5"/>
 
-                    <Button x:Name="SettingsBtn" Content="⚙ Настройки" 
-                            Style="{StaticResource NavButtonStyle}" Click="SettingsBtn_Click"/>
-                    <Button x:Name="LogoutBtn" Content="🚪 Выйти из системы" 
-                            Style="{StaticResource NavButtonStyle}" Click="LogoutBtn_Click"/>
-                </StackPanel>
-            </Border>
+					<Button Content="🏢 Филиалы"  Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="👥 Сотрудники" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="⭐ Отзывы" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="📢 Реклама" Style="{StaticResource NavButtonStyle}"/>
 
-            <!-- Content Frame -->
-            <Border Grid.Column="1" Background="White" CornerRadius="8">
-                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent"/>
-            </Border>
-        </Grid>
-    </Grid>
+					<Separator Margin="10"/>
+
+					<Button Content="⚙ Настройки" Click="SettingsBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="🚪 Выйти" Click="LogoutBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+				</StackPanel>
+			</Border>
+
+			<!-- CONTENT -->
+			<Border Grid.Column="1" Background="White" CornerRadius="10" Margin="15,0,0,0">
+				<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+			</Border>
+		</Grid>
+	</Grid>
 </Window>
