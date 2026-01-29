@@ -1,3 +1,10 @@
+#home {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFF1D8;
+    overflow: hidden;
+}
 
 .decor-circle {
     position: absolute;
@@ -10,14 +17,603 @@
     z-index: 0;
 }
 
-/* Слева - адаптируем под размер экрана */
+/* Слева */
 .decor-circle.left {
     top: -120px;
     left: -140px;
 }
 
-/* Справа - адаптируем под размер экрана */
+/* Справа */
 .decor-circle.right {
     bottom: -140px;
     right: -160px;
+}
+
+.vertical-text {
+    position: absolute;
+    right: 38%;
+    top: 50%;
+    transform: translateY(-85%);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: calc(1.5vw + 1.5vh);
+    color: #ED442A;
+    z-index: 5;
+    letter-spacing: 6px;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    width: 80%;
+    max-width: 800px;
+}
+
+.logo-container img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+/* Верхняя панель для нового дизайна */
+.home-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #641203;
+    font-size: 16px;
+}
+
+.location-icon {
+    font-size: 14px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+    color: #641203;
+    font-size: 18px;
+}
+
+/* Правая панель для нового дизайна */
+.home-right-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.language-switcher {
+    color: #641203;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.basket-icon, .account-icon {
+    font-size: 20px;
+    color: #641203;
+    cursor: pointer;
+}
+
+/* Кнопка View Menu в новом дизайне */
+.view-menu-btn-new {
+    margin-top: 30px;
+    padding: 12px 40px;
+    background: #E84C34;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.view-menu-btn-new:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(232, 76, 52, 0.3);
+}
+
+/* Текст в новом дизайне */
+.subtitle {
+    margin-top: 2vh;
+    font-size: calc(1vw + 1vh);
+    color: #641203;
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    margin-top: 2vh;
+    font-size: calc(2vw + 2vh);
+    color: #641203;
+    text-align: center;
+}
+
+.title span {
+    color: #ED442A;
+}
+
+.cafe-name {
+    margin-top: 2vh;
+    font-size: calc(1.5vw + 1.5vh);
+    color: #3A0900;
+    text-align: center;
+}
+
+.slogan {
+    margin-top: 1vh;
+    font-size: calc(0.8vw + 0.8vh);
+    color: #3A0900;
+    text-align: center;
+}
+
+/* Стили для экрана загрузки (только логотип с анимацией) */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF1D8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+#loader .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: auto;
+    max-width: 800px;
+    text-align: center;
+    transform: none;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+
+
+#loader .loader-progress {
+    margin-top: 40px;
+    width: 300px;
+    max-width: 60vw;
+    height: 4px;
+    background-color: rgba(232, 76, 52, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+#loader .progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #E84C34;
+    border-radius: 2px;
+    animation: loading 3s ease-in-out forwards;
+}
+
+/* Анимации */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Адаптивные стили для нового дизайна */
+@media (max-width: 768px) {
+    .decor-circle {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .decor-circle.left {
+        top: -80px;
+        left: -80px;
+    }
+    
+    .decor-circle.right {
+        bottom: -80px;
+        right: -80px;
+    }
+    
+    .vertical-text {
+        right: 3%;
+        font-size: calc(1.2vw + 1.2vh);
+        letter-spacing: 3px;
+    }
+    
+    .home-header {
+        top: 15px;
+        left: 15px;
+        right: 60px;
+    }
+    
+    .home-right-panel {
+        top: 15px;
+        right: 15px;
+        gap: 15px;
+    }
+    
+    #loader .loader-logo {
+        width: 250px;
+    }
+    
+    #loader .loader-progress {
+        width: 200px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .decor-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .decor-circle.left {
+        top: -60px;
+        left: -60px;
+    }
+    
+    .decor-circle.right {
+        bottom: -60px;
+        right: -60px;
+    }
+    
+    .vertical-text {
+        right: 2%;
+        font-size: calc(1vw + 1vh);
+        letter-spacing: 2px;
+    }
+    
+    .home-header {
+        top: 10px;
+        left: 10px;
+        right: 50px;
+    }
+    
+    .header-icons {
+        gap: 10px;
+    }
+    
+    .home-right-panel {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+    
+    .view-menu-btn-new {
+        padding: 10px 30px;
+        font-size: 14px;
+    }
+    
+    #loader .loader-logo {
+        width: 180px;
+    }
+    
+    #loader .loader-progress {
+        width: 150px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .decor-circle {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .decor-circle.left {
+        top: -150px;
+        left: -150px;
+    }
+    
+    .decor-circle.right {
+        bottom: -150px;
+        right: -150px;
+    }
+    
+    #loader .loader-logo {
+        width: 450px;
+    }
+    
+    #loader .loader-progress {
+        width: 400px;
+    }
+}
+
+
+
+
+
+
+
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #f5f5f7;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 22px;
+}
+
+/* Header */
+.header {
+    width: 1100px;
+    height: 2vh;
+    background: #383838;
+    border-radius: 100px;
+    padding: 20px 20px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 65px;
+}
+
+/* Navigation - просто флекс ряд */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+/* Все элементы навигации в ряд */
+.nav__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    height: 65px;
+    background-color: transparent;
+    position: relative;
+    z-index: 10;
+}
+
+.nav__item:hover {
+    background-color: #ED442A;
+}
+
+
+.nav__brand:hover {
+    background-color: transparent;
+}
+
+
+.account-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #FFF1D8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    position: relative;
+    z-index: 10;
+}
+
+.account-photo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Отдельный круг между App и Language */
+.nav-circle-container {
+    position: relative;
+    width: 100px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.separator-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #FFF1D8;
+    position: absolute;
+    border: 13px solid #383838;
+    z-index: 5;
+}
+
+/* Центральные элементы - просто флекс с gap */
+.nav-center-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+/* Текст */
+.nav__text {
+    font-size: 20px;
+    color: #FFF1D8;
+    font-weight: 500;
+    position: relative;
+    z-index: 10;
+}
+
+/* Иконки */
+.nav__icon {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.nav__icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+
+.loader1-logo {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transform: scale(1.5);
+}
+
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .header {
+        padding: 20px 30px;
+    }
+    
+    .nav-center-items {
+        gap: 15px;
+    }
+    
+    .nav__item {
+        padding: 12px 20px;
+    }
+    
+    .separator-circle {
+        width: 65px;
+        height: 65px;
+        top: -10px;
+    }
+    
+    .nav-circle-container {
+        width: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        border-radius: 80px;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav__brand {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .nav-center-items {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px 0;
+    }
+    
+    .separator-circle {
+        display: none;
+    }
+    
+    .nav-circle-container {
+        display: none;
+    }
+    
+    .nav__item {
+        flex: 1;
+        min-width: calc(25% - 8px);
+        justify-content: center;
+        padding: 10px 15px;
+        height: 55px;
+    }
+    
+    .nav__account {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav__item {
+        min-width: calc(50% - 5px);
+        margin-bottom: 5px;
+    }
+    
+    .nav__text {
+        font-size: 16px;
+    }
 }
