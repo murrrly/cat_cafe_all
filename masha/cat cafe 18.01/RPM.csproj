@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\fon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

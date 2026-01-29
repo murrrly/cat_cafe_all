@@ -1,83 +1,74 @@
 ﻿<Page x:Class="RPM.Pages.MenuManagementPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Управление меню">
+      Title="Меню">
 
-    <Grid Margin="15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <!-- Заголовок и кнопка добавления -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
-            <TextBlock Text="Управление меню" Style="{StaticResource HeaderTextStyle}"/>
-            <Button Content="➕ Добавить блюдо" Style="{StaticResource BurgundyButtonStyle}" 
-                    Margin="20,0,0,0" Click="AddDish_Click"/>
-        </StackPanel>
+		<!-- Заголовок -->
+		<TextBlock Text="🍽 Управление меню"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="0,0,0,15"/>
 
-        <!-- Панель управления -->
-        <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,0,0,15">
-            <StackPanel>
-                <WrapPanel Orientation="Horizontal">
-                    <TextBox x:Name="SearchMenuTextBox" Width="250" Height="30" Padding="5" 
-                             Text="Поиск по названию..."
-                             TextChanged="SearchMenuTextBox_TextChanged"/>
+		<!-- Фильтры -->
+		<Border Grid.Row="1" Padding="10" Background="#FFF5F5F5" CornerRadius="8" Margin="0,0,0,15">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="2*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
 
-                    <ComboBox x:Name="CategoryFilterComboBox" Width="150" Height="30" Margin="10,0,0,0"
-                              SelectionChanged="CategoryFilterComboBox_SelectionChanged">
-                        <ComboBoxItem Content="Все категории" IsSelected="True"/>
-                        <ComboBoxItem Content="Бургеры"/>
-                        <ComboBoxItem Content="Пицца"/>
-                        <ComboBoxItem Content="Напитки"/>
-                        <ComboBoxItem Content="Десерты"/>
-                        <ComboBoxItem Content="Салаты"/>
-                    </ComboBox>
+				<TextBox x:Name="SearchBox" Height="34"
+                         VerticalContentAlignment="Center"
+                         TextChanged="SearchBox_TextChanged"/>
 
-                    <CheckBox x:Name="AvailableOnlyCheckBox" Content="Только доступные" 
-                              Margin="20,0,0,0" VerticalAlignment="Center"
-                              Checked="AvailableOnlyCheckBox_Changed" Unchecked="AvailableOnlyCheckBox_Changed"/>
-                </WrapPanel>
-            </StackPanel>
-        </Border>
+				<ComboBox x:Name="CategoryBox" Grid.Column="1" Margin="10,0"
+                          SelectionChanged="CategoryBox_SelectionChanged"/>
 
-        <!-- Список блюд -->
-        <Border Grid.Row="2" Style="{StaticResource CardStyle}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+				<CheckBox x:Name="AvailableCheck" Grid.Column="2"
+                          Content="Только доступные"
+                          VerticalAlignment="Center"
+                          Checked="AvailableCheck_Changed"
+                          Unchecked="AvailableCheck_Changed"/>
 
-                <TextBlock Grid.Row="0" Text="Список блюд" Style="{StaticResource SubHeaderTextStyle}" Margin="0,0,0,10"/>
+				<Button Grid.Column="3"
+                        Content="➕ Добавить"
+                        Padding="12,5"
+                        Click="AddDish_Click"/>
+			</Grid>
+		</Border>
 
-                <DataGrid Grid.Row="1" x:Name="MenuGrid" Style="{StaticResource ModernDataGridStyle}"
-                          AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                        <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="150"/>
-                        <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="100"/>
-                        <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0}₽}" Width="80"/>
-                        <DataGridCheckBoxColumn Header="Доступно" Binding="{Binding IsAvailable}" Width="70"/>
-                        <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="200"/>
-                        <DataGridTemplateColumn Header="Действия" Width="100">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Content="✏️" ToolTip="Редактировать" 
-                                                Click="EditDish_Click" Margin="2" Padding="5"
-                                                Background="Transparent" BorderThickness="0"/>
-                                        <Button Content="❌" ToolTip="Удалить" 
-                                                Click="DeleteDish_Click" Margin="2" Padding="5"
-                                                Background="Transparent" BorderThickness="0"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-        </Border>
-    </Grid>
+		<!-- Таблица -->
+		<DataGrid Grid.Row="2"
+                  x:Name="MenuGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+				<DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+				<DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
+				<DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="100"/>
+				<DataGridCheckBoxColumn Header="Доступно" Binding="{Binding IsAvailable}" Width="100"/>
+				<DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="200"/>
+				<DataGridTemplateColumn Header="⚙" Width="120">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<Button Content="✏" Click="Edit_Click" Margin="2"/>
+								<Button Content="🗑" Click="Delete_Click" Margin="2"/>
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
 </Page>
