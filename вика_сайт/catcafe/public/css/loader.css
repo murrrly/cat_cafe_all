@@ -1,0 +1,153 @@
+/* ===== loader.css ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #f6d6b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.logo-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.loader-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: float 3s ease-in-out infinite;
+}
+
+.loader-text {
+    text-align: center;
+    color: #5a3921;
+}
+
+.restaurant-type {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #8b4513;
+}
+
+.japanese-text {
+    font-family: 'Hiragino Kaku Gothic Pro', 'MS Gothic', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #5a3921;
+}
+
+.restaurant-name {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2c1810;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8b5a2b;
+    margin-top: 20px;
+}
+
+.text-line {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.text-line:nth-child(1) {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.text-line:nth-child(2) {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.text-line:nth-child(3) {
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+}
+
+.text-line:nth-child(4) {
+    animation: fadeInUp 0.8s ease-out 1.4s forwards;
+}
+
+.loader-progress {
+    width: 200px;
+    height: 3px;
+    background: rgba(90, 57, 33, 0.2);
+    border-radius: 3px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #5a3921;
+    border-radius: 3px;
+    animation: loading 2s ease-in-out forwards;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .restaurant-name {
+        font-size: 28px;
+    }
+    
+    .japanese-text {
+        font-size: 20px;
+    }
+}
