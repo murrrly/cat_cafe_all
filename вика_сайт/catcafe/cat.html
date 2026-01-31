@@ -10,22 +10,20 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="categories.css">
-    
 </head>
 <body>
 
-    <!-- 1. Загрузочный экран (только логотип) -->
+    <!-- 1. Загрузочный экран -->
     <div id="loader">
         <div class="decor-circle left"></div>
         <div class="decor-circle right"></div>
         
-
         <div class="logo-container">
             <img src="Images/logo.png" alt="Sushi Cat Logo" class="loader-logo">
         </div>
     </div>
 
-    <!-- 2. Новый главный экран -->
+    <!-- 2. Главный экран -->
     <div id="home" class="hidden">
         <!-- Круг слева -->
         <div class="decor-circle left"></div>
@@ -35,8 +33,6 @@
         
         <!-- Вертикальный текст -->
         <div class="vertical-text">寿司と快適さ</div>
-        
-        
         
         <!-- Основной контент -->
         <div class="logo-container">
@@ -49,12 +45,15 @@
         </div>
     </div>
 
-    <!-- 3. Меню -->
+    <!-- 3. Меню - ПУСТОЙ ЭКРАН СНАЧАЛА -->
     <div id="app" class="hidden">
         
-        <!-- Шапка -->
+        <!-- ПУСТОЙ ЭКРАН -->
+        
+
+        <!-- Шапка (появляется после скролла) -->
         <header class="header">
-            <nav class="nav">
+    <nav class="nav">
             <div class="nav__item">
                 <div class="nav__icon">
                     <img src="Images/mesto.png" alt="App">
@@ -113,12 +112,67 @@
                 <span class="nav__text">Аккаунт</span>
             </div>
     </nav>
-        </header>
+</header>
+
+<main class="main">
+    <!-- Обертка для всего контента, кроме овалов -->
+    <div class="main-content-wrapper">
+        <!-- Старый content-left -->
+        <div class="content-left">
+            <!-- Если здесь нужен текст -->
+        </div>
+
+        <div class="content-center">
+            <h1 class="jp-title">
+            <span>食</span><span class="up">べ</span><span>て</span>
+        </h1>
+
+            <div class="brand">
+                <span class="brand-en">Sushi Cat's Cafe</span>
+                <span class="brand-sub">with love and with a soul</span>
+            </div>
+
+            <div class="restaurant-name-with-dividers">
+                <div class="divider"></div>
+                <div class="restaurant-text">Japanese Food Restaurant</div>
+                <div class="divider"></div>
+            </div>
+
+            <div class="jp-sub">
+                寿司 <span class="red-to">と</span> 快適さ
+            </div>
+        </div>
+
+        <div class="center-circle"></div>
+
+        <div class="sacura">
+            <img src="Images/sacura.png" alt="Flower Decoration">
+        </div>
+
+        <div class="left-circle"></div>
+    </div>
+
+    <!-- Овалы теперь ВНЕ основного контента -->
+    <div class="ovals-overlay">
+        <div class="oval long"></div>
+        <div class="oval short"></div>
+    </div>
+
+</main>
 
         <!-- Категории -->
         <nav class="categories">
-            <button class="active" data-category="all">Все</button>
+            <button data-category="rolls" onclick="scrollToSection('rolls')">Все</button>
             <button data-category="rolls" onclick="scrollToSection('rolls')">Роллы</button>
+
+            <div class="circle">
+                <img src="kryg.png">
+            </div>
+
+            <div class="menu-label">
+                МЕНЮ
+            </div>
+
             <button data-category="drinks" onclick="scrollToSection('drinks')">Напитки</button>
             <button data-category="dessert" onclick="scrollToSection('dessert')">Дессерты</button>
         </nav>
@@ -458,6 +512,84 @@
                 event.target.classList.add('active');
             }
         }
+
+        // Показываем шапку при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header-sticky');
+            const emptyScreen = document.querySelector('.empty-screen');
+            
+            if (emptyScreen) {
+                const emptyScreenHeight = emptyScreen.offsetHeight;
+                if (window.scrollY > emptyScreenHeight - 100) {
+                    header.classList.add('visible');
+                } else {
+                    header.classList.remove('visible');
+                }
+            }
+        });
     </script>
+
+    <style>
+
+        .empty-screen-content {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .empty-screen-title {
+            font-size: 48px;
+            color: #383838;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .empty-screen-subtitle {
+            font-size: 24px;
+            color: #ED442A;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .empty-screen-scroll-hint {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: #666;
+            font-size: 16px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-arrow {
+            font-size: 32px;
+            color: #ED442A;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        
+
+        .header-sticky.visible {
+            top: 0;
+        }
+
+        
+
+        /* Скрытые элементы */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+
 </body>
 </html>

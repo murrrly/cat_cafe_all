@@ -1,34 +1,70 @@
-/* ===== categories.css ===== */
 .categories {
+    position: relative;
+    height: 62px;
+    background-color: #383838;
+    border-radius: 50px;
+    margin: 25px auto;
+    padding: 0 24px;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-    background: #fff8f0;
-    border-bottom: 2px solid #e0c9b0;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%; /* Уменьшили ширину до 80% */
+    max-width: 800px;
 }
 
+
 .categories button {
-    padding: 10px 24px;
+    padding: 10px 20px;
     border-radius: 25px;
-    border: 2px solid #e0c9b0;
+    border: 2px solid #ED442A;
     background: transparent;
-    color: #5a3921;
+    color: #FFF1D8;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 15px;
+    margin-right: -5px;
 }
 
 .categories button:hover {
-    border-color: #5a3921;
-    background: rgba(90, 57, 33, 0.05);
+    background: #ED442A;
+    border-color: #383838;
 }
 
 .categories button.active {
     background: #5a3921;
     color: white;
     border-color: #5a3921;
+}
+
+
+.menu-label {
+    color: #FFF1D8;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    z-index: 101;
+    transform: translateX(20px) ;
+    -webkit-text-stroke: 0.5px #000;
+}
+
+
+
+
+
+
+.circle {
+    position: absolute;
+    margin-top: -15px;
+    left: 37.9%;
+    transform: scale(0.9);
+    transform-origin: center center;
+    border-radius: 50%;
+    transform: translateY(10px);
+    z-index: 101;
 }

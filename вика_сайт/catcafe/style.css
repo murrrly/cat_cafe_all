@@ -483,9 +483,9 @@ body {
 
 /* Круг в центре шапки */
 .circle {
-    position: fixed;
-    top: -1%;
-    left: 45%;
+    position: absolute;
+    height: 7;
+    left: 44.8%;
     transform: scale(0.9);
     transform-origin: center center;
     border-radius: 50%;
@@ -510,9 +510,9 @@ body {
 
 /* ОВАЛЫ - ТЕПЕРЬ ОТДЕЛЬНО И МОЖНО ПЕРЕМЕЩАТЬ */
 .ovals-overlay {
-    position: fixed; /* Или absolute - в зависимости от нужного поведения */
+    position: absolute; /* Или absolute - в зависимости от нужного поведения */
     left: -50px; /* Регулируйте это значение для перемещения влево/вправо */
-    top: 50%; /* Регулируйте для перемещения вверх/вниз */
+    top: 40%; /* Регулируйте для перемещения вверх/вниз */
     transform: translateY(-50%); /* Центрирование по вертикали */
     display: flex;
     flex-direction: column;
@@ -625,13 +625,6 @@ body {
     z-index: 2;
 }
 
-
-.red-to {
-    color: #ED442A; /* Красный цвет */
-    font-weight: 700; /* Можно сделать жирнее если нужно */
-}
-
-
 /* ПРАВАЯ ЧАСТЬ (сакура) */
 .sacura {
     position: absolute;
@@ -650,8 +643,8 @@ body {
 
 /* ЦЕНТРАЛЬНЫЙ КРУГ */
 .center-circle {
-    position: fixed;
-    top: 50%;
+    position: absolute;
+    top:40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 220px;
@@ -662,9 +655,9 @@ body {
 }
 
 .left-circle {
-    position: fixed;
-    top: 55%;
-    right: -5%;
+    position: absolute;
+    top: 50%;
+    right: -7%;
     transform: translate(0%, -50%);
     width: 320px;
     height: 320px;
@@ -686,7 +679,7 @@ body {
 .small-image {
     width: 35px; 
     margin-bottom: 10px; 
-    transform: translateX(-418px) translateY(200px);
+    transform: translateX(-420px) translateY(200px);
 }
 
 
