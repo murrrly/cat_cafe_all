@@ -46,18 +46,7 @@
     text-align: center;
 }
 
-.categories button:hover {
-    border-color: #5a3921;
-    background: rgba(90, 57, 33, 0.05);
-    transform: translateY(-2px);
-}
 
-.categories button.active {
-    background: #5a3921;
-    color: white;
-    border-color: #5a3921;
-    box-shadow: 0 4px 8px rgba(90, 57, 33, 0.3);
-}
 
 /* Основная сетка меню */
 .menu {
