@@ -12,6 +12,17 @@ namespace RPM
 		public LoginWindow()
 		{
 			InitializeComponent();
+			LoadLastLogin(); // автозаполнение при запуске
+		}
+
+		private void LoadLastLogin()
+		{
+			var (username, password) = SimpleLoginManager.Load();
+			if (!string.IsNullOrEmpty(username))
+			{
+				UsernameTextBox.Text = username;
+				PasswordBox.Password = password;
+			}
 		}
 
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -45,6 +56,9 @@ namespace RPM
 
 					if (reader.Read())
 					{
+						// Сохраняем логин и пароль
+						SimpleLoginManager.Save(login, password);
+
 						int positionId = Convert.ToInt32(reader["PositionID"]);
 
 						if (positionId == 1)
@@ -63,10 +77,11 @@ namespace RPM
 					else
 					{
 						ShowError("Неверный логин или пароль");
+						SimpleLoginManager.Delete(); // удаляем старые данные
 					}
 				}
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				ShowError("Ошибка подключения к БД");
 			}
@@ -83,7 +98,6 @@ namespace RPM
 			ErrorText.Visibility = Visibility.Visible;
 		}
 
-		// Placeholder логика
 		private void UsernameTextBox_GotFocus(object sender, RoutedEventArgs e)
 		{
 			ErrorText.Visibility = Visibility.Collapsed;
