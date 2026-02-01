@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Data;
 using System.Windows;
 
 namespace RPM
@@ -42,7 +41,7 @@ namespace RPM
 				{
 					conn.Open();
 
-					string query = @"SELECT ID, PositionID 
+					string query = @"SELECT ID, PositionID
                                      FROM Users 
                                      WHERE Login=@login 
                                      AND Password=@password 
@@ -68,6 +67,7 @@ namespace RPM
 						}
 						else
 						{
+							// Передаем BranchID в кассирское окно
 							CashierWindow cashier = new CashierWindow();
 							cashier.Show();
 						}

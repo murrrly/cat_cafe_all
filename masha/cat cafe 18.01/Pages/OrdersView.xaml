@@ -3,25 +3,88 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:RPM.Converters"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="800">
 
+	<UserControl.Resources>
+		<converters:ShortNameConverter x:Key="ShortNameConverter"/>
+	</UserControl.Resources>
+
 	<Grid Margin="20">
-		<StackPanel>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0">
 			<TextBlock Text="Список заказов" FontSize="28" Margin="0,0,0,20"/>
-
-			<Button Content="Обновить" Width="120" Height="40" 
-                    HorizontalAlignment="Left" Click="RefreshButton_Click" Margin="0,0,0,10"/>
-
-			<DataGrid x:Name="OrdersDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
-                      IsReadOnly="True">
-				<DataGrid.Columns>
-					<DataGridTextColumn Header="Номер" Binding="{Binding OrderNumber}" Width="150"/>
-					<DataGridTextColumn Header="Дата" Binding="{Binding OrderDate}" Width="200"/>
-					<DataGridTextColumn Header="Сумма" Binding="{Binding TotalAmount}" Width="100"/>
-					<DataGridTextColumn Header="Кассир" Binding="{Binding CashierName}" Width="*"/>
-				</DataGrid.Columns>
-			</DataGrid>
+			<Button Content="Обновить" Width="120" Height="40" HorizontalAlignment="Left" Click="RefreshButton_Click" Margin="0,0,0,10"/>
 		</StackPanel>
+
+		<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+			<ItemsControl x:Name="OrdersItemsControl" ItemsSource="{Binding Orders}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Border CornerRadius="10" Margin="10" Padding="15" Background="#FFF1D8"
+                                BorderBrush="Brown" BorderThickness="1" MinWidth="250" MaxWidth="350">
+							<StackPanel>
+
+								<!-- Верх: номер, дата, кассир -->
+								<Grid Margin="0,0,0,5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="120"/>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="120"/>
+									</Grid.ColumnDefinitions>
+
+									<TextBlock Text="{Binding OrderNumber}" FontWeight="Bold" Grid.Column="0"/>
+									<TextBlock Text="{Binding OrderDate, StringFormat={}{0:HH:mm dd.MM}}" HorizontalAlignment="Center" Grid.Column="1"/>
+									<TextBlock Text="{Binding CashierName, Converter={StaticResource ShortNameConverter}}" HorizontalAlignment="Right" Grid.Column="2"/>
+								</Grid>
+
+								<!-- Позиции заказа -->
+								<ItemsControl ItemsSource="{Binding Items}" Margin="0,5,0,5">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<StackPanel Orientation="Horizontal" Margin="0,2,0,2">
+												<TextBlock Text="{Binding MenuName}" Width="160"/>
+												<TextBlock Text="x" Margin="5,0"/>
+												<TextBlock Text="{Binding Quantity}" Width="30"/>
+												<TextBlock Text="{Binding UnitPrice}" Width="60" HorizontalAlignment="Right"/>
+											</StackPanel>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+
+								<!-- Линия перед итоговой суммой -->
+								<Border Background="Gray" Height="1" Margin="0,0,0,10"/>
+
+								<!-- Нижняя часть: сумма и способ оплаты -->
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+
+									<!-- Итоговая сумма слева -->
+									<TextBlock Text="{Binding TotalAmount}" FontWeight="Bold" FontSize="16" Grid.Column="0"/>
+
+									<!-- Способ оплаты справа -->
+									<TextBlock Text="{Binding PaymentType}" FontSize="16" Grid.Column="1" HorizontalAlignment="Right"/>
+								</Grid>
+
+							</StackPanel>
+						</Border>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
 	</Grid>
 </UserControl>
