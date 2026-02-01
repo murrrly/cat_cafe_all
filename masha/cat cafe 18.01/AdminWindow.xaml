@@ -21,15 +21,15 @@
                            Foreground="#000000"
                            Margin="0,0,0,24"/>
 
-				<Button Content="Заказы" Click="Orders_Click"
+				<Button Content=" Заказы" Click="Orders_Click"
 					 HorizontalContentAlignment="Left"/>
-				<Button Content="Меню" Click="Menu_Click"
+				<Button Content=" Меню" Click="Menu_Click"
 					  HorizontalContentAlignment="Left"/>
-				<Button Content="Сотрудники" Click="Users_Click"
+				<Button Content=" Сотрудники" Click="Users_Click"
 					 HorizontalContentAlignment="Left"/>
-				<Button Content="Статистика" Click="Stats_Click"
+				<Button Content=" Статистика" Click="Stats_Click"
 					 HorizontalContentAlignment="Left"/>
-				<Button Content="Акции" Click="Promo_Click"
+				<Button Content=" Акции" Click="Promo_Click"
 					 HorizontalContentAlignment="Left"/>
 				<Button Content="Выход" Background="#E84C34" Foreground="White" Click="Exit_Click"/>
 

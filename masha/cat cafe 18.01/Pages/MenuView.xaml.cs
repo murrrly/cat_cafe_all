@@ -132,6 +132,7 @@ namespace RPM.Pages
 				};
 				btn.Click += FilterButton_Click;
 				CategoryPanel.Children.Add(btn);
+
 			}
 
 			if (CategoryPanel.Children.Count > 0 && CategoryPanel.Children[0] is Button first)
