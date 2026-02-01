@@ -50,34 +50,35 @@ function goToMenu() {
         
         setTimeout(() => {
             app.style.opacity = "1";
-            document.body.style.overflowY = 'auto';
+            // УБРАЛИ ПРОКРУТКУ
+            // document.body.style.overflowY = 'auto';
             initMenuFunctionality();
         }, 50);
     }, 800);
 }
 
-// Функция прокрутки к секциям меню
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
+// Функция прокрутки к секциям меню - УБРАЛИ
+// function scrollToSection(sectionId) {
+//     const section = document.getElementById(sectionId);
+//     if (!section) return;
     
-    const headerHeight = document.querySelector('.header').offsetHeight;
-    const categoriesHeight = document.querySelector('.categories').offsetHeight;
-    const offset = headerHeight + categoriesHeight + 20;
+//     const headerHeight = document.querySelector('.header').offsetHeight;
+//     const categoriesHeight = document.querySelector('.categories').offsetHeight;
+//     const offset = headerHeight + categoriesHeight + 20;
     
-    window.scrollTo({
-        top: section.offsetTop - offset,
-        behavior: 'smooth'
-    });
+//     window.scrollTo({
+//         top: section.offsetTop - offset,
+//         behavior: 'smooth'
+//     });
     
-    const buttons = document.querySelectorAll('.categories button[data-category]');
-    buttons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-category') === sectionId) {
-            btn.classList.add('active');
-        }
-    });
-}
+//     const buttons = document.querySelectorAll('.categories button[data-category]');
+//     buttons.forEach(btn => {
+//         btn.classList.remove('active');
+//         if (btn.getAttribute('data-category') === sectionId) {
+//             btn.classList.add('active');
+//         }
+//     });
+// }
 
 // Объект корзины
 const cart = {
@@ -274,36 +275,17 @@ function checkout() {
     closeCart();
 }
 
-// Инициализация навигации
+// Инициализация навигации - УПРОЩЕННАЯ (без прокрутки)
 function initNavigation() {
     const categoryButtons = document.querySelectorAll('.categories button[data-category]');
     
-    const sections = document.querySelectorAll('.category-title');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                categoryButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-category') === sectionId) {
-                        btn.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    sections.forEach(section => observer.observe(section));
-    
+    // Просто переключаем активные кнопки без прокрутки
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const category = this.getAttribute('data-category');
-            
-            if (category === 'all') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                scrollToSection(category);
-            }
+            // Удаляем активный класс у всех кнопок
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
         });
     });
 }
@@ -313,29 +295,34 @@ function initCartFunctionality() {
     // Загружаем корзину
     cart.load();
     
-    // Создаем модальное окно корзины
-    const cartModal = document.createElement('div');
-    cartModal.id = 'cart';
-    cartModal.innerHTML = `
-        <div class="cart-modal">
-            <div class="cart-header">
-                <h2>Корзина</h2>
-                <button class="close-cart" onclick="closeCart()">×</button>
+    // Создаем модальное окно корзины (если еще не создано)
+    if (!document.getElementById('cart')) {
+        const cartModal = document.createElement('div');
+        cartModal.id = 'cart';
+        cartModal.innerHTML = `
+            <div class="cart-modal">
+                <div class="cart-header">
+                    <h2>Корзина</h2>
+                    <button class="close-cart" onclick="closeCart()">×</button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <!-- Сюда будут добавляться товары -->
+                </div>
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cartTotal">$0</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
             </div>
-            <div class="cart-items" id="cartItems">
-                <!-- Сюда будут добавляться товары -->
-            </div>
-            <div class="cart-total">
-                <span>Итого:</span>
-                <span id="cartTotal">$0</span>
-            </div>
-            <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
-        </div>
-    `;
-    document.body.appendChild(cartModal);
+        `;
+        document.body.appendChild(cartModal);
+    }
     
     // Обработчики для кнопок "Добавить в корзину"
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        // Удаляем старые обработчики
+        button.removeEventListener('click', null);
+        // Добавляем новый обработчик
         button.addEventListener('click', function() {
             const productCard = this.closest('.product-card');
             const productName = productCard.querySelector('.product-title').textContent;
@@ -365,7 +352,8 @@ function initCartFunctionality() {
 
 // Инициализация функционала меню
 function initMenuFunctionality() {
-    document.body.style.overflowY = 'auto';
+    // УБРАЛИ ПРОКРУТКУ
+    // document.body.style.overflowY = 'auto';
     
     // Инициализация навигации
     initNavigation();
@@ -373,18 +361,19 @@ function initMenuFunctionality() {
     // Инициализация корзины
     initCartFunctionality();
     
-    // Убедимся, что меню прокручивается
-    const app = document.getElementById('app');
-    if (app) {
-        app.style.height = 'auto';
-        app.style.minHeight = '100vh';
-        app.style.overflowY = 'visible';
-    }
+    // УБРАЛИ настройки прокрутки
+    // const app = document.getElementById('app');
+    // if (app) {
+    //     app.style.height = 'auto';
+    //     app.style.minHeight = '100vh';
+    //     app.style.overflowY = 'visible';
+    // }
 }
 
 // Автоматическая инициализация
 document.addEventListener('DOMContentLoaded', function() {
-    document.body.style.overflowY = 'auto';
+    // УБРАЛИ ПРОКРУТКУ
+    // document.body.style.overflowY = 'auto';
     
     const app = document.getElementById("app");
     if (app && !app.classList.contains('hidden')) {
@@ -393,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Глобальные функции
-window.scrollToSection = scrollToSection;
+// window.scrollToSection = scrollToSection; // УБРАЛИ
 window.goToMenu = goToMenu;
 window.openCart = openCart;
 window.closeCart = closeCart;
