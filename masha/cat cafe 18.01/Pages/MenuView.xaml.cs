@@ -30,7 +30,6 @@ namespace RPM.Pages
 				{
 					conn.Open();
 
-					// Получаем блюда с названиями категорий
 					string query = @"
                         SELECT m.ID, m.Name, m.Composition, m.Description, m.Price, m.ImageURL, c.Name AS CategoryName
                         FROM Menu m
@@ -51,7 +50,6 @@ namespace RPM.Pages
 					}).ToList();
 
 					ItemsControlMenu.ItemsSource = AllItems;
-
 					InitializeCategoryButtons();
 				}
 			}
@@ -112,7 +110,6 @@ namespace RPM.Pages
 			}
 		}
 
-		// Инициализация кнопок фильтров по категориям
 		private void InitializeCategoryButtons()
 		{
 			CategoryPanel.Children.Clear();
@@ -137,7 +134,6 @@ namespace RPM.Pages
 				CategoryPanel.Children.Add(btn);
 			}
 
-			// По умолчанию выделяем "Все"
 			if (CategoryPanel.Children.Count > 0 && CategoryPanel.Children[0] is Button first)
 				first.Background = Brushes.White;
 		}
@@ -148,18 +144,36 @@ namespace RPM.Pages
 			{
 				string category = btn.Tag.ToString();
 
-				// Сбрасываем выделение всех кнопок
 				foreach (Button b in CategoryPanel.Children)
 					b.Background = Brushes.Transparent;
 
 				btn.Background = Brushes.White;
 
-				// Фильтруем элементы
-				if (category == "Все")
-					ItemsControlMenu.ItemsSource = AllItems;
-				else
-					ItemsControlMenu.ItemsSource = AllItems.Where(i => i.CategoryName == category).ToList();
+				ApplyFilter(category, SearchBox.Text.Trim());
 			}
+		}
+
+		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			string searchText = SearchBox.Text.Trim();
+			string selectedCategory = CategoryPanel.Children
+										 .OfType<Button>()
+										 .FirstOrDefault(b => b.Background == Brushes.White)?.Tag.ToString() ?? "Все";
+
+			ApplyFilter(selectedCategory, searchText);
+		}
+
+		private void ApplyFilter(string category, string searchText)
+		{
+			var filtered = AllItems.AsEnumerable();
+
+			if (!string.IsNullOrEmpty(searchText))
+				filtered = filtered.Where(i => i.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
+
+			if (category != "Все")
+				filtered = filtered.Where(i => i.CategoryName == category);
+
+			ItemsControlMenu.ItemsSource = filtered.ToList();
 		}
 	}
 
