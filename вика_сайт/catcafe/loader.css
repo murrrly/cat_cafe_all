@@ -6,11 +6,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #f6d6b8;
-    overflow: hidden;
-}
-
 #loader {
     position: fixed;
     inset: 0;
