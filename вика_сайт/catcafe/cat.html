@@ -182,11 +182,10 @@
         <!-- Контейнер для контента категорий -->
         <div class="content-container" id="contentContainer">
 
-            <div class="content-container" id="contentContainer">
-                <!-- Фоновая фотография, которая всегда на месте -->
-                <div class="category-background-image">
-                    <img src="Images/2s" alt="Фон категорий">
-                </div>
+
+
+            
+
         
             
             <!-- Секция "Новинки" -->
@@ -566,6 +565,10 @@
             🛒 <span class="cart-count">0</span>
         </div>
 
+            <div class="fixed-corner-image">
+                <img src="Images/SACURA2.png" alt="Sushi Corner">
+            </div>
+
     </div>
 
     <script src="script.js"></script>
@@ -702,6 +705,17 @@
         .hidden {
             display: none !important;
         }
+
+
+        .fixed-corner-image {
+        bottom: 20px;
+        right: 20px;
+        width: 150px;
+        height: 150px;
+        z-index: 100;
+        pointer-events: none; /* Чтобы не мешала кликам */
+        }
+
     </style>
 
 </body>
