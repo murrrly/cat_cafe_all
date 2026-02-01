@@ -78,7 +78,7 @@ namespace RPM.Pages
 			decimal total = 0;
 			foreach (var item in cart)
 				total += item.TotalPrice;
-			TotalText.Text = $"Итого: {total:C2}";
+			TotalText.Text = "P Итого: {total:C2}";
 		}
 
 		private void PlaceOrder_Click(object sender, RoutedEventArgs e)

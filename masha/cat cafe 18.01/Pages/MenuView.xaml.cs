@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using MySql.Data.MySqlClient;
 
 namespace RPM.Pages
@@ -12,6 +14,7 @@ namespace RPM.Pages
 	{
 		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable menuTable = new DataTable();
+		private List<MenuItem> AllItems;
 
 		public MenuView()
 		{
@@ -26,22 +29,30 @@ namespace RPM.Pages
 				using (MySqlConnection conn = new MySqlConnection(connectionString))
 				{
 					conn.Open();
-					string query = "SELECT ID, Name, Composition, Description, Price, ImageURL FROM Menu";
+
+					// Получаем блюда с названиями категорий
+					string query = @"
+                        SELECT m.ID, m.Name, m.Composition, m.Description, m.Price, m.ImageURL, c.Name AS CategoryName
+                        FROM Menu m
+                        LEFT JOIN Categories c ON m.CategoryID = c.ID";
 					MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
 					menuTable.Clear();
 					adapter.Fill(menuTable);
 
-					var items = menuTable.AsEnumerable().Select(r => new MenuItem
+					AllItems = menuTable.AsEnumerable().Select(r => new MenuItem
 					{
 						ID = Convert.ToInt32(r["ID"]),
 						Name = r["Name"].ToString(),
 						Composition = r["Composition"].ToString(),
 						Description = r["Description"].ToString(),
 						Price = Convert.ToDecimal(r["Price"]),
-						ImageURL = GetAbsolutePath(r["ImageURL"].ToString())
+						ImageURL = GetAbsolutePath(r["ImageURL"].ToString()),
+						CategoryName = r["CategoryName"] == DBNull.Value ? "Без категории" : r["CategoryName"].ToString()
 					}).ToList();
 
-					ItemsControlMenu.ItemsSource = items;
+					ItemsControlMenu.ItemsSource = AllItems;
+
+					InitializeCategoryButtons();
 				}
 			}
 			catch (Exception ex)
@@ -100,6 +111,56 @@ namespace RPM.Pages
 				}
 			}
 		}
+
+		// Инициализация кнопок фильтров по категориям
+		private void InitializeCategoryButtons()
+		{
+			CategoryPanel.Children.Clear();
+
+			var categories = AllItems.Select(i => i.CategoryName).Distinct().ToList();
+			categories.Insert(0, "Все");
+
+			foreach (var cat in categories)
+			{
+				var btn = new Button
+				{
+					Content = cat,
+					Width = 100,
+					Height = 32,
+					Margin = new Thickness(4, 0, 4, 0),
+					Background = Brushes.Transparent,
+					BorderBrush = Brushes.Gray,
+					BorderThickness = new Thickness(0),
+					Tag = cat
+				};
+				btn.Click += FilterButton_Click;
+				CategoryPanel.Children.Add(btn);
+			}
+
+			// По умолчанию выделяем "Все"
+			if (CategoryPanel.Children.Count > 0 && CategoryPanel.Children[0] is Button first)
+				first.Background = Brushes.White;
+		}
+
+		private void FilterButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (sender is Button btn)
+			{
+				string category = btn.Tag.ToString();
+
+				// Сбрасываем выделение всех кнопок
+				foreach (Button b in CategoryPanel.Children)
+					b.Background = Brushes.Transparent;
+
+				btn.Background = Brushes.White;
+
+				// Фильтруем элементы
+				if (category == "Все")
+					ItemsControlMenu.ItemsSource = AllItems;
+				else
+					ItemsControlMenu.ItemsSource = AllItems.Where(i => i.CategoryName == category).ToList();
+			}
+		}
 	}
 
 	public class MenuItem
@@ -110,5 +171,6 @@ namespace RPM.Pages
 		public string Description { get; set; }
 		public decimal Price { get; set; }
 		public string ImageURL { get; set; }
+		public string CategoryName { get; set; }
 	}
 }

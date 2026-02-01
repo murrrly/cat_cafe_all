@@ -7,7 +7,7 @@ namespace RPM
 {
 	public partial class MenuEditWindow : Window
 	{
-		string connectionString = "server=localhost;user=root;password=;database=catcafe_db;";
+		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		int menuId = 0; // 0 = новый, >0 = редактировать
 
 		public MenuEditWindow(int id = 0)

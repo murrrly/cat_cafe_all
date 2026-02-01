@@ -8,9 +8,15 @@
 
 	<ScrollViewer>
 		<StackPanel Margin="20">
+
 			<TextBlock Text="Меню" FontSize="28" Margin="0,0,0,20"/>
 
-			<Button Content="Добавить блюдо" Width="150" Height="35" Click="AddButton_Click" Margin="0,0,0,20"/>
+			<!-- Сегментированный фильтр по категориям -->
+			<Border Background="#FFF1D8" CornerRadius="8" Height="40" Margin="0,0,0,20" Padding="4">
+				<StackPanel x:Name="CategoryPanel" Orientation="Horizontal" HorizontalAlignment="Left" />
+			</Border>
+
+			<Button Content="Добавить блюдо" Width="160" Height="35" Click="AddButton_Click" Margin="0,0,0,20"/>
 
 			<ItemsControl x:Name="ItemsControlMenu">
 				<ItemsControl.ItemsPanel>
@@ -21,17 +27,18 @@
 
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<Border BorderBrush="Gray" BorderThickness="1" Margin="5" Padding="5" Width="200">
+						<Border BorderBrush="Gray" BorderThickness="1" Margin="5" Padding="5" Width="200" CornerRadius="8">
 							<StackPanel Orientation="Vertical">
 								<Image Source="{Binding ImageURL}" Width="180" Height="140" Stretch="UniformToFill"/>
 								<TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,5,0,0"/>
 								<TextBlock Text="{Binding Description}" TextWrapping="Wrap" Height="60"/>
-								<TextBlock Text="{Binding Price, StringFormat=C}" Foreground="Green" Margin="0,5,0,0"/>
+								<TextBlock Text="{Binding Price}" Foreground="Green" Margin="0,5,0,0"/>
 
-								<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-									<Button Content="Редактировать" Width="80" Height="25" Margin="0,0,5,0"
-                                            Click="EditItem_Click"/>
-									<Button Content="Удалить" Width="60" Height="25" Click="DeleteItem_Click"/>
+								<StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,5,0,0">
+									<Button Content="Редактировать" Width="150" Height="25" Margin="5"
+                                            Click="EditItem_Click" HorizontalContentAlignment="Center"/>
+									<Button Content="Удалить" Width="150" Height="25" Click="DeleteItem_Click"
+                                            VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 								</StackPanel>
 							</StackPanel>
 						</Border>
