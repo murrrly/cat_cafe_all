@@ -145,11 +145,16 @@
 
         <div class="center-circle"></div>
 
-        <div class="sacura">
+        <div class="sacura sacura-center-right">
             <img src="Images/sacura.png" alt="Flower Decoration">
         </div>
 
         <div class="left-circle"></div>
+
+        <div class="sacura sacura-bottom-left">
+            <img src="Images/SACURA3.png" alt="Sushi Corner">
+        </div>
+
     </div>
 
     <!-- Овалы теперь ВНЕ основного контента -->
@@ -198,12 +203,12 @@
                             <!-- Новинка 1 -->
                             <div class="product-card" data-category="all">
                                 <div class="new-badge">New</div>
-                                <img src="Images/tuna-onigiri.jpg" alt="Tuna Onigiri New" class="product-image">
+                                <img src="Images/GOLDEN.png" alt="Tuna Onigiri New" class="product-image">
                                 <div class="product-content">
-                                    <h3 class="product-title">TUNA SPARK</h3>
+                                    <h3 class="product-title">GOLDEN PHOENIX</h3>
                                     <div class="product-ingredients">
-                                        <span>Sushi rice with sesame, fresh tuna flakes</span>
-                                        <span>Spicy mayo, avocado slices, green onions</span>
+                                        <span>Milk, 2 balls of vanilla ice cream,</span>
+                                        <span>caramel topping, whipped cream</span>
                                     </div>
                                     <div class="product-footer">
                                         <div class="product-price">$5</div>
@@ -565,9 +570,7 @@
             🛒 <span class="cart-count">0</span>
         </div>
 
-            <div class="fixed-corner-image">
-                <img src="Images/SACURA2.png" alt="Sushi Corner">
-            </div>
+            
 
     </div>
 
@@ -647,76 +650,6 @@
         // Функция scrollToSection удалена
         // Обработчик скролла удален
     </script>
-
-    <style>
-        /* УБРАНЫ ВСЕ СТИЛИ СВЯЗАННЫЕ С ПРОКРУТКОЙ И ПУСТЫМ ЭКРАНОМ */
-
-        .empty-screen-content {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .empty-screen-title {
-            font-size: 48px;
-            color: #383838;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .empty-screen-subtitle {
-            font-size: 24px;
-            color: #ED442A;
-            margin-bottom: 40px;
-            font-weight: 500;
-        }
-
-        .empty-screen-scroll-hint {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            color: #666;
-            font-size: 16px;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-arrow {
-            font-size: 32px;
-            color: #ED442A;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .header-sticky.visible {
-            top: 0;
-        }
-
-        /* Скрытые элементы */
-        .hidden {
-            display: none !important;
-        }
-
-
-        .fixed-corner-image {
-        bottom: 20px;
-        right: 20px;
-        width: 150px;
-        height: 150px;
-        z-index: 100;
-        pointer-events: none; /* Чтобы не мешала кликам */
-        }
-
-    </style>
 
 </body>
 </html>

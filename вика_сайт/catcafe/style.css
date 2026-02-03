@@ -641,6 +641,21 @@ body {
     height: auto;
 }
 
+
+.sacura-far-right-bottom {
+    right: 10px; /* Прижато к правому краю */
+    bottom: 0px; /* Сильно внизу */
+    width: 250px; /* Увеличиваем размер если нужно */
+}
+
+/* Если нужно чтобы часть фотки была за экраном */
+.sacura-offscreen-right {
+    right: -80px; /* Часть скрыта за экраном */
+    bottom: 0px; /* Низко */
+    width: 350px; /* Большая фотка */
+}
+
+
 /* ЦЕНТРАЛЬНЫЙ КРУГ */
 .center-circle {
     position: absolute;
