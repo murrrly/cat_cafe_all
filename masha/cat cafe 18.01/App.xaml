@@ -7,6 +7,96 @@
 	<Application.Resources>
 		<conv:StringNullOrEmptyToVisibilityConverter x:Key="StringNullOrEmptyToVisibilityConverter"/>
 
+		<!-- Стиль для ComboBox филиалов -->
+		<Style TargetType="ComboBox" x:Key="BranchComboBoxStyle">
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Background" Value="#FFF1D8"/>
+			<Setter Property="BorderBrush" Value="Brown"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Padding" Value="5,2"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="30"/>
+			<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+			<!-- Убираем пунктирный фокус -->
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ComboBox">
+						<Grid>
+							<!-- Основной прямоугольник -->
+							<Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10"
+                            SnapsToDevicePixels="True"/>
+
+							<!-- Контент и стрелка -->
+							<DockPanel Margin="2">
+								<ContentPresenter x:Name="ContentSite"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Margin="5,0"/>
+								<ToggleButton DockPanel.Dock="Right"
+                                      Focusable="False"
+                                      IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      ClickMode="Press"
+                                      Background="Transparent"
+                                      BorderBrush="Transparent">
+									<Path Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="Brown"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+								</ToggleButton>
+							</DockPanel>
+
+							<!-- Popup -->
+							<Popup Name="Popup"
+                           Placement="Bottom"
+                           IsOpen="{TemplateBinding IsDropDownOpen}"
+                           AllowsTransparency="True"
+                           Focusable="False"
+                           PopupAnimation="Slide">
+								<Grid Name="DropDown"
+                              SnapsToDevicePixels="True"
+                              MinWidth="{TemplateBinding ActualWidth}"
+                              MaxHeight="200">
+									<Border x:Name="DropDownBorder"
+                                    Background="#FFF1D8"
+                                    BorderBrush="Brown"
+                                    BorderThickness="1"
+                                    CornerRadius="10"/>
+									<ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True"
+                                          Focusable="False"
+                                          KeyboardNavigation.DirectionalNavigation="Contained">
+										<StackPanel IsItemsHost="True"/>
+									</ScrollViewer>
+								</Grid>
+							</Popup>
+						</Grid>
+
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter TargetName="Border" Property="Background" Value="#EEE"/>
+								<Setter Property="Foreground" Value="#888"/>
+							</Trigger>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="Border" Property="Background" Value="#FFE8C2"/>
+							</Trigger>
+							<Trigger Property="IsDropDownOpen" Value="True">
+								<Setter TargetName="Border" Property="Background" Value="#FFE8C2"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+
 		<!-- Глобальный стиль для всех кнопок -->
 		<Style TargetType="Button">
 			<Setter Property="Background" Value="#FFF1D8"/>

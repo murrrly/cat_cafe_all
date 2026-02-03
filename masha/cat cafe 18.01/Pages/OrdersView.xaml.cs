@@ -11,24 +11,28 @@ namespace RPM.Pages
 		public ObservableCollection<BranchViewModel> Branches { get; set; } = new ObservableCollection<BranchViewModel>();
 
 		private string connectionString = "server=localhost;database=catcafe_db;uid=root;pwd=cat12345;charset=utf8mb4;";
+		private int? SelectedBranchID = null; // выбранный филиал
 
 		public OrdersView()
 		{
 			InitializeComponent();
-			DataContext = this;
+			DataContext = this; // Важно для привязки ItemsSource
 
-			LoadBranches();  // Загружаем филиалы в ComboBox
-			LoadOrders();    // Загружаем заказы
+			LoadBranches(); // Загружаем филиалы
+			LoadOrders();   // Загружаем заказы
 		}
 
+		// ===============================
 		// Загрузка филиалов
+		// ===============================
 		private void LoadBranches()
 		{
 			Branches.Clear();
+
 			using (var conn = new MySqlConnection(connectionString))
 			{
 				conn.Open();
-				string query = "SELECT ID, Address FROM Branches ORDER BY Address;";
+				string query = "SELECT ID, Address FROM Branches ORDER BY Address";
 				using (var cmd = new MySqlCommand(query, conn))
 				using (var reader = cmd.ExecuteReader())
 				{
@@ -46,19 +50,34 @@ namespace RPM.Pages
 			BranchComboBox.ItemsSource = Branches;
 		}
 
-		// Обновление заказов
+		// ===============================
+		// Событие выбора филиала
+		// ===============================
+		private void BranchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (BranchComboBox.SelectedValue != null)
+			{
+				SelectedBranchID = Convert.ToInt32(BranchComboBox.SelectedValue);
+				LoadOrders();
+			}
+			else
+			{
+				SelectedBranchID = null;
+				LoadOrders();
+			}
+		}
+
+		// ===============================
+		// Кнопка "Обновить"
+		// ===============================
 		private void RefreshButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			LoadOrders();
 		}
 
-		// Выбор филиала
-		private void BranchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			LoadOrders();
-		}
-
-		// Загрузка заказов с сортировкой по дате (новые сверху) и фильтром по филиалу
+		// ===============================
+		// Загрузка заказов и их позиций
+		// ===============================
 		private void LoadOrders()
 		{
 			Orders.Clear();
@@ -67,23 +86,22 @@ namespace RPM.Pages
 			{
 				conn.Open();
 
-				// Выбранный филиал
-				int? branchId = BranchComboBox.SelectedValue as int?;
-
+				// -------------------------------
+				// Загружаем заказы с фильтром по филиалу
+				// -------------------------------
 				string ordersQuery = @"
-                    SELECT o.ID, o.OrderNumber, o.OrderDate, o.TotalAmount, o.PaymentType,
-                           u.FullName AS CashierName
+                    SELECT DISTINCT o.ID, o.OrderNumber, o.OrderDate, o.TotalAmount, o.PaymentType,
+                                    u.FullName AS CashierName
                     FROM Orders o
                     LEFT JOIN Users u ON o.CashierUserID = u.ID
-                    LEFT JOIN OrderMenu om ON o.ID = om.OrderID
+                    LEFT JOIN OrderMenu om ON om.OrderID = o.ID
                     WHERE (@BranchID IS NULL OR om.BranchID = @BranchID)
-                    GROUP BY o.ID
                     ORDER BY o.OrderDate DESC;
                 ";
 
 				using (var cmd = new MySqlCommand(ordersQuery, conn))
 				{
-					cmd.Parameters.AddWithValue("@BranchID", branchId.HasValue ? (object)branchId.Value : DBNull.Value);
+					cmd.Parameters.AddWithValue("@BranchID", SelectedBranchID.HasValue ? (object)SelectedBranchID.Value : DBNull.Value);
 
 					using (var reader = cmd.ExecuteReader())
 					{
@@ -103,7 +121,9 @@ namespace RPM.Pages
 					}
 				}
 
+				// -------------------------------
 				// Загружаем позиции каждого заказа
+				// -------------------------------
 				foreach (var order in Orders)
 				{
 					string itemsQuery = @"
@@ -117,6 +137,7 @@ namespace RPM.Pages
 					using (var cmd = new MySqlCommand(itemsQuery, conn))
 					{
 						cmd.Parameters.AddWithValue("@OrderID", order.ID);
+
 						using (var reader = cmd.ExecuteReader())
 						{
 							while (reader.Read())
@@ -136,7 +157,9 @@ namespace RPM.Pages
 		}
 	}
 
-	// Модель заказа
+	// ===============================
+	// Модели
+	// ===============================
 	public class OrderViewModel
 	{
 		public int ID { get; set; }
@@ -148,7 +171,6 @@ namespace RPM.Pages
 		public ObservableCollection<OrderItemViewModel> Items { get; set; } = new ObservableCollection<OrderItemViewModel>();
 	}
 
-	// Модель позиции заказа
 	public class OrderItemViewModel
 	{
 		public string MenuName { get; set; }
@@ -157,7 +179,6 @@ namespace RPM.Pages
 		public string PromotionName { get; set; }
 	}
 
-	// Модель филиала
 	public class BranchViewModel
 	{
 		public int ID { get; set; }
