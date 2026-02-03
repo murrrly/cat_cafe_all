@@ -642,14 +642,17 @@ body {
 }
 
 
-
-.sacura-bottom-right {
-    right: 0; /* Полное прижатие к правому краю */
-    bottom: 0; /* Полное прижатие к нижнему краю */
-    width: 250px; /* Уменьшил размер с 350px */
-    height: auto; /* Сохраняет пропорции */
-    z-index: 100; /* Если нужно, чтобы было поверх других элементов */
+.sacura-far-right-bottom {
+    position: absolute; /* или absolute */
+    right: 0;
+    top: 30%;
+    width: 400px; /* Уменьшенный размер */
+    height: 400px;
+    margin-right: -200px;
+    z-index: 0;
 }
+
+
 
 
 
