@@ -32,57 +32,120 @@
 
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<Border CornerRadius="10" Margin="10" Padding="15" Background="#FFF1D8"
-                                BorderBrush="Brown" BorderThickness="1" MinWidth="250" MaxWidth="350">
-							<StackPanel>
+						<Border CornerRadius="14"
+            Margin="10"
+            Padding="0"
+            Background="#FFF1D8"
+            BorderBrush="Brown"
+            BorderThickness="1"
+            MinWidth="260"
+            MaxWidth="340">
 
-								<!-- Верх: номер, дата, кассир -->
-								<Grid Margin="0,0,0,5">
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="120"/>
-										<ColumnDefinition Width="*"/>
-										<ColumnDefinition Width="120"/>
-									</Grid.ColumnDefinitions>
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
 
-									<TextBlock Text="{Binding OrderNumber}" FontWeight="Bold" Grid.Column="0"/>
-									<TextBlock Text="{Binding OrderDate, StringFormat={}{0:HH:mm dd.MM}}" HorizontalAlignment="Center" Grid.Column="1"/>
-									<TextBlock Text="{Binding CashierName, Converter={StaticResource ShortNameConverter}}" HorizontalAlignment="Right" Grid.Column="2"/>
-								</Grid>
+								<!-- ===== ВЕРХНЯЯ ПАНЕЛЬ ===== -->
+								<Border Background="#FFE8C2"
+                    CornerRadius="14,14,0,0"
+                    Padding="12">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*"/>
+											<ColumnDefinition Width="Auto"/>
+										</Grid.ColumnDefinitions>
 
-								<!-- Позиции заказа -->
-								<ItemsControl ItemsSource="{Binding Items}" Margin="0,5,0,5">
-									<ItemsControl.ItemTemplate>
-										<DataTemplate>
-											<StackPanel Orientation="Horizontal" Margin="0,2,0,2">
-												<TextBlock Text="{Binding MenuName}" Width="160"/>
-												<TextBlock Text="x" Margin="5,0"/>
-												<TextBlock Text="{Binding Quantity}" Width="30"/>
-												<TextBlock Text="{Binding UnitPrice}" Width="60" HorizontalAlignment="Right"/>
-											</StackPanel>
-										</DataTemplate>
-									</ItemsControl.ItemTemplate>
-								</ItemsControl>
+										<!-- Номер заказа -->
+										<TextBlock Text="{Binding OrderNumber}"
+                               FontSize="16"
+                               FontWeight="Bold"/>
 
-								<!-- Линия перед итоговой суммой -->
-								<Border Background="Gray" Height="1" Margin="0,0,0,10"/>
+										<!-- Дата -->
+										<TextBlock Text="{Binding OrderDate, StringFormat={}{0:HH:mm dd.MM}}"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Opacity="0.8"/>
+									</Grid>
+								</Border>
 
-								<!-- Нижняя часть: сумма и способ оплаты -->
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*"/>
-										<ColumnDefinition Width="Auto"/>
-									</Grid.ColumnDefinitions>
+								<!-- ===== СЕРЕДИНА (позиции + кассир) ===== -->
+								<StackPanel Grid.Row="1"  >
 
-									<!-- Итоговая сумма слева -->
-									<TextBlock Text="{Binding TotalAmount}" FontWeight="Bold" FontSize="16" Grid.Column="0"/>
+									<!-- Кассир -->
+									<TextBlock Text="{Binding CashierName, Converter={StaticResource ShortNameConverter}}"
+                           FontSize="12"
+                           Opacity="0.7"
+                           Margin="0,0,0,6"/>
 
-									<!-- Способ оплаты справа -->
-									<TextBlock Text="{Binding PaymentType}" FontSize="16" Grid.Column="1" HorizontalAlignment="Right"/>
-								</Grid>
+									<!-- Список позиций -->
+									<ItemsControl ItemsSource="{Binding Items}">
+										<ItemsControl.ItemTemplate>
+											<DataTemplate>
+												<Grid Margin="0,2">
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition Width="*"/>
+														<ColumnDefinition Width="40"/>
+														<ColumnDefinition Width="70"/>
+													</Grid.ColumnDefinitions>
 
-							</StackPanel>
+													<TextBlock Text="{Binding MenuName}"
+                                           TextTrimming="CharacterEllipsis"/>
+
+													<TextBlock Text="{Binding Quantity}"
+                                           Grid.Column="1"
+                                           HorizontalAlignment="Center"
+                                           Opacity="0.8"/>
+
+													<TextBlock Text="{Binding UnitPrice, StringFormat={}{0:N0}}"
+                                           Grid.Column="2"
+                                           HorizontalAlignment="Right"/>
+												</Grid>
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+									</ItemsControl>
+								</StackPanel>
+
+								<!-- ===== НИЗ (итог и оплата) ===== -->
+								<Border Grid.Row="2"
+                    Background="#FFE8C2"
+                    CornerRadius="0,0,14,14"
+                    Padding="12">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*"/>
+											<ColumnDefinition Width="Auto"/>
+										</Grid.ColumnDefinitions>
+
+										<!-- Сумма -->
+										<StackPanel>
+											<TextBlock Text="ИТОГО"
+                                   FontSize="11"
+                                   Opacity="0.6"/>
+											<TextBlock Text="{Binding TotalAmount, StringFormat={}{0:N0}}"
+                                   FontSize="18"
+                                   FontWeight="Bold"/>
+										</StackPanel>
+
+										<!-- Способ оплаты как бейдж -->
+										<Border Grid.Column="1"
+                            Background="#FFD8A86B"
+                            Padding="8,3"
+                            CornerRadius="10"
+                            VerticalAlignment="Center">
+											<TextBlock Text="{Binding PaymentType}"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"/>
+										</Border>
+									</Grid>
+								</Border>
+
+							</Grid>
 						</Border>
 					</DataTemplate>
+
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
 		</ScrollViewer>
