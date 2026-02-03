@@ -85,28 +85,26 @@
 </div>
 
 <script>
-console.log("🚀 Запуск Sushi Cat Cafe");
-
-/* Экраны */
+// 🔥 Переменные экранов и кнопки
 const loader = document.getElementById("loader");
 const home = document.getElementById("home");
 const app = document.getElementById("app");
 const goToMenuBtn = document.getElementById("goToMenuBtn");
 
-/* Загрузка */
+// ⏳ Загрузка экранов
 setTimeout(() => {
     loader.classList.add("hidden");
     home.classList.remove("hidden");
 }, 1200);
 
-/* Переход в меню */
+// 🍣 Переход в меню
 goToMenuBtn.addEventListener("click", () => {
     home.classList.add("hidden");
     app.classList.remove("hidden");
     loadMenu();
 });
 
-/* Загрузка меню */
+// 🔄 Загрузка меню из БД
 async function loadMenu() {
     const container = document.getElementById("menu-container");
     container.innerHTML = "⏳ Загружаем вкусняшки...";
@@ -127,65 +125,64 @@ async function loadMenu() {
     }
 }
 
-/* 🔥 ГЛАВНАЯ МАГИЯ — ПОД ВАШ JSON */
+// 🖼 Отображение продуктов
 function showProducts(products) {
     const container = document.getElementById("menu-container");
 
-    const map = {
-        "Роллы": "rolls",
-        "Напитки": "drinks",
-        "Десерты": "dessert",
-        "Дессерты": "dessert",
-        "Сеты": "sets",
-        "Суши": "sushi"
+    const categories = {
+        rolls: "Роллы",
+        drinks: "Напитки",
+        dessert: "Дессерты",
+        sets: "Сеты",
+        sushi: "Суши"
     };
 
     let html = "";
-    let usedCategories = {};
 
-    products.forEach(p => {
-        const catId = map[p.CategoryName] || "other";
-        const catTitle = p.CategoryName;
+    Object.keys(categories).forEach(catId => {
+        const items = products.filter(p => p.CategoryName && p.CategoryName.toLowerCase() === categories[catId].toLowerCase());
+        if (!items.length) return;
 
-        if (!usedCategories[catId]) {
-            html += `<h2 class="category-title" id="${catId}">${catTitle}</h2>`;
-            usedCategories[catId] = true;
-        }
+        html += `<h2 class="category-title" id="${catId}">${categories[catId]}</h2>`;
 
-        html += `
-        <div class="product-card" data-category="${catId}">
-            <img src="/img/default.jpg" class="product-image">
-            <div class="product-content">
-                <h3 class="product-title">${p.Name}</h3>
-                <div class="product-ingredients">${p.Composition}</div>
-                <div class="product-footer">
-                    <div class="product-price">${parseFloat(p.Price).toFixed(0)} ₽</div>
-                    <button class="add-to-cart-btn" onclick="addToCart('${p.Name}')">
-                        Add to Cart
-                    </button>
+        items.forEach(p => {
+            const imgPath = p.ImageURL ? `/Images/${p.ImageURL}` : `/Images/default.png`;
+            html += `
+            <div class="product-card" data-category="${catId}">
+                <img src="${imgPath}" class="product-image" alt="${p.Name}">
+                <div class="product-content">
+                    <h3 class="product-title">${p.Name}</h3>
+                    <div class="product-ingredients">${p.Composition || ''}</div>
+                    <div class="product-footer">
+                        <div class="product-price">${p.Price} ₽</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('${p.Name}')">В корзину</button>
+                    </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
+        });
     });
 
     container.innerHTML = html;
+
+    setupFilters();
 }
 
-/* Фильтры */
-document.querySelectorAll(".categories button").forEach(btn => {
-    btn.addEventListener("click", function () {
-        const cat = this.dataset.category;
+// 🎚 Фильтры по категориям
+function setupFilters() {
+    document.querySelectorAll(".categories button").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const cat = this.dataset.category;
+            document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
+            this.classList.add("active");
 
-        document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
-        this.classList.add("active");
-
-        document.querySelectorAll(".product-card").forEach(card => {
-            card.style.display = (cat === "all" || card.dataset.category === cat) ? "block" : "none";
+            document.querySelectorAll(".product-card").forEach(card => {
+                card.style.display = (cat === "all" || card.dataset.category === cat) ? "block" : "none";
+            });
         });
     });
-});
+}
 
-/* Корзина */
+// 🛒 Корзина
 let cartCount = 0;
 function addToCart(name) {
     cartCount++;
@@ -193,7 +190,6 @@ function addToCart(name) {
     console.log("🛒 Добавлено:", name);
 }
 </script>
-
 
 </body>
 </html>
