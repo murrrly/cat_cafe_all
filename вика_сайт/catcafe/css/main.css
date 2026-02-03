@@ -1,0 +1,111 @@
+/* Основные стили для главного экрана */
+#home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-container {
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.logo-container img {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.title span {
+    font-weight: 700;
+    color: #ff6b6b;
+}
+
+.cafe-name {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.slogan {
+    font-size: 14px;
+    color: #999;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+.view-menu-btn-new {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.view-menu-btn-new:hover {
+    background: #ff4757;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+}
+
+.vertical-text {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left;
+    font-size: 14px;
+    color: #ccc;
+    letter-spacing: 5px;
+    font-weight: 300;
+}
+
+.decor-circle {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,107,107,0.05));
+    z-index: -1;
+}
+
+.decor-circle.left {
+    top: -150px;
+    left: -150px;
+}
+
+.decor-circle.right {
+    bottom: -150px;
+    right: -150px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

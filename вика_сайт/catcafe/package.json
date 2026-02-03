@@ -1,17 +1,27 @@
 {
-  "name": "catcafe",
+  "name": "sushi-cat-cafe",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sushi Cat's Cafe - Japanese Food Restaurant",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check-db": "node check-db.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
-  }
+    "express": "^4.22.1",
+    "mysql2": "^3.16.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [
+    "sushi",
+    "restaurant",
+    "menu",
+    "database"
+  ],
+  "author": "",
+  "license": "ISC"
 }

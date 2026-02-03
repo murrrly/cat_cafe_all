@@ -1,41 +1,59 @@
 const express = require('express');
+const mysql = require('mysql2');
 const path = require('path');
-const db = require('./config/db');  // ← подключаем БД
-require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 8080;  // ← используем порт из .env или 8080
+const PORT = 3000;
 
-// Middleware
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// Подключение к БД
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'cat12345',
+    database: 'catcafe_db'
+});
 
-// Маршруты для страниц (ВАШ СТАРЫЙ КОД)
+db.connect((err) => {
+    if (err) {
+        console.error('❌ Ошибка БД:', err.message);
+    } else {
+        console.log('✅ База данных подключена');
+    }
+});
+
+// Статические файлы
+app.use(express.static(__dirname));
+
+// Главная страница
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'cat.html'));
+    res.sendFile(path.join(__dirname, 'cat.html'));
 });
 
-// Маршрут для API (НОВЫЙ КОД для БД)
-app.get('/api/cats', async (req, res) => {
-  try {
-    const [rows] = await db.query('SELECT * FROM cats');
-    res.json(rows);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+// API: Все товары
+app.get('/api/menu', (req, res) => {
+    console.log('📥 Запрос меню');
+    
+    const query = `
+        SELECT m.Name, m.Composition, m.Price, c.Name as CategoryName 
+        FROM Menu m 
+        LEFT JOIN Categories c ON m.CategoryID = c.ID 
+        ORDER BY c.Name, m.Name
+    `;
+    
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('❌ Ошибка запроса:', err.message);
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        
+        console.log(`📊 Отправлено товаров: ${results.length}`);
+        res.json(results);
+    });
 });
 
-// Можно добавить другие API маршруты
-app.get('/api/menu', async (req, res) => {
-  try {
-    const [rows] = await db.query('SELECT * FROM menu');
-    res.json(rows);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
+// Запуск
 app.listen(PORT, () => {
-    console.log(`Сервер работает на http://localhost:${PORT}`);
-    console.log(`API доступно по адресу http://localhost:${PORT}/api/cats`);
+    console.log(`🚀 Сервер запущен: http://localhost:${PORT}`);
+    console.log(`🔗 API: http://localhost:${PORT}/api/menu`);
 });

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sushi Cat's Cafe</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/loader.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/categories.css">
+</head>
+
+<body>
+
+<!-- 🔥 ЗАГРУЗОЧНЫЙ ЭКРАН -->
+<div id="loader">
+    <div class="decor-circle left"></div>
+    <div class="decor-circle right"></div>
+    <div class="logo-container">
+        <img src="Images/logo.png" alt="Logo" class="loader-logo">
+    </div>
+</div>
+
+<!-- 🏠 ГЛАВНЫЙ ЭКРАН -->
+<div id="home" class="hidden">
+    <div class="decor-circle left"></div>
+    <div class="decor-circle right"></div>
+    <div class="vertical-text">寿司と快適さ</div>
+
+    <div class="logo-container">
+        <img src="Images/logo.png" alt="Logo">
+        <div class="subtitle">Japanese Food Restaurant</div>
+        <div class="title">寿司<span>と</span>快適さ</div>
+        <div class="cafe-name">Sushi Cat's Cafe</div>
+        <div class="slogan">with love and with a soul</div>
+        <button class="view-menu-btn-new" id="goToMenuBtn">View Menu</button>
+    </div>
+</div>
+
+<!-- 🍣 ПРИЛОЖЕНИЕ -->
+<div id="app" class="hidden">
+
+<header class="header">
+    <nav class="nav">
+        <div class="nav__item"><div class="nav__icon"><img src="Images/mesto.png"></div><span class="nav__text">Казань</span></div>
+        <div class="nav__item"><div class="nav__icon"><img src="Images/poisk.png"></div><span class="nav__text">Поиск</span></div>
+        <div class="nav__item"><div class="nav__icon"><img src="Images/prilozenie.png"></div><span class="nav__text">Приложение</span></div>
+
+        <div class="nav-circle-container">
+            <div class="separator-circle"></div>
+            <img src="Images/logo1.png" class="loader1-logo">
+        </div>
+
+        <div class="nav__item"><div class="nav__icon"><img src="Images/language.png"></div><span class="nav__text">Язык</span></div>
+        <div class="nav__item"><div class="nav__icon"><img src="Images/korzina.png"></div><span class="nav__text">Корзина</span></div>
+        <div class="nav__item"><div class="nav__icon"><img src="Images/account.png"></div><span class="nav__text">Аккаунт</span></div>
+    </nav>
+</header>
+
+<!-- КАТЕГОРИИ -->
+<nav class="categories">
+    <button class="active" data-category="all">Все</button>
+    <button data-category="rolls">Роллы</button>
+    <button data-category="drinks">Напитки</button>
+    <button data-category="dessert">Дессерты</button>
+    <button data-category="sets">Сеты</button>
+    <button data-category="sushi">Суши</button>
+</nav>
+
+<!-- МЕНЮ ИЗ БД -->
+<main class="menu">
+    <div class="menu-container" id="menu-container">
+        ⏳ Загружаем меню...
+    </div>
+</main>
+
+<!-- КОРЗИНА -->
+<div class="cart-button">
+    🛒 <span class="cart-count">0</span>
+</div>
+
+</div>
+
+<script>
+console.log("🚀 Запуск Sushi Cat Cafe");
+
+/* Экраны */
+const loader = document.getElementById("loader");
+const home = document.getElementById("home");
+const app = document.getElementById("app");
+const goToMenuBtn = document.getElementById("goToMenuBtn");
+
+/* Загрузка */
+setTimeout(() => {
+    loader.classList.add("hidden");
+    home.classList.remove("hidden");
+}, 1200);
+
+/* Переход в меню */
+goToMenuBtn.addEventListener("click", () => {
+    home.classList.add("hidden");
+    app.classList.remove("hidden");
+    loadMenu();
+});
+
+/* Загрузка меню */
+async function loadMenu() {
+    const container = document.getElementById("menu-container");
+    container.innerHTML = "⏳ Загружаем вкусняшки...";
+
+    try {
+        const response = await fetch("/api/menu");
+        const products = await response.json();
+
+        if (!products.length) {
+            container.innerHTML = "😿 В базе пусто";
+            return;
+        }
+
+        showProducts(products);
+    } catch (e) {
+        container.innerHTML = "❌ Ошибка загрузки";
+        console.error(e);
+    }
+}
+
+/* 🔥 ГЛАВНАЯ МАГИЯ — ПОД ВАШ JSON */
+function showProducts(products) {
+    const container = document.getElementById("menu-container");
+
+    const map = {
+        "Роллы": "rolls",
+        "Напитки": "drinks",
+        "Десерты": "dessert",
+        "Дессерты": "dessert",
+        "Сеты": "sets",
+        "Суши": "sushi"
+    };
+
+    let html = "";
+    let usedCategories = {};
+
+    products.forEach(p => {
+        const catId = map[p.CategoryName] || "other";
+        const catTitle = p.CategoryName;
+
+        if (!usedCategories[catId]) {
+            html += `<h2 class="category-title" id="${catId}">${catTitle}</h2>`;
+            usedCategories[catId] = true;
+        }
+
+        html += `
+        <div class="product-card" data-category="${catId}">
+            <img src="/img/default.jpg" class="product-image">
+            <div class="product-content">
+                <h3 class="product-title">${p.Name}</h3>
+                <div class="product-ingredients">${p.Composition}</div>
+                <div class="product-footer">
+                    <div class="product-price">${parseFloat(p.Price).toFixed(0)} ₽</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('${p.Name}')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>`;
+    });
+
+    container.innerHTML = html;
+}
+
+/* Фильтры */
+document.querySelectorAll(".categories button").forEach(btn => {
+    btn.addEventListener("click", function () {
+        const cat = this.dataset.category;
+
+        document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+
+        document.querySelectorAll(".product-card").forEach(card => {
+            card.style.display = (cat === "all" || card.dataset.category === cat) ? "block" : "none";
+        });
+    });
+});
+
+/* Корзина */
+let cartCount = 0;
+function addToCart(name) {
+    cartCount++;
+    document.querySelector(".cart-count").innerText = cartCount;
+    console.log("🛒 Добавлено:", name);
+}
+</script>
+
+
+</body>
+</html>
