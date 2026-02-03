@@ -9,6 +9,10 @@
 
 	<UserControl.Resources>
 		<converters:ShortNameConverter x:Key="ShortNameConverter"/>
+
+		<Style TargetType="ComboBox" x:Key="BranchComboBoxStyle">
+			<!-- здесь вставляем весь стиль ComboBox, который я присылала ранее -->
+		</Style>
 	</UserControl.Resources>
 
 	<Grid Margin="20">
@@ -44,12 +48,15 @@
 
 				<!-- ComboBox филиала справа -->
 				<ComboBox x:Name="BranchComboBox"
-                          Width="200"
-                          Height="30"
-                          DisplayMemberPath="Address"
-                          SelectedValuePath="ID"
-                          Grid.Column="2"
-                          SelectionChanged="BranchComboBox_SelectionChanged"/>
+						  Width="200"
+						  Height="30"
+						  DisplayMemberPath="Address"  
+						SelectedValuePath="ID" 
+						ItemsSource="{Binding Branches}"
+						Grid.Column="2"
+						SelectionChanged="BranchComboBox_SelectionChanged"/>
+
+
 			</Grid>
 		</StackPanel>
 

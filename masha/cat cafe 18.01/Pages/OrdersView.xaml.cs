@@ -47,7 +47,8 @@ namespace RPM.Pages
 				}
 			}
 
-			BranchComboBox.ItemsSource = Branches;
+			// НЕ назначаем ItemsSource вручную, используем привязку
+			// BranchComboBox.ItemsSource = Branches;
 		}
 
 		// ===============================
@@ -55,9 +56,9 @@ namespace RPM.Pages
 		// ===============================
 		private void BranchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if (BranchComboBox.SelectedValue != null)
+			if (BranchComboBox.SelectedItem is BranchViewModel selectedBranch)
 			{
-				SelectedBranchID = Convert.ToInt32(BranchComboBox.SelectedValue);
+				SelectedBranchID = selectedBranch.ID;
 				LoadOrders();
 			}
 			else
@@ -66,6 +67,20 @@ namespace RPM.Pages
 				LoadOrders();
 			}
 		}
+
+		// ===============================
+		// Модель филиала
+		// ===============================
+		public class BranchViewModel
+		{
+			public int ID { get; set; }
+			public string Address { get; set; }
+
+			// ВАЖНО: чтобы ComboBox показывал Address, а не имя класса
+			public override string ToString() => Address;
+		}
+
+
 
 		// ===============================
 		// Кнопка "Обновить"
@@ -179,9 +194,4 @@ namespace RPM.Pages
 		public string PromotionName { get; set; }
 	}
 
-	public class BranchViewModel
-	{
-		public int ID { get; set; }
-		public string Address { get; set; }
-	}
 }
