@@ -8,20 +8,76 @@ namespace RPM.Pages
 	public partial class OrdersView : UserControl
 	{
 		public ObservableCollection<OrderViewModel> Orders { get; set; } = new ObservableCollection<OrderViewModel>();
+		public ObservableCollection<BranchViewModel> Branches { get; set; } = new ObservableCollection<BranchViewModel>();
+
 		private string connectionString = "server=localhost;database=catcafe_db;uid=root;pwd=cat12345;charset=utf8mb4;";
+		private int? SelectedBranchID = null; // выбранный филиал
 
 		public OrdersView()
 		{
 			InitializeComponent();
 			DataContext = this; // Важно для привязки ItemsSource
-			LoadOrders();
+
+			LoadBranches(); // Загружаем филиалы
+			LoadOrders();   // Загружаем заказы
 		}
 
+		// ===============================
+		// Загрузка филиалов
+		// ===============================
+		private void LoadBranches()
+		{
+			Branches.Clear();
+
+			using (var conn = new MySqlConnection(connectionString))
+			{
+				conn.Open();
+				string query = "SELECT ID, Address FROM Branches ORDER BY Address";
+				using (var cmd = new MySqlCommand(query, conn))
+				using (var reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						Branches.Add(new BranchViewModel
+						{
+							ID = reader.GetInt32("ID"),
+							Address = reader["Address"].ToString()
+						});
+					}
+				}
+			}
+
+			BranchComboBox.ItemsSource = Branches;
+		}
+
+		// ===============================
+		// Событие выбора филиала
+		// ===============================
+		private void BranchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (BranchComboBox.SelectedValue != null)
+			{
+				SelectedBranchID = Convert.ToInt32(BranchComboBox.SelectedValue);
+				LoadOrders();
+			}
+			else
+			{
+				SelectedBranchID = null;
+				LoadOrders();
+			}
+		}
+
+		// ===============================
+		// Кнопка "Обновить"
+		// ===============================
 		private void RefreshButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			LoadOrders();
 		}
 
+		// ===============================
+		// Загрузка заказов и их позиций
+		// ===============================
 		private void LoadOrders()
 		{
 			Orders.Clear();
@@ -30,33 +86,44 @@ namespace RPM.Pages
 			{
 				conn.Open();
 
+				// -------------------------------
+				// Загружаем заказы с фильтром по филиалу
+				// -------------------------------
 				string ordersQuery = @"
-                    SELECT o.ID, o.OrderNumber, o.OrderDate, o.TotalAmount, o.PaymentType,
-                           u.FullName AS CashierName
+                    SELECT DISTINCT o.ID, o.OrderNumber, o.OrderDate, o.TotalAmount, o.PaymentType,
+                                    u.FullName AS CashierName
                     FROM Orders o
                     LEFT JOIN Users u ON o.CashierUserID = u.ID
+                    LEFT JOIN OrderMenu om ON om.OrderID = o.ID
+                    WHERE (@BranchID IS NULL OR om.BranchID = @BranchID)
                     ORDER BY o.OrderDate DESC;
                 ";
 
 				using (var cmd = new MySqlCommand(ordersQuery, conn))
-				using (var reader = cmd.ExecuteReader())
 				{
-					while (reader.Read())
+					cmd.Parameters.AddWithValue("@BranchID", SelectedBranchID.HasValue ? (object)SelectedBranchID.Value : DBNull.Value);
+
+					using (var reader = cmd.ExecuteReader())
 					{
-						Orders.Add(new OrderViewModel
+						while (reader.Read())
 						{
-							ID = reader.GetInt32("ID"),
-							OrderNumber = reader["OrderNumber"].ToString(),
-							OrderDate = Convert.ToDateTime(reader["OrderDate"]),
-							TotalAmount = reader.GetDecimal("TotalAmount"),
-							PaymentType = reader["PaymentType"]?.ToString() ?? "",
-							CashierName = reader["CashierName"]?.ToString() ?? "",
-							Items = new ObservableCollection<OrderItemViewModel>()
-						});
+							Orders.Add(new OrderViewModel
+							{
+								ID = reader.GetInt32("ID"),
+								OrderNumber = reader["OrderNumber"].ToString(),
+								OrderDate = Convert.ToDateTime(reader["OrderDate"]),
+								TotalAmount = reader.GetDecimal("TotalAmount"),
+								PaymentType = reader["PaymentType"]?.ToString() ?? "",
+								CashierName = reader["CashierName"]?.ToString() ?? "",
+								Items = new ObservableCollection<OrderItemViewModel>()
+							});
+						}
 					}
 				}
 
+				// -------------------------------
 				// Загружаем позиции каждого заказа
+				// -------------------------------
 				foreach (var order in Orders)
 				{
 					string itemsQuery = @"
@@ -70,6 +137,7 @@ namespace RPM.Pages
 					using (var cmd = new MySqlCommand(itemsQuery, conn))
 					{
 						cmd.Parameters.AddWithValue("@OrderID", order.ID);
+
 						using (var reader = cmd.ExecuteReader())
 						{
 							while (reader.Read())
@@ -89,6 +157,9 @@ namespace RPM.Pages
 		}
 	}
 
+	// ===============================
+	// Модели
+	// ===============================
 	public class OrderViewModel
 	{
 		public int ID { get; set; }
@@ -106,5 +177,11 @@ namespace RPM.Pages
 		public int Quantity { get; set; }
 		public decimal UnitPrice { get; set; }
 		public string PromotionName { get; set; }
+	}
+
+	public class BranchViewModel
+	{
+		public int ID { get; set; }
+		public string Address { get; set; }
 	}
 }
