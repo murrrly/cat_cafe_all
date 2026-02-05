@@ -97,10 +97,11 @@
 									<Border x:Name="DropDownBorder"
                                             Background="White"
                                             BorderBrush="#C58C5A"
-                                            BorderThickness="1.5"
+                                            BorderThickness="2"
                                             CornerRadius="12"
                                             Effect="{StaticResource DropShadowEffect}"/>
-									<ScrollViewer Margin="0" SnapsToDevicePixels="True"
+									<ScrollViewer Margin="3" 
+												  Padding="3" SnapsToDevicePixels="True"
                                                   Focusable="False"
                                                   KeyboardNavigation.DirectionalNavigation="Contained">
 										<StackPanel IsItemsHost="True"/>
@@ -129,8 +130,9 @@
 		<Style TargetType="ComboBoxItem">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="Foreground" Value="#333"/>
-			<Setter Property="Padding" Value="10,6"/>
-			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+			<Setter Property="Padding" Value="14,8"/>
+			<Setter Property="MinHeight" Value="30"/>
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 
@@ -139,8 +141,13 @@
 					<ControlTemplate TargetType="ComboBoxItem">
 						<Border x:Name="Bd"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="8">
-							<ContentPresenter />
+                        CornerRadius="10"
+                        Padding="{TemplateBinding Padding}"
+                        MinHeight="{TemplateBinding MinHeight}">
+
+							<ContentPresenter
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
 						</Border>
 
 						<ControlTemplate.Triggers>
@@ -152,12 +159,12 @@
                                 Value="#FFF4E1"/>
 							</Trigger>
 
-							<!-- Выбранный элемент -->
+							<!-- Выбранный -->
 							<Trigger Property="IsSelected" Value="True">
 								<Setter TargetName="Bd"
                                 Property="Background"
                                 Value="#FFD8A86B"/>
-								<Setter Property="Foreground" Value="Black"/>
+								<Setter Property="Foreground" Value="#000"/>
 							</Trigger>
 
 							<!-- Выбран + наведение -->
@@ -176,6 +183,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+
 
 
 
