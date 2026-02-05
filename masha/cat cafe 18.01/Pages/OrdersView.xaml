@@ -62,7 +62,8 @@
 
 		<!-- Список заказов -->
 		<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-			<ItemsControl x:Name="OrdersItemsControl" ItemsSource="{Binding Orders}">
+			<ItemsControl x:Name="OrdersItemsControl" ItemsSource="{Binding Orders}" 
+						  Focusable="False">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -73,9 +74,12 @@
 					<Style TargetType="ContentPresenter">
 						<Setter Property="Width" Value="320"/>
 						<Setter Property="Margin" Value="10"/>
+
+						<Setter Property="Focusable" Value="False"/>
+						<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 					</Style>
 				</ItemsControl.ItemContainerStyle>
-
+				
 				<!-- Карточка заказа -->
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
