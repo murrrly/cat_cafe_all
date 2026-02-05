@@ -65,23 +65,36 @@
                                                   VerticalAlignment="Center"
                                                   HorizontalAlignment="Left"
                                                   Margin="10,0"/>
-								<ToggleButton DockPanel.Dock="Right"
-											  Focusable="False"
-											  IsTabStop="False"
-											  FocusVisualStyle="{x:Null}"
-											  IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-											  ClickMode="Press"
-											  Background="Transparent"
-											  BorderBrush="Transparent"
-											  Width="24"
-											  Height="24">
 
+								<ToggleButton DockPanel.Dock="Right"
+              Focusable="False"
+              IsTabStop="False"
+              FocusVisualStyle="{x:Null}"
+              Background="Transparent"
+              BorderBrush="Transparent"
+              Width="24"
+              Height="24"
+              IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+              ClickMode="Press">
+									<ToggleButton.Template>
+										<ControlTemplate TargetType="ToggleButton">
+											<Border Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+												<ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+											</Border>
+										</ControlTemplate>
+									</ToggleButton.Template>
+
+									<!-- Стрелка вниз -->
 									<Path Data="M 0 0 L 8 8 L 16 0"
-                                          Stroke="#C58C5A"
-                                          StrokeThickness="2"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
+          Stroke="#C58C5A"
+          StrokeThickness="2"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"/>
 								</ToggleButton>
+
+
+
 							</DockPanel>
 
 							<Popup Name="Popup"
