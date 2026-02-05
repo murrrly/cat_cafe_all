@@ -67,29 +67,25 @@
                                                   Margin="10,0"/>
 
 								<ToggleButton DockPanel.Dock="Right"
-              Focusable="False"
-              IsTabStop="False"
-              FocusVisualStyle="{x:Null}"
-              Background="Transparent"
-              BorderBrush="Transparent"
-              Width="180"
-              Height="24"
-              IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-              ClickMode="Press">
+											  Focusable="False"
+											  IsTabStop="False"
+											  FocusVisualStyle="{x:Null}"
+											  Background="Transparent"
+											  BorderBrush="Transparent"
+											  Width="180"
+											  Height="24"
+											  IsChecked="{Binding Path=IsDropDownOpen, 
+											  RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+											  ClickMode="Press">
 									<ToggleButton.Template>
 										<ControlTemplate TargetType="ToggleButton">
 											<Border Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
 												<ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"/>
+																  VerticalAlignment="Center"/>
 											</Border>
 										</ControlTemplate>
 									</ToggleButton.Template>
-
-									
 								</ToggleButton>
-
-
-
 							</DockPanel>
 
 							<Popup Name="Popup"
@@ -148,14 +144,14 @@
 				<Setter.Value>
 					<ControlTemplate TargetType="ComboBoxItem">
 						<Border x:Name="Bd"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="10"
-                        Padding="{TemplateBinding Padding}"
-                        MinHeight="{TemplateBinding MinHeight}">
+								Background="{TemplateBinding Background}"
+								CornerRadius="10"
+								Padding="{TemplateBinding Padding}"
+								MinHeight="{TemplateBinding MinHeight}">
 
 							<ContentPresenter
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Left"/>
+									VerticalAlignment="Center"
+									HorizontalAlignment="Left"/>
 						</Border>
 
 						<ControlTemplate.Triggers>
@@ -182,8 +178,8 @@
 									<Condition Property="IsHighlighted" Value="True"/>
 								</MultiTrigger.Conditions>
 								<Setter TargetName="Bd"
-                                Property="Background"
-                                Value="#FFD29A4D"/>
+										Property="Background"
+										Value="#FFD29A4D"/>
 							</MultiTrigger>
 
 						</ControlTemplate.Triggers>
