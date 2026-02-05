@@ -72,7 +72,7 @@
               FocusVisualStyle="{x:Null}"
               Background="Transparent"
               BorderBrush="Transparent"
-              Width="24"
+              Width="180"
               Height="24"
               IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
               ClickMode="Press">
@@ -85,12 +85,7 @@
 										</ControlTemplate>
 									</ToggleButton.Template>
 
-									<!-- Стрелка вниз -->
-									<Path Data="M 0 0 L 8 8 L 16 0"
-          Stroke="#C58C5A"
-          StrokeThickness="2"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"/>
+									
 								</ToggleButton>
 
 
