@@ -72,7 +72,7 @@ function showProducts(products) {
         html += `<h2 class="category-title" id="${catId}">${categories[catId]}</h2>`;
 
         items.forEach(p => {
-            const imgPath = p.ImageURL ? `/Images/${p.ImageURL}` : `/Images/default.png`;
+            const imgPath = p.ImageURL ? `/menu_images/${p.ImageURL}` : `/menu_images/default.png`;
             html += `
             <div class="product-card" data-category="${catId}">
                 <img src="${imgPath}" class="product-image" alt="${p.Name}">
