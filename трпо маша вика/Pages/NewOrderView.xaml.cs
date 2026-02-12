@@ -9,7 +9,6 @@ namespace RPM.Pages
 {
 	public partial class NewOrderView : UserControl
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable menuTable = new DataTable();
 		List<CartItem> cart = new List<CartItem>();
 		int cashierId = 2; // Пример: ID текущего кассира. Нужно передавать реально после Login.
@@ -24,7 +23,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, Name, Composition, Price FROM Menu";
@@ -94,7 +93,7 @@ namespace RPM.Pages
 
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					MySqlTransaction transaction = conn.BeginTransaction();

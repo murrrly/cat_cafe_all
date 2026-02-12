@@ -8,7 +8,6 @@ namespace RPM.Pages
 {
 	public partial class AdvertisementsView : UserControl
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable adsTable = new DataTable();
 
 		public AdvertisementsView()
@@ -21,7 +20,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, ImageURL, Title, Description, IsActive FROM Advertisements ORDER BY ID DESC";
@@ -55,7 +54,7 @@ namespace RPM.Pages
 			{
 				try
 				{
-					using (MySqlConnection conn = new MySqlConnection(connectionString))
+					using (var conn = DbConnectionFactory.GetConnection())
 					{
 						conn.Open();
 						string query = "DELETE FROM Advertisements WHERE ID=@id";

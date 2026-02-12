@@ -8,7 +8,6 @@ namespace RPM.Pages
 {
 	public partial class PromotionsView : UserControl
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable promotionsTable = new DataTable();
 
 		public PromotionsView()
@@ -21,7 +20,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, Name, Description, StartDate, EndDate, DiscountPrice FROM Promotions ORDER BY StartDate DESC";

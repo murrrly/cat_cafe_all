@@ -12,7 +12,6 @@ namespace RPM.Pages
 {
 	public partial class MenuView : UserControl
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable menuTable = new DataTable();
 		private List<MenuItem> AllItems;
 
@@ -26,7 +25,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 
@@ -92,7 +91,7 @@ namespace RPM.Pages
 				{
 					try
 					{
-						using (MySqlConnection conn = new MySqlConnection(connectionString))
+						using (var conn = DbConnectionFactory.GetConnection())
 						{
 							conn.Open();
 							string query = "DELETE FROM Menu WHERE ID=@id";

@@ -6,7 +6,6 @@ namespace RPM
 {
 	public partial class LoginWindow : Window
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 
 		public LoginWindow()
 		{
@@ -37,10 +36,10 @@ namespace RPM
 
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
-
 					string query = @"SELECT ID, PositionID
                                      FROM Users 
                                      WHERE Login=@login 

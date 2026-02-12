@@ -10,7 +10,6 @@ namespace RPM.Pages
 		public ObservableCollection<OrderViewModel> Orders { get; set; } = new ObservableCollection<OrderViewModel>();
 		public ObservableCollection<BranchViewModel> Branches { get; set; } = new ObservableCollection<BranchViewModel>();
 
-		private string connectionString = "server=localhost;database=catcafe_db;uid=root;pwd=cat12345;charset=utf8mb4;";
 		private int? SelectedBranchID = null; // выбранный филиал
 
 		public OrdersView()
@@ -29,7 +28,7 @@ namespace RPM.Pages
 		{
 			Branches.Clear();
 
-			using (var conn = new MySqlConnection(connectionString))
+			using (var conn = DbConnectionFactory.GetConnection())
 			{
 				conn.Open();
 				string query = "SELECT ID, Address FROM Branches ORDER BY Address";
@@ -99,10 +98,10 @@ namespace RPM.Pages
 		{
 			Orders.Clear();
 
-			using (var conn = new MySqlConnection(connectionString))
+
+			using (var conn = DbConnectionFactory.GetConnection())
 			{
 				conn.Open();
-
 				// -------------------------------
 				// Загружаем заказы с фильтром по филиалу
 				// -------------------------------

@@ -7,7 +7,6 @@ namespace RPM
 {
 	public partial class PromotionEditWindow : Window
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable menuTable = new DataTable();
 
 		public PromotionEditWindow()
@@ -22,7 +21,7 @@ namespace RPM
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, Name FROM Menu";
@@ -67,7 +66,7 @@ namespace RPM
 
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					MySqlTransaction transaction = conn.BeginTransaction();

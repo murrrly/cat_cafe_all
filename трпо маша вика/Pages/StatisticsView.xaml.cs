@@ -8,8 +8,6 @@ namespace RPM.Pages
 {
 	public partial class StatisticsView : UserControl
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
-
 		public StatisticsView()
 		{
 			InitializeComponent();
@@ -20,7 +18,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 

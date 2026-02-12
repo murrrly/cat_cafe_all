@@ -7,7 +7,6 @@ namespace RPM
 {
 	public partial class MenuEditWindow : Window
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		int menuId = 0; // 0 = новый, >0 = редактировать
 
 		public MenuEditWindow(int id = 0)
@@ -22,7 +21,7 @@ namespace RPM
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT * FROM Menu WHERE ID=@id";
@@ -57,7 +56,7 @@ namespace RPM
 
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query;

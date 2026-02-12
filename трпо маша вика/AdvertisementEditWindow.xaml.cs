@@ -6,8 +6,6 @@ namespace RPM
 {
 	public partial class AdvertisementEditWindow : Window
 	{
-		string connectionString = "server=localhost;user=root;password=;database=catcafe_db;";
-
 		public AdvertisementEditWindow()
 		{
 			InitializeComponent();
@@ -26,9 +24,8 @@ namespace RPM
 				return;
 			}
 
-			try
-			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+			try { 
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = @"INSERT INTO Advertisements (Title, Description, ImageURL, IsActive) 

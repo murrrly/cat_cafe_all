@@ -7,7 +7,6 @@ namespace RPM
 {
 	public partial class UsersEditWindow : Window
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		int userId = 0;
 		bool changeRoleOnly = false;
 
@@ -31,7 +30,7 @@ namespace RPM
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, PositionName FROM Positions";
@@ -54,7 +53,7 @@ namespace RPM
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT FullName, Login, PositionID FROM Users WHERE ID=@id";
@@ -83,7 +82,8 @@ namespace RPM
 
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query;

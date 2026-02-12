@@ -8,7 +8,6 @@ namespace RPM.Pages
 {
 	public partial class UsersView : UserControl
 	{
-		string connectionString = "server=localhost;user=root;password=cat12345;database=catcafe_db;";
 		DataTable usersTable = new DataTable();
 
 		public UsersView()
@@ -21,7 +20,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (MySqlConnection conn = new MySqlConnection(connectionString))
+				using (var conn = DbConnectionFactory.GetConnection())
 				{
 					conn.Open();
 					string query = @"
@@ -75,7 +74,7 @@ namespace RPM.Pages
 			{
 				try
 				{
-					using (MySqlConnection conn = new MySqlConnection(connectionString))
+					using (var conn = DbConnectionFactory.GetConnection())
 					{
 						conn.Open();
 						string query = "UPDATE Users SET IsActive=@status WHERE ID=@id";
