@@ -24,19 +24,19 @@
     </div>
 </div>
 
-<!-- 🏠 ГЛАВНЫЙ ЭКРАН -->
-<div id="home" class="hidden">
+<!-- 🏠 ГЛАВНЫЙ ЭКРАН (НОВЫЙ) -->
+<div id="hero-section" class="hidden">
     <div class="decor-circle left"></div>
     <div class="decor-circle right"></div>
     <div class="vertical-text">寿司と快適さ</div>
-
-    <div class="logo-container">
-        <img src="Images/logo.png" alt="Logo">
-        <div class="subtitle">Japanese Food Restaurant</div>
-        <div class="title">寿司<span>と</span>快適さ</div>
-        <div class="cafe-name">Sushi Cat's Cafe</div>
-        <div class="slogan">with love and with a soul</div>
-        <button class="view-menu-btn-new" id="goToMenuBtn">View Menu</button>
+    
+    <div class="hero-logo-container">
+        <img src="Images/logo.png" alt="Logo" class="hero-logo">
+        <div class="hero-subtitle">Japanese Food Restaurant</div>
+        <div class="hero-title">寿司<span>と</span>快適さ</div>
+        <div class="hero-cafe-name">Sushi Cat's Cafe</div>
+        <div class="hero-slogan">with love and with a soul</div>
+        <button class="hero-menu-btn" id="heroToMenuBtn">View Menu</button>
     </div>
 </div>
 
@@ -84,112 +84,7 @@
 
 </div>
 
-<script>
-// 🔥 Переменные экранов и кнопки
-const loader = document.getElementById("loader");
-const home = document.getElementById("home");
-const app = document.getElementById("app");
-const goToMenuBtn = document.getElementById("goToMenuBtn");
-
-// ⏳ Загрузка экранов
-setTimeout(() => {
-    loader.classList.add("hidden");
-    home.classList.remove("hidden");
-}, 1200);
-
-// 🍣 Переход в меню
-goToMenuBtn.addEventListener("click", () => {
-    home.classList.add("hidden");
-    app.classList.remove("hidden");
-    loadMenu();
-});
-
-// 🔄 Загрузка меню из БД
-async function loadMenu() {
-    const container = document.getElementById("menu-container");
-    container.innerHTML = "⏳ Загружаем вкусняшки...";
-
-    try {
-        const response = await fetch("/api/menu");
-        const products = await response.json();
-
-        if (!products.length) {
-            container.innerHTML = "😿 В базе пусто";
-            return;
-        }
-
-        showProducts(products);
-    } catch (e) {
-        container.innerHTML = "❌ Ошибка загрузки";
-        console.error(e);
-    }
-}
-
-// 🖼 Отображение продуктов
-function showProducts(products) {
-    const container = document.getElementById("menu-container");
-
-    const categories = {
-        rolls: "Роллы",
-        drinks: "Напитки",
-        dessert: "Дессерты",
-        sets: "Сеты",
-        sushi: "Суши"
-    };
-
-    let html = "";
-
-    Object.keys(categories).forEach(catId => {
-        const items = products.filter(p => p.CategoryName && p.CategoryName.toLowerCase() === categories[catId].toLowerCase());
-        if (!items.length) return;
-
-        html += `<h2 class="category-title" id="${catId}">${categories[catId]}</h2>`;
-
-        items.forEach(p => {
-            const imgPath = p.ImageURL ? `/Images/${p.ImageURL}` : `/Images/default.png`;
-            html += `
-            <div class="product-card" data-category="${catId}">
-                <img src="${imgPath}" class="product-image" alt="${p.Name}">
-                <div class="product-content">
-                    <h3 class="product-title">${p.Name}</h3>
-                    <div class="product-ingredients">${p.Composition || ''}</div>
-                    <div class="product-footer">
-                        <div class="product-price">${p.Price} ₽</div>
-                        <button class="add-to-cart-btn" onclick="addToCart('${p.Name}')">В корзину</button>
-                    </div>
-                </div>
-            </div>`;
-        });
-    });
-
-    container.innerHTML = html;
-
-    setupFilters();
-}
-
-// 🎚 Фильтры по категориям
-function setupFilters() {
-    document.querySelectorAll(".categories button").forEach(btn => {
-        btn.addEventListener("click", function () {
-            const cat = this.dataset.category;
-            document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
-            this.classList.add("active");
-
-            document.querySelectorAll(".product-card").forEach(card => {
-                card.style.display = (cat === "all" || card.dataset.category === cat) ? "block" : "none";
-            });
-        });
-    });
-}
-
-// 🛒 Корзина
-let cartCount = 0;
-function addToCart(name) {
-    cartCount++;
-    document.querySelector(".cart-count").innerText = cartCount;
-    console.log("🛒 Добавлено:", name);
-}
-</script>
+<script src="main.js"></script>
 
 </body>
 </html>
