@@ -45,7 +45,7 @@ namespace RPM.Pages
 						Composition = r["Composition"].ToString(),
 						Description = r["Description"].ToString(),
 						Price = Convert.ToDecimal(r["Price"]),
-						ImageURL = GetAbsolutePath(r["ImageURL"].ToString()),
+						ImageURL = GetAbsolutePath("/Images/" + r["ImageURL"].ToString()),
 						CategoryName = r["CategoryName"] == DBNull.Value ? "Без категории" : r["CategoryName"].ToString()
 					}).ToList();
 
