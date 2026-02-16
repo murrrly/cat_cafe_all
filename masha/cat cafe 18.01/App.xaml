@@ -223,6 +223,16 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<!-- Убираем системный синий highlight во всём приложении -->
+		<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFD8A86B"/>
+		<SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FFD8A86B"/>
+
+		<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#000000"/>
+		<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="#000000"/>
+
+		<SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FFE8C2"/>
+		<SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#000000"/>
+
 	</Application.Resources>
 
 </Application>

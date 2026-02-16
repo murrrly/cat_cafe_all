@@ -4,28 +4,158 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="500" d:DesignWidth="800">
+             d:DesignHeight="550"
+             d:DesignWidth="1000"
+             Background="#FFF8EE">
 
-	<Grid Margin="20">
-		<StackPanel>
-			<TextBlock Text="Сотрудники" FontSize="28" Margin="0,0,0,20"/>
+	<Grid Margin="40">
 
-			<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-				<Button Content="Добавить" Width="100" Height="35" Click="AddButton_Click" Margin="0,0,10,0"/>
-				<Button Content="Изменить роль" Width="120" Height="35" Click="ChangeRoleButton_Click" Margin="0,0,10,0"/>
-				<Button Content="Блокировать" Width="100" Height="35" Click="BlockButton_Click"/>
-			</StackPanel>
+		<Border Background="White"
+                CornerRadius="18"
+                Padding="30"
+                Effect="{StaticResource DropShadowEffect}">
 
-			<DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Height="400" IsReadOnly="True">
-				<DataGrid.Columns>
-					<DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50"/>
-					<DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="200"/>
-					<DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="100"/>
-					<DataGridTextColumn Header="Роль" Binding="{Binding PositionName}" Width="150"/>
-					<DataGridCheckBoxColumn Header="Активен" Binding="{Binding IsActive}" Width="80"/>
-					<DataGridTextColumn Header="Регистрация" Binding="{Binding RegistrationDate}" Width="150"/>
-				</DataGrid.Columns>
-			</DataGrid>
-		</StackPanel>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="20"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+
+				<!-- Заголовок -->
+				<StackPanel Orientation="Horizontal">
+					<Border Width="6"
+                            Height="32"
+                            Background="#C58C5A"
+                            CornerRadius="3"
+                            Margin="0,0,12,0"/>
+					<TextBlock Text="Сотрудники"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="#333"
+                               VerticalAlignment="Center"/>
+				</StackPanel>
+
+				<!-- Кнопки -->
+				<StackPanel Grid.Row="1"
+                            Orientation="Horizontal"
+                            Margin="0,25,0,0">
+
+					<Button Content="Добавить"
+                            Width="160"
+                            Margin="15,0,0,0"
+                            Click="AddButton_Click"/>
+
+					<Button Content="Изменить роль"
+                            Width="180"
+                            Margin="15,0,0,0"
+                            Click="ChangeRoleButton_Click"/>
+
+					<Button Content="Блокировать"
+                            Width="160"
+                            Margin="15,0,0,0"
+                            Click="BlockButton_Click"/>
+				</StackPanel>
+
+				<!-- Таблица -->
+				<Border Grid.Row="3"
+                        Background="#FFFDF9"
+                        CornerRadius="14"
+                        Padding="10"
+                        BorderBrush="#C58C5A"
+                        BorderThickness="1.5">
+
+					<DataGrid x:Name="UsersDataGrid"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              RowBackground="Transparent"
+                              AlternatingRowBackground="#FFF4E1"
+                              GridLinesVisibility="None"
+                              HeadersVisibility="Column"
+                              RowHeight="45">
+
+						<DataGrid.Resources>
+
+							<!-- Заголовки -->
+							<Style TargetType="DataGridColumnHeader">
+								<Setter Property="Background" Value="#FFF1D8"/>
+								<Setter Property="Foreground" Value="#333"/>
+								<Setter Property="FontWeight" Value="SemiBold"/>
+								<Setter Property="Height" Value="45"/>
+								<Setter Property="BorderThickness" Value="0"/>
+								<Setter Property="Padding" Value="10"/>
+							</Style>
+
+							<!-- Строки -->
+							<Style TargetType="DataGridRow">
+								<Setter Property="SnapsToDevicePixels" Value="True"/>
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="DataGridRow">
+											<Border x:Name="RowBorder"
+                                                    Background="{TemplateBinding Background}"
+                                                    CornerRadius="8"
+                                                    Margin="0,2"
+                                                    Padding="5">
+												<DataGridCellsPresenter/>
+											</Border>
+
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsMouseOver" Value="True">
+													<Setter TargetName="RowBorder"
+                                                            Property="Background"
+                                                            Value="#FFE8C2"/>
+												</Trigger>
+
+												<Trigger Property="IsSelected" Value="True">
+													<Setter TargetName="RowBorder"
+                                                            Property="Background"
+                                                            Value="#FFD8A86B"/>
+												</Trigger>
+											</ControlTemplate.Triggers>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+
+						</DataGrid.Resources>
+
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID"
+                                                Binding="{Binding ID}"
+                                                Width="50"/>
+
+							<DataGridTextColumn Header="ФИО"
+                                                Binding="{Binding FullName}"
+                                                Width="*"/>
+
+							<DataGridTextColumn Header="Логин"
+                                                Binding="{Binding Login}"
+                                                Width="100"/>
+
+							<DataGridTextColumn Header="Роль"
+                                                Binding="{Binding PositionName}"
+                                                Width="100"/>
+
+							<DataGridCheckBoxColumn Header="Активен"
+                                                    Binding="{Binding IsActive}"
+                                                    Width="110"/>
+
+							<DataGridTextColumn Header="Регистрация"
+                                                Binding="{Binding RegistrationDate, StringFormat=dd.MM.yyyy}"
+                                                Width="100"/>
+						</DataGrid.Columns>
+
+					</DataGrid>
+
+				</Border>
+
+			</Grid>
+		</Border>
+
 	</Grid>
 </UserControl>
