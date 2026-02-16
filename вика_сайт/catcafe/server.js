@@ -9,7 +9,7 @@ const PORT = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '1234',
+    password: 'cat12345',
     database: 'catcafe_db'
 });
 
