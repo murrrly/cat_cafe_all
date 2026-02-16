@@ -233,6 +233,75 @@
 		<SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FFE8C2"/>
 		<SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#000000"/>
 
+		<!-- Глобальный стиль поискового TextBox -->
+		<Style TargetType="TextBox">
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="BorderBrush" Value="#C58C5A"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="Padding" Value="10,0"/>
+			<Setter Property="Foreground" Value="#333"/>
+			<Setter Property="Height" Value="36"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+
+
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="TextBox">
+						<Grid>
+							<Border x:Name="Border"
+                            CornerRadius="15"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Effect="{StaticResource DropShadowEffect}"/>
+
+							<ScrollViewer x:Name="PART_ContentHost"
+										  Margin="{TemplateBinding Padding}"
+										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+
+							<!-- Placeholder -->
+							<TextBlock x:Name="PlaceholderText"
+                               Text="{TemplateBinding Tag}"
+                               Margin="18,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="#888"
+                               IsHitTestVisible="False"
+                               Visibility="Collapsed"/>
+						</Grid>
+
+						<ControlTemplate.Triggers>
+
+							<!-- Показ placeholder -->
+							<Trigger Property="Text" Value="">
+								<Setter TargetName="PlaceholderText"
+                                Property="Visibility"
+                                Value="Visible"/>
+							</Trigger>
+
+							<!-- Hover -->
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="Border"
+                                Property="Background"
+                                Value="#FFF4E1"/>
+							</Trigger>
+
+							<!-- Focus -->
+							<Trigger Property="IsKeyboardFocused" Value="True">
+								<Setter TargetName="Border"
+                                Property="BorderBrush"
+                                Value="#C58C5A"/>
+								<Setter TargetName="Border"
+                                Property="BorderThickness"
+                                Value="2"/>
+							</Trigger>
+
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
 	</Application.Resources>
 
 </Application>
