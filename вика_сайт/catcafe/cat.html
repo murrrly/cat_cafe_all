@@ -5,27 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushi Cat's Cafe</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="loader.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="menu.css">
-    <link rel="stylesheet" href="categories.css">
-    
 </head>
 <body>
 
-    <!-- 1. Загрузочный экран (только логотип) -->
+    <!-- 1. Загрузочный экран -->
     <div id="loader">
         <div class="decor-circle left"></div>
         <div class="decor-circle right"></div>
         
-
         <div class="logo-container">
             <img src="Images/logo.png" alt="Sushi Cat Logo" class="loader-logo">
         </div>
     </div>
 
-    <!-- 2. Новый главный экран -->
+    <!-- 2. Главный экран -->
     <div id="home" class="hidden">
         <!-- Круг слева -->
         <div class="decor-circle left"></div>
@@ -35,8 +28,6 @@
         
         <!-- Вертикальный текст -->
         <div class="vertical-text">寿司と快適さ</div>
-        
-        
         
         <!-- Основной контент -->
         <div class="logo-container">
@@ -49,12 +40,15 @@
         </div>
     </div>
 
-    <!-- 3. Меню -->
+    <!-- 3. Меню - ПУСТОЙ ЭКРАН СНАЧАЛА -->
     <div id="app" class="hidden">
         
-        <!-- Шапка -->
+        <!-- ПУСТОЙ ЭКРАН -->
+        
+
+        <!-- Шапка (появляется после скролла) -->
         <header class="header">
-            <nav class="nav">
+    <nav class="nav">
             <div class="nav__item">
                 <div class="nav__icon">
                     <img src="Images/mesto.png" alt="App">
@@ -75,13 +69,23 @@
                 </div>
                 <span class="nav__text">Приложение</span>
             </div>
-            
-            <div class="nav-circle-container">
-                    <div class="separator-circle"></div>
-                    <img src="Images/logo1.png" class="loader1-logo">
-                </div>
 
-            <div class="nav__item">
+            
+             <div class="vertical-container">
+                <img src="Images/stiker.png" alt="Декорация" class="small-image">
+                <div class="vertical-text">寿司と快適さ</div>
+            </div>
+
+
+    <div class="circle">
+        <img src="Images/kryg.png">
+    </div>
+
+    <div class="logo">
+        <img src="Images/logo.png" alt="Sushi Cat Logo">
+    </div>
+
+    <div class="nav__item">
                 <div class="nav__icon">
                     <img src="Images/language.png" alt="App">
                 </div>
@@ -102,351 +106,523 @@
                 </div>
                 <span class="nav__text">Аккаунт</span>
             </div>
-        </header>
+    </nav>
+</header>
 
-        <!-- Категории -->
-        <nav class="categories">
-            <button class="active" data-category="all">Все</button>
-            <button data-category="rolls" onclick="scrollToSection('rolls')">Роллы</button>
-            <button data-category="drinks" onclick="scrollToSection('drinks')">Напитки</button>
-            <button data-category="dessert" onclick="scrollToSection('dessert')">Дессерты</button>
-        </nav>
+<main class="main">
+    <!-- Обертка для всего контента, кроме овалов -->
+    <div class="main-content-wrapper">
+        <!-- Старый content-left -->
+        <div class="content-left">
+            <!-- Если здесь нужен текст -->
+        </div>
 
-        <!-- Контент меню -->
-        <main class="menu">
-            <div class="menu-container">
-                
-                <!-- Категория ROLLS -->
-                <h2 class="category-title" id="rolls">Роллы</h2>
-                
-                <!-- Ролл 1 -->
-                <div class="product-card" data-category="rolls" data-new="true">
-                    <div class="new-badge">New</div>
-                    <img src="img/rice-dragon.jpg" alt="Rice Dragon Roll" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">RICE DRAGON</h3>
-                        <div class="product-ingredients">
-                            <span>Ingredients: rice, nori, salmon,</span>
-                            <span>soy sauce, sesame seeds</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">5</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ролл 2 -->
-                <div class="product-card" data-category="rolls">
-                    <img src="img/sawitamin.jpg" alt="Sawitamin Roll" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">SAWITAMIN</h3>
-                        <div class="product-ingredients">
-                            <span>Ingredients: rice, avocado, cucumber,</span>
-                            <span>tuna, spicy mayo</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">6</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ролл 3 -->
-                <div class="product-card" data-category="rolls">
-                    <img src="img/salmon-roll.jpg" alt="Salmon Roll" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">SALMON CLASSIC</h3>
-                        <div class="product-ingredients">
-                            <span>Ingredients: rice, nori, salmon,</span>
-                            <span>cream cheese, cucumber</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">7</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ролл 4 -->
-                <div class="product-card" data-category="rolls" data-new="true">
-                    <div class="new-badge">New</div>
-                    <img src="img/california.jpg" alt="California Roll" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">CALIFORNIA</h3>
-                        <div class="product-ingredients">
-                            <span>Ingredients: crab, avocado,</span>
-                            <span>cucumber, tobiko, mayonnaise</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">8</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ролл 5 -->
-                <div class="product-card" data-category="rolls">
-                    <img src="img/philadelphia.jpg" alt="Philadelphia Roll" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">PHILADELPHIA</h3>
-                        <div class="product-ingredients">
-                            <span>Ingredients: salmon, cream cheese,</span>
-                            <span>cucumber, rice, nori</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">7</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ролл 6 -->
-                <div class="product-card" data-category="rolls">
-                    <img src="img/spicy-tuna.jpg" alt="Spicy Tuna Roll" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">SPICY TUNA</h3>
-                        <div class="product-ingredients">
-                            <span>Ingredients: tuna, spicy sauce,</span>
-                            <span>avocado, sesame, nori</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">6</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Категория DRINKS -->
-                <h2 class="category-title" id="drinks">Напитки</h2>
-                
-                <!-- Напиток 1 -->
-                <div class="product-card" data-category="drinks" data-new="true">
-                    <div class="new-badge">New</div>
-                    <img src="img/kalibuhan.jpg" alt="Kalibuhan Drink" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">KALIBUHAN</h3>
-                        <div class="product-ingredients">
-                            <span>Refreshing green tea with lemon</span>
-                            <span>and mint, served with ice</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">5</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Напиток 2 -->
-                <div class="product-card" data-category="drinks">
-                    <img src="img/gabilli-stor.jpg" alt="Gabilli Stor Drink" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">GABILLI STOR</h3>
-                        <div class="product-ingredients">
-                            <span>Berry smoothie with yogurt</span>
-                            <span>and honey, topped with granola</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">6</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Напиток 3 -->
-                <div class="product-card" data-category="drinks">
-                    <img src="img/matcha-latte.jpg" alt="Matcha Latte" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">MATCHA LATTE</h3>
-                        <div class="product-ingredients">
-                            <span>Japanese matcha powder with</span>
-                            <span>steamed milk and honey</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">5</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Напиток 4 -->
-                <div class="product-card" data-category="drinks">
-                    <img src="img/sakura-tea.jpg" alt="Sakura Tea" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">SAKURA TEA</h3>
-                        <div class="product-ingredients">
-                            <span>Cherry blossom tea with</span>
-                            <span>hint of vanilla and honey</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">4</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Напиток 5 -->
-                <div class="product-card" data-category="drinks">
-                    <img src="img/japanese-lemonade.jpg" alt="Japanese Lemonade" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">YUZU LEMONADE</h3>
-                        <div class="product-ingredients">
-                            <span>Yuzu citrus with sparkling</span>
-                            <span>water and fresh mint</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">5</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Напиток 6 -->
-                <div class="product-card" data-category="drinks" data-new="true">
-                    <div class="new-badge">New</div>
-                    <img src="img/ramune.jpg" alt="Ramune Soda" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">RAMUNE SODA</h3>
-                        <div class="product-ingredients">
-                            <span>Traditional Japanese marble</span>
-                            <span>soda in various flavors</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">4</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Категория DESSERT -->
-                <h2 class="category-title" id="dessert">Дессерты</h2>
-                
-                <!-- Десерт 1 -->
-                <div class="product-card" data-category="dessert">
-                    <img src="img/melakolons.jpg" alt="Melakolons Dessert" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">MELAKOLONS</h3>
-                        <div class="product-ingredients">
-                            <span>Vanilla ice cream with caramel</span>
-                            <span>sauce and roasted almonds</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">4</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Десерт 2 -->
-                <div class="product-card" data-category="dessert">
-                    <img src="img/meri.jpg" alt="Meri Dessert" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">MERI</h3>
-                        <div class="product-ingredients">
-                            <span>Chocolate mousse with raspberry</span>
-                            <span>sauce and fresh berries</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">4</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Десерт 3 -->
-                <div class="product-card" data-category="dessert" data-new="true">
-                    <div class="new-badge">New</div>
-                    <img src="img/matcha-cheesecake.jpg" alt="Matcha Cheesecake" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">MATCHA CHEESECAKE</h3>
-                        <div class="product-ingredients">
-                            <span>Green tea cheesecake with</span>
-                            <span>white chocolate and berries</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">6</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Десерт 4 -->
-                <div class="product-card" data-category="dessert">
-                    <img src="img/dorayaki.jpg" alt="Dorayaki Pancakes" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">DORAYAKI</h3>
-                        <div class="product-ingredients">
-                            <span>Japanese red bean pancakes</span>
-                            <span>with sweet azuki paste</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">5</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Десерт 5 -->
-                <div class="product-card" data-category="dessert">
-                    <img src="img/mochi-ice-cream.jpg" alt="Mochi Ice Cream" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">MOCHI ICE CREAM</h3>
-                        <div class="product-ingredients">
-                            <span>Rice dough with ice cream</span>
-                            <span>filling in various flavors</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">5</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Десерт 6 -->
-                <div class="product-card" data-category="dessert">
-                    <img src="img/taiyaki.jpg" alt="Taiyaki Fish Cake" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">TAIYAKI</h3>
-                        <div class="product-ingredients">
-                            <span>Fish-shaped cake filled with</span>
-                            <span>custard or red bean paste</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">4</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
+        <div class="content-center">
+            <h1 class="jp-title">
+            <span>食</span><span class="up">べ</span><span>て</span>
+        </h1>
+
+            <div class="brand">
+                <span class="brand-en">Sushi Cat's Cafe</span>
+                <span class="brand-sub">with love and with a soul</span>
             </div>
-        </main>
+
+            <div class="restaurant-name-with-dividers">
+                <div class="divider"></div>
+                <div class="restaurant-text">Japanese Food Restaurant</div>
+                <div class="divider"></div>
+            </div>
+
+            <div class="jp-sub">
+                寿司 <span class="red-to">と</span> 快適さ
+            </div>
+        </div>
+
+        <div class="center-circle"></div>
+
+        <div class="sacura sacura-center-right">
+            <img src="Images/sacura.png" alt="Flower Decoration">
+        </div>
+
+        <div class="left-circle"></div>
+
+    </div>
+
+    <!-- Овалы теперь ВНЕ основного контента -->
+    <div class="ovals-overlay">
+        <div class="oval long"></div>
+        <div class="oval short"></div>
+    </div>
+
+</main>
+
+        <!-- НОВЫЕ КАТЕГОРИИ -->
+        <div class="menu-label">
+            МЕНЮ
+        </div>
+
+        <!-- Новая навигация по категориям -->
+        <nav class="categories">
+            <button data-category="all" onclick="selectCategory('all')" class="active">Новинки</button>
+            <button data-category="rolls" onclick="selectCategory('rolls')">Роллы</button>
+            <button data-category="sushi" onclick="selectCategory('sushi')">Суши</button>
+            <!-- Анимированный кружок -->
+            <div class="circle1" id="animatedCircle">
+                <img src="Images/kryzok.png" alt="Кружок">
+            </div>
+            
+            <button data-category="drinks" onclick="selectCategory('drinks')">Напитки</button>
+            <button data-category="dessert" onclick="selectCategory('dessert')">Десерты</button>
+        </nav>
+        
+        <!-- Контейнер для контента категорий -->
+        <div class="content-container" id="contentContainer">
+      
+            <!-- Секция "Новинки" -->
+            <section id="all" class="category-section active">
+                <div class="category-content">
+                    <div class="menu-items">
+                        <!-- Контейнер для карточек новинок -->
+                        <div class="menu-container">
+                            
+                            <!-- Новинка 1 -->
+                            <div class="product-card" data-category="all">
+                                <div class="new-badge">New</div>
+                                <img src="Images/GOLDEN.png" alt="Tuna Onigiri New" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">GOLDEN PHOENIX</h3>
+                                    <div class="product-ingredients">
+                                        <span>Молоко, 2 шарика ванильного мороженого,</span>
+                                        <span>карамельная посыпка, взбитые сливки</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Новинка 2 -->
+                            <div class="product-card" data-category="all">
+                                <div class="new-badge">New</div>
+                                <img src="Images/DANGO.png" alt="Extravaganza New" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">DANGO</h3>
+                                    <div class="product-ingredients">
+                                        <span>Три рисовых шарика на шпажке, политы</span>
+                                        <span> традиционным сладко-соленым соусом</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="sacura sacura-far-right-bottom">
+                    <img src="Images/SACURA3.png" alt="Sushi Corner">
+                </div>
+
+                <div class="sacura sacura-far-left-bottom">
+                    <img src="Images/SACURA2.png" alt="Sushi Corner">
+                </div>
+
+            </section>
+            
+            <!-- Секция "Роллы" -->
+            <section id="rolls" class="category-section">
+                <div class="category-content">
+                    
+                    <main class="menu">
+                        <div class="menu-container">
+                            
+                            <!-- Ролл 1 -->
+                            <div class="product-card" data-category="rolls">
+                                <img src="Images/RICE.DRAGON.png" alt="Sawitamin Roll" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">RICE DRAGON</h3>
+                                    <div class="product-ingredients">
+                                        <span>Ingredients: rice, nori, salmon,</span>
+                                        <span>soy sauce, sesame seeds</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$6</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Ролл 2 -->
+                            <div class="product-card" data-category="rolls">
+                                <img src="Images/SAMURAI.MIX.png" alt="Salmon Roll" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">SAMURAI MIX</h3>
+                                    <div class="product-ingredients">
+                                        <span>Ingredients: chicken, rice, red fish,</span>
+                                        <span>unagi sauce, and sesame seeds</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$7</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Ролл 3 -->
+                            <div class="product-card" data-category="rolls" data-new="true">
+                                <img src="Images/TOKYO.CRUNCH.png" alt="California Roll" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">TOKYO CRUNCH</h3>
+                                    <div class="product-ingredients">
+                                        <span>Rice, nori, salmon, Philadelphia cheese,</span>
+                                        <span>cucumber, mayonnaise</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$8</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Ролл 4 -->
+                            <div class="product-card" data-category="rolls">
+                                <img src="Images/PHILADELPHIA.png" alt="Philadelphia Roll" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">PHILADELPHIA</h3>
+                                    <div class="product-ingredients">
+                                        <span>Ingredients: salmon, cream cheese,</span>
+                                        <span>cucumber, rice, nori</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$7</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Ролл 5 -->
+                            <div class="product-card" data-category="rolls">
+                                <img src="Images/SPICY.TUNA.png" alt="Spicy Tuna Roll" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">SPICY TUNA</h3>
+                                    <div class="product-ingredients">
+                                        <span>Ingredients: tuna, spicy sauce,</span>
+                                        <span>avocado, sesame, nori</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$6</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </main>
+                    
+                </div>
+            </section>
+            
+            <!-- Секция "Суши" -->
+            <section id="sushi" class="category-section">
+                <div class="category-content">
+                    
+                    <div class="menu-items">
+                        <!-- Контейнер для карточек суши -->
+                        <div class="menu-container">
+                            
+                            <!-- Суши 1 -->
+                            <div class="product-card" data-category="sushi">
+                                <img src="Images/FISH.ONIGIRI.png" alt="Fish Onigiri Sushi" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">FISH ONIGIRI</h3>
+                                    <div class="product-ingredients">
+                                        <span>Rice, tuna sashimi, marinated in Miso</span>
+                                        <span>sauce and lemon juice, with avocado slices.</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Суши 2 -->
+                            <div class="product-card" data-category="sushi">
+                                <img src="Images/EXTRAVAGANZA.png" alt="Extravaganza Sushi" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">EXTRAVAGANZA</h3>
+                                    <div class="product-ingredients">
+                                        <span>Rice, nori, salmon, Philadelphia cream cheese,</span>
+                                        <span>avocado, cucumber, Tobiko caviar</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Суши 3 -->
+                            <div class="product-card" data-category="sushi">
+                                <img src="Images/MAGURO.ONIGIRI.png" alt="Maguro Onigiri Sushi" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">MAGURO ONIGIRI</h3>
+                                    <div class="product-ingredients">
+                                        <span>Traditional Japanese rice,</span>
+                                        <span>tuna sashimi</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Секция "Напитки" -->
+            <section id="drinks" class="category-section">
+                <div class="category-content">
+                    
+                    <div class="menu-items">
+                        <!-- Контейнер для карточек напитков -->
+                        <div class="menu-container">
+                            
+                            <!-- Напиток 1 -->
+                            <div class="product-card" data-category="drinks" data-new="true">
+                                <img src="Images/napitok.choco.png" alt="Kalibuhan Drink" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">KUROI KAMI</h3>
+                                    <div class="product-ingredients">
+                                        <span>Milk, 4 balls of chocolate ice cream,</span>
+                                        <span>nutella, chocolate syrup, whipped cream</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Напиток 2 -->
+                            <div class="product-card" data-category="drinks">
+                                <img src="Images/napitok.klybnika.png" alt="Gabilli Stor Drink" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">SCARLET STOR</h3>
+                                    <div class="product-ingredients">
+                                        <span>Milk, 4 balls of strawberry ice cream,</span>
+                                        <span>strawberry syrup, strawberries, whipped cream</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$6</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Напиток 3 -->
+                            <div class="product-card" data-category="drinks">
+                                <img src="Images/napitok.matcha.png" alt="Matcha Latte" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">MATCHA LATTE</h3>
+                                    <div class="product-ingredients">
+                                        <span>Japanese matcha powder with</span>
+                                        <span>steamed milk and honey</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$5</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Секция "Десерты" -->
+            <section id="dessert" class="category-section">
+                <div class="category-content">
+                    
+                    <div class="menu-items">
+                        <!-- Контейнер для карточек десертов -->
+                        <div class="menu-container">
+                            
+                            <!-- Десерт 1 -->
+                            <div class="product-card" data-category="dessert">
+                                <img src="Images/ise.MELAKOLONS.png" alt="Melakolons Dessert" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">MELAKOLONS</h3>
+                                    <div class="product-ingredients">
+                                        <span>Vanilla ice cream with caramel</span>
+                                        <span>sauce and roasted almonds</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$4</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Десерт 2 -->
+                            <div class="product-card" data-category="dessert">
+                                <img src="Images/ice.MERI.png" alt="Meri Dessert" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">MERI</h3>
+                                    <div class="product-ingredients">
+                                        <span>Chocolate ice cream with chocolate</span>
+                                        <span>sauce and fresh raspberries</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$4</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Десерт 3 -->
+                            <div class="product-card" data-category="dessert" data-new="true">
+                                <img src="Images/MATCHA.CHEESECAKE.png" alt="Matcha Cheesecake" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">MATCHA CHEESECAKE</h3>
+                                    <div class="product-ingredients">
+                                        <span>Green tea cheesecake with</span>
+                                        <span>white chocolate and berries</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$6</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Десерт 4 -->
+                            <div class="product-card" data-category="dessert">
+                                <img src="Images/DORAYAKI.png" alt="Dorayaki Pancakes" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">DORAYAKI</h3>
+                                    <div class="product-ingredients">
+                                        <span>Japanese red bean pancakes</span>
+                                        <span>with sweet azuki paste</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$4</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Десерт 5 -->
+                            <div class="product-card" data-category="dessert">
+                                <img src="Images/MOCHI.png" alt="Mochi Ice Cream" class="product-image">
+                                <div class="product-content">
+                                    <h3 class="product-title">MOCHI ICE CREAM</h3>
+                                    <div class="product-ingredients">
+                                        <span>Rice dough with ice cream</span>
+                                        <span>filling in various flavors</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">$1</div>
+                                        <button class="add-to-cart-btn"><img src="Images/pokypka.png" alt="App"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- Корзина -->
         <div class="cart-button">
             🛒 <span class="cart-count">0</span>
         </div>
 
+            
+
     </div>
 
     <script src="script.js"></script>
     
     <script>
-        // Функция прокрутки к секциям меню
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Обновляем активную кнопку
-                document.querySelectorAll('.categories button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                event.target.classList.add('active');
+        // Позиции кружка для каждой категории
+        const circlePositions = {
+            'all': '11.3%',      // Новинки
+            'rolls': '30.8%',    // Роллы
+            'sushi': '50.3%',    // Суши (центр, где был текст МЕНЮ)
+            'drinks': '69.7%',   // Напитки
+            'dessert': '89.1%'   // Десерты
+        };
+        
+        // Элементы DOM
+        const circle = document.getElementById('animatedCircle');
+        const buttons = document.querySelectorAll('.categories button');
+        const categorySections = document.querySelectorAll('.category-section');
+        const contentContainer = document.getElementById('contentContainer');
+        
+        // Флаг для предотвращения конфликтов анимаций
+        let isAnimating = false;
+        
+        function selectCategory(category) {
+            // Если уже идет анимация, игнорируем новый клик
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            
+            // Удаляем активный класс у всех кнопок
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Добавляем активный класс выбранной кнопке
+            const activeButton = document.querySelector(`button[data-category="${category}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
             }
+            
+            // Двигаем кружок плавно
+            if (circle && circlePositions[category]) {
+                circle.style.left = circlePositions[category];
+            }
+            
+            // Убираем активный класс у всех секций
+            categorySections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Добавляем активный класс выбранной секции
+            const activeSection = document.getElementById(category);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+            
+            // Разблокируем анимацию через время transition
+            setTimeout(() => {
+                isAnimating = false;
+            }, 600);
         }
+        
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Устанавливаем начальную позицию кружка
+            if (circle) {
+                circle.style.left = circlePositions['all'];
+            }
+            
+            // Делаем кнопку "Новинки" активной
+            const allButton = document.querySelector('button[data-category="all"]');
+            if (allButton) {
+                allButton.classList.add('active');
+            }
+        });
+
+        // УБРАН КОД С ПРОКРУТКОЙ
+        // Функция scrollToSection удалена
+        // Обработчик скролла удален
     </script>
+
 </body>
 </html>
