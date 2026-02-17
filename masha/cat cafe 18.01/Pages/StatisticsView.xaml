@@ -21,7 +21,7 @@
 		</Style>
 	</UserControl.Resources>
 
-	<Grid Margin="40">
+	<Grid Margin="40, 40, 40, 10">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
@@ -32,11 +32,10 @@
 		<TextBlock Text="Статистика CatCafe"
                    FontSize="32"
                    FontWeight="Bold"
-                   Foreground="#3A2A1F"
-                   Margin="0,0,0,20"/>
+                   Foreground="#3A2A1F"/>
 
 		<!-- Фильтр по филиалам -->
-		<StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,60,0,20">
+		<StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,60,0,0">
 			<TextBlock Text="Филиал:" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,10,0"/>
 			<ComboBox x:Name="BranchFilterComboBox"
                   Grid.Row="1"
@@ -47,7 +46,7 @@
 		</StackPanel>
 
 		<!-- KPI карточки -->
-		<UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,30">
+		<UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,0">
 
 			<!-- Выручка сегодня -->
 			<Border CornerRadius="20" Padding="25" Margin="12" Background="{StaticResource RevenueDayGradient}" 
@@ -91,51 +90,66 @@
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-
-		
+			
 
 			<!-- Топ блюд -->
-			<Border Grid.Column="1" Background="White" CornerRadius="20" Padding="25" Margin="12" Effect="{StaticResource DropShadowEffect}">
-				<StackPanel>
-					<TextBlock Text="Топ блюд" FontSize="18" FontWeight="SemiBold" Foreground="#3A2A1F" Margin="0,0,0,15"/>
-					<DataGrid x:Name="TopMenuDataGrid"
-                              AutoGenerateColumns="False"
-                              CanUserAddRows="False"
-                              IsReadOnly="True"
-                              HeadersVisibility="Column"
-                              RowBackground="White"
-                              AlternatingRowBackground="#FFF9F2"
-                              BorderThickness="0"
-                              FontSize="14"
-                              Foreground="#3A2A1F">
+					<Border Grid.Column="0" Background="White" CornerRadius="20" Padding="25" Margin="12" Effect="{StaticResource DropShadowEffect}">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<!-- Заголовок -->
+								<RowDefinition Height="*"/>
+								<!-- Таблица с прокруткой -->
+								<RowDefinition Height="Auto"/>
+								<!-- Кнопка -->
+							</Grid.RowDefinitions>
 
-						<DataGrid.ColumnHeaderStyle>
-							<Style TargetType="DataGridColumnHeader">
-								<Setter Property="Background">
-									<Setter.Value>
-										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-											<GradientStop Color="#FFD8A86B" Offset="0"/>
-											<GradientStop Color="#FFF4E1" Offset="1"/>
-										</LinearGradientBrush>
-									</Setter.Value>
-								</Setter>
-								<Setter Property="Foreground" Value="#3A2A1F"/>
-								<Setter Property="FontWeight" Value="Bold"/>
-								<Setter Property="Height" Value="40"/>
-								<Setter Property="HorizontalContentAlignment" Value="Center"/>
-								<Setter Property="VerticalContentAlignment" Value="Center"/>
-							</Style>
-						</DataGrid.ColumnHeaderStyle>
+							<!-- Заголовок -->
+							<TextBlock Grid.Row="0" Text="Топ блюд" FontSize="18" FontWeight="SemiBold" Foreground="#3A2A1F" Margin="0,0,0,15"/>
 
-						<DataGrid.Columns>
-							<DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
-							<DataGridTextColumn Header="Продано" Binding="{Binding Quantity}" Width="100" ElementStyle="{StaticResource CenteredTextStyle}"/>
-						</DataGrid.Columns>
-					</DataGrid>
+							<!-- Прокручиваемая таблица -->
+							<DataGrid Grid.Row="1"
+							  x:Name="TopMenuDataGrid"
+							  AutoGenerateColumns="False"
+							  CanUserAddRows="False"
+							  IsReadOnly="True"
+							  HeadersVisibility="Column"
+							  RowBackground="White"
+							  AlternatingRowBackground="#FFF9F2"
+							  BorderThickness="0"
+							  FontSize="14"
+							  Foreground="#3A2A1F"
+							  ScrollViewer.VerticalScrollBarVisibility="Auto">
 
-					<Button Content="Обновить" Width="150" Margin="0,20,0,0" HorizontalAlignment="Left" Click="RefreshButton_Click"/>
-				</StackPanel>
-			</Border>
+								<DataGrid.ColumnHeaderStyle>
+									<Style TargetType="DataGridColumnHeader">
+										<Setter Property="Background">
+											<Setter.Value>
+												<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+													<GradientStop Color="#FFD8A86B" Offset="0"/>
+													<GradientStop Color="#FFF4E1" Offset="1"/>
+												</LinearGradientBrush>
+											</Setter.Value>
+										</Setter>
+										<Setter Property="Foreground" Value="#3A2A1F"/>
+										<Setter Property="FontWeight" Value="Bold"/>
+										<Setter Property="Height" Value="40"/>
+										<Setter Property="HorizontalContentAlignment" Value="Center"/>
+										<Setter Property="VerticalContentAlignment" Value="Center"/>
+									</Style>
+								</DataGrid.ColumnHeaderStyle>
+
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+									<DataGridTextColumn Header="Продано" Binding="{Binding Quantity}" Width="100" ElementStyle="{StaticResource CenteredTextStyle}"/>
+								</DataGrid.Columns>
+							</DataGrid>
+
+							<!-- Кнопка обновить -->
+							<Button Grid.Row="2" Content="Обновить" Width="150" Margin="0,20,0,0" HorizontalAlignment="Left" Click="RefreshButton_Click"/>
+						</Grid>
+					</Border>
+
 		</Grid>
 	</Grid>
 </UserControl>
