@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows;
 using MySql.Data.MySqlClient;
+using RPM.Data;
 
 namespace RPM
 {
@@ -21,7 +22,7 @@ namespace RPM
 		{
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT * FROM Menu WHERE ID=@id";
@@ -56,7 +57,7 @@ namespace RPM
 
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query;

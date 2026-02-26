@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
+using RPM.Data;
 
 namespace RPM.Pages
 {
@@ -25,7 +26,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 
@@ -44,7 +45,7 @@ namespace RPM.Pages
 						Composition = r["Composition"].ToString(),
 						Description = r["Description"].ToString(),
 						Price = Convert.ToDecimal(r["Price"]),
-						ImageURL = GetAbsolutePath(r["ImageURL"].ToString()),
+						ImageURL = $"/Images/{r["ImageURL"]}",
 						CategoryName = r["CategoryName"] == DBNull.Value ? "Без категории" : r["CategoryName"].ToString()
 					}).ToList();
 
@@ -58,12 +59,17 @@ namespace RPM.Pages
 			}
 		}
 
-		private string GetAbsolutePath(string path)
+		private string GetAbsolutePath(string fileName)
 		{
-			if (Path.IsPathRooted(path))
-				return path;
+			if (string.IsNullOrEmpty(fileName))
+				return null;
 
-			return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
+			string fullPath = Path.Combine(
+				AppDomain.CurrentDomain.BaseDirectory,
+				"Images",
+				fileName);
+
+			return File.Exists(fullPath) ? fullPath : null;
 		}
 
 		private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -91,7 +97,7 @@ namespace RPM.Pages
 				{
 					try
 					{
-						using (var conn = DbConnectionFactory.GetConnection())
+						using (var conn = Db.GetConnection())
 						{
 							conn.Open();
 							string query = "DELETE FROM Menu WHERE ID=@id";

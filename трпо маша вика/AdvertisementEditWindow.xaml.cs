@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using MySql.Data.MySqlClient;
+using RPM.Data;
 
 namespace RPM
 {
@@ -25,7 +26,7 @@ namespace RPM
 			}
 
 			try { 
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query = @"INSERT INTO Advertisements (Title, Description, ImageURL, IsActive) 

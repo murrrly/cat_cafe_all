@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using MySql.Data.MySqlClient;
+using RPM.Data;
 
 namespace RPM.Pages
 {
@@ -28,7 +29,7 @@ namespace RPM.Pages
 		{
 			Branches.Clear();
 
-			using (var conn = DbConnectionFactory.GetConnection())
+			using (var conn = Db.GetConnection())
 			{
 				conn.Open();
 				string query = "SELECT ID, Address FROM Branches ORDER BY Address";
@@ -99,7 +100,7 @@ namespace RPM.Pages
 			Orders.Clear();
 
 
-			using (var conn = DbConnectionFactory.GetConnection())
+			using (var conn = Db.GetConnection())
 			{
 				conn.Open();
 				// -------------------------------
