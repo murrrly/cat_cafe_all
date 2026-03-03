@@ -1,4 +1,5 @@
-// 🔥 Переменные экранов и кнопки
+// main.js
+// main.js
 const loader = document.getElementById("loader");
 const heroSection = document.getElementById("hero-section");
 const home = document.getElementById("home");

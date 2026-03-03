@@ -596,12 +596,17 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Лена\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+=======
+    "C:\\Users\\Pc\\.nuget\\packages\\": {}
+>>>>>>> 95bc320020b098eb1e553c6fe645e80a7781871e
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Лена\\Desktop\\catcafe_git\\cat_cafe_all\\трпо маша вика\\RPM.csproj",
       "projectName": "RPM",
       "projectPath": "C:\\Users\\Лена\\Desktop\\catcafe_git\\cat_cafe_all\\трпо маша вика\\RPM.csproj",
@@ -614,6 +619,16 @@
       "configFilePaths": [
         "C:\\Users\\Лена\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+      "projectUniqueName": "C:\\Users\\Pc\\OneDrive\\Desktop\\гиты\\cat_cafe_all\\трпо маша вика\\RPM.csproj",
+      "projectName": "RPM",
+      "projectPath": "C:\\Users\\Pc\\OneDrive\\Desktop\\гиты\\cat_cafe_all\\трпо маша вика\\RPM.csproj",
+      "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pc\\OneDrive\\Desktop\\гиты\\cat_cafe_all\\трпо маша вика\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 95bc320020b098eb1e553c6fe645e80a7781871e
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -639,7 +654,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
+<<<<<<< HEAD
       "SdkAnalysisLevel": "9.0.300"
+=======
+      "SdkAnalysisLevel": "10.0.100"
+>>>>>>> 95bc320020b098eb1e553c6fe645e80a7781871e
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -669,7 +688,11 @@
             "privateAssets": "none"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 95bc320020b098eb1e553c6fe645e80a7781871e
       }
     }
   }

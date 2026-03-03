@@ -1,3 +1,5 @@
+// server.js
+
 const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
@@ -9,7 +11,7 @@ const PORT = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '1234',
+    password: 'cat12345',
     database: 'catcafe_db'
 });
 

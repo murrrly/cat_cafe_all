@@ -1,4 +1,4 @@
-/* Стили для состояний загрузки */
+/* menu.css */
 .loading-container,
 .error-container,
 .empty-container {
@@ -15,7 +15,6 @@
 .loading-spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid #f3f3f3;
     border-top: 4px solid #ff6b6b;
     border-radius: 50%;
     animation: spin 1s linear infinite;
@@ -105,10 +104,11 @@
 /* Основные стили для всего меню */
 #app {
     min-height: 100vh;
-    background: #fff8f0;
-    position: relative;
-    overflow-y: auto;
+    background-color: #FFF1D8;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .header h1 {
     font-family: 'Georgia', serif;
@@ -127,8 +127,7 @@
     justify-content: center;
     gap: 12px;
     padding: 15px 20px;
-    background: #fff8f0;
-    border-bottom: 2px solid #e0c9b0;
+    background-color: #FFF1D8 !important;
     flex-wrap: wrap;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
@@ -163,6 +162,8 @@
 
 /* Основная сетка меню */
 .menu {
+    flex: 1;
+    background-color: #FFF1D8;
     padding-bottom: 100px;
 }
 
@@ -188,7 +189,7 @@
 
 /* Карточка товара */
 .product-card {
-    background: #ffffff;
+     background: #ffffff; /* это ок, они выделяются */
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -251,12 +252,12 @@
     color: #5a3921;
 }
 
-.product-price::before {
+/* ===== .product-price::before {
     content: '$';
     font-size: 20px;
     vertical-align: top;
     margin-right: 2px;
-}
+} */
 
 .add-to-cart-btn {
     background: #5a3921;

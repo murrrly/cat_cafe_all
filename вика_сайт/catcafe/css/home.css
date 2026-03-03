@@ -1,3 +1,5 @@
+/* ===== home.css ===== */
+
 #home {
     min-height: 100vh;
     background: linear-gradient(135deg, #f6d6b8 0%, #e8c9a8 100%);
@@ -211,7 +213,6 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: #FFF1D8;
     overflow: hidden;
     display: flex;
     justify-content: center;
