@@ -3,7 +3,7 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using MySql.Data.MySqlClient;
-
+using RPM.Data;
 namespace RPM.Pages
 {
 	public partial class StatisticsView : UserControl
@@ -18,7 +18,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 

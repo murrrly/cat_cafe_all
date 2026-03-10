@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using MySql.Data.MySqlClient;
+using RPM.Data;
 
 namespace RPM.Pages
 {
@@ -23,7 +24,7 @@ namespace RPM.Pages
 		{
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, Name, Composition, Price FROM Menu";
@@ -93,7 +94,7 @@ namespace RPM.Pages
 
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					MySqlTransaction transaction = conn.BeginTransaction();

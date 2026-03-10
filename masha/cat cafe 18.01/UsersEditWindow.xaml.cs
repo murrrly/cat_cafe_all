@@ -35,13 +35,25 @@ namespace RPM
 				{
 					conn.Open();
 					string query = "SELECT ID, PositionName FROM Positions";
-					MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-					DataTable dt = new DataTable();
-					adapter.Fill(dt);
-					PositionCombo.ItemsSource = dt.DefaultView;
+					MySqlCommand cmd = new MySqlCommand(query, conn);
+
+					var positions = new List<Position>();
+
+					using (var reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							positions.Add(new Position
+							{
+								ID = Convert.ToInt32(reader["ID"]),
+								PositionName = reader["PositionName"].ToString()
+							});
+						}
+					}
+
+					PositionCombo.ItemsSource = positions;
 					PositionCombo.DisplayMemberPath = "PositionName";
 					PositionCombo.SelectedValuePath = "ID";
-					PositionCombo.SelectedIndex = 0;
 				}
 			}
 			catch (Exception ex)
@@ -49,6 +61,7 @@ namespace RPM
 				MessageBox.Show("Ошибка при загрузке ролей: " + ex.Message);
 			}
 		}
+
 
 		private void LoadUser()
 		{
@@ -83,6 +96,7 @@ namespace RPM
 
 			try
 			{
+
 				using (MySqlConnection conn = new MySqlConnection(connectionString))
 				{
 					conn.Open();
@@ -98,6 +112,12 @@ namespace RPM
 							query += ", FullName=@full, Login=@login";
 						query += " WHERE ID=@id";
 					}
+					if (PositionCombo.SelectedItem == null)
+					{
+						RoleErrorText.Visibility = Visibility.Visible;
+						PositionCombo.Style = (Style)FindResource("ErrorComboStyle");
+						return;
+					}
 
 					MySqlCommand cmd = new MySqlCommand(query, conn);
 					cmd.Parameters.AddWithValue("@pos", positionId);
@@ -111,6 +131,8 @@ namespace RPM
 
 					cmd.ExecuteNonQuery();
 				}
+				RoleErrorText.Visibility = Visibility.Collapsed;
+				PositionCombo.ClearValue(StyleProperty);
 
 				DialogResult = true;
 				Close();
@@ -120,6 +142,17 @@ namespace RPM
 				MessageBox.Show("Ошибка при сохранении: " + ex.Message);
 			}
 		}
+		public class Position
+		{
+			public int ID { get; set; }
+			public string PositionName { get; set; }
+
+			public override string ToString()
+			{
+				return PositionName;
+			}
+		}
+
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{

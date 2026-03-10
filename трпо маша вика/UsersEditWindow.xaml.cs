@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows;
 using MySql.Data.MySqlClient;
+using RPM.Data;
 
 namespace RPM
 {
@@ -30,7 +31,7 @@ namespace RPM
 		{
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT ID, PositionName FROM Positions";
@@ -53,7 +54,7 @@ namespace RPM
 		{
 			try
 			{
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query = "SELECT FullName, Login, PositionID FROM Users WHERE ID=@id";
@@ -83,7 +84,7 @@ namespace RPM
 			try
 			{
 
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query;

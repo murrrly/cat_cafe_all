@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RPM.Data;
 using System;
 using System.Windows;
 
@@ -37,7 +38,7 @@ namespace RPM
 			try
 			{
 
-				using (var conn = DbConnectionFactory.GetConnection())
+				using (var conn = Db.GetConnection())
 				{
 					conn.Open();
 					string query = @"SELECT ID, PositionID
@@ -80,8 +81,9 @@ namespace RPM
 					}
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				MessageBox.Show(ex.ToString());
 				ShowError("Ошибка подключения к БД");
 			}
 		}
