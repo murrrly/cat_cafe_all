@@ -1,0 +1,90 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 826,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{73068c07-fba1-453f-99ae-6edf972119b2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-10T15:37:35.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "LoginWindow.xaml",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043D\u044F\u043C\u043D\u044F\u043C\\LoginWindow.xaml",
+              "RelativeToolTip": "LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-10T15:37:31.229Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 609,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
