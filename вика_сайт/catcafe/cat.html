@@ -60,15 +60,6 @@
     </nav>
 </header>
 
-<!-- 🎯 РЕКЛАМНЫЙ БАННЕР (НОВЫЙ) -->
-<div class="promo-banner">
-    <div class="promo-banner-content">
-        <div class="promo-badge">🔥 -20%</div>
-        <div class="promo-text">
-            <h3>Первый заказ</h3>
-            <p>по промокоду <span class="promo-code">WELCOME20</span></p>
-</div>
-
 <!-- КАТЕГОРИИ -->
 <nav class="categories">
     <button class="active" data-category="all">Все</button>
@@ -91,6 +82,77 @@
     🛒 <span class="cart-count">0</span>
 </div>
 
+</div>
+
+<!-- 🛒 МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
+<div id="cart">
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2>🛒 Ваша корзина</h2>
+            <button class="close-cart" onclick="closeCart()">✕</button>
+        </div>
+        <div class="cart-items">
+            <!-- Сюда будут добавляться товары -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span>0 ₽</span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Оформление заказа будет доступно после авторизации')">
+                Оформить заказ
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 👤 МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ -->
+<div id="auth-modal" class="auth-modal">
+    <div class="auth-modal-content">
+        <div class="auth-header">
+            <h2>Вход / Регистрация</h2>
+            <button class="close-auth" onclick="closeAuthModal()">✕</button>
+        </div>
+        
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Вход</button>
+            <button class="auth-tab" id="registerTab" onclick="switchAuthTab('register')">Регистрация</button>
+        </div>
+        
+        <!-- Форма входа -->
+        <div id="login-form" class="auth-form active">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="login-email" placeholder="Введите email">
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="login-password" placeholder="Введите пароль">
+            </div>
+            <button class="auth-submit" onclick="handleLogin()">Войти</button>
+        </div>
+        
+        <!-- Форма регистрации -->
+        <div id="register-form" class="auth-form">
+            <div class="form-group">
+                <label>Имя</label>
+                <input type="text" id="register-name" placeholder="Введите имя">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="register-email" placeholder="Введите email">
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="register-password" placeholder="Введите пароль">
+            </div>
+            <div class="form-group">
+                <label>Подтверждение пароля</label>
+                <input type="password" id="register-confirm" placeholder="Повторите пароль">
+            </div>
+            <button class="auth-submit" onclick="handleRegister()">Зарегистрироваться</button>
+        </div>
+    </div>
 </div>
 
 <script src="main.js"></script>

@@ -164,7 +164,6 @@
 }
 
 #loader {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -386,8 +385,8 @@ body {
 .nav__item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
+    gap: 5px;
+    padding: 10px 12px;
     border-radius: 100px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -592,4 +591,123 @@ body {
 
 html, body, #app, .menu, .categories, .menu-container {
     background-color: #FFF1D8 !important;
+}
+
+/* ===== АВТОРИЗАЦИЯ ===== */
+.auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-modal.open {
+    display: flex;
+}
+
+.auth-modal-content {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.auth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.auth-header h2 {
+    color: #5a3921;
+    margin: 0;
+}
+
+.close-auth {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #5a3921;
+    cursor: pointer;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0c9b0;
+    padding-bottom: 10px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #8b5a2b;
+    cursor: pointer;
+}
+
+.auth-tab.active {
+    color: #5a3921;
+    font-weight: bold;
+    border-bottom: 2px solid #5a3921;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #5a3921;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0c9b0;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #5a3921;
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 15px;
+    background: #5a3921;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-submit:hover {
+    background: #2c1810;
 }
