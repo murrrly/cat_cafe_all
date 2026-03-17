@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Подключение к БД
+// Подключение к БД дддд
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
