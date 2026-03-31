@@ -1,0 +1,90 @@
+﻿<Page x:Class="RPM.OrdersManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Управление заказами">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Управление заказами" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,15"/>
+
+        <!-- Панель фильтров -->
+        <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Фильтры и поиск" Style="{StaticResource SubHeaderTextStyle}" Margin="0,0,0,10"/>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="SearchTextBox" Width="200" Height="30" Padding="5" 
+                             TextChanged="SearchTextBox_TextChanged" 
+                             Text="Поиск по клиенту или ID..."/>
+
+                    <ComboBox x:Name="StatusFilterComboBox" Width="150" Height="30" Margin="10,0,0,0"
+                              SelectionChanged="StatusFilterComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Все статусы" IsSelected="True"/>
+                        <ComboBoxItem Content="Новый"/>
+                        <ComboBoxItem Content="В процессе"/>
+                        <ComboBoxItem Content="Готов"/>
+                        <ComboBoxItem Content="Доставляется"/>
+                        <ComboBoxItem Content="Выполнен"/>
+                        <ComboBoxItem Content="Отменен"/>
+                    </ComboBox>
+
+                    <DatePicker x:Name="DateFilterPicker" Width="150" Height="30" Margin="10,0,0,0"
+                                SelectedDateChanged="DateFilterPicker_SelectedDateChanged"/>
+                    <Button Content="🔄 Сбросить" Style="{StaticResource BurgundyButtonStyle}" Click="ResetFilters_Click" Width="89"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Список заказов -->
+        <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Список заказов" Style="{StaticResource SubHeaderTextStyle}"/>
+                    <TextBlock x:Name="OrdersCountText" Text=" (0 заказов)" 
+                              Foreground="{StaticResource TextLightBrush}" FontSize="11" 
+                              Margin="5,0,0,0" VerticalAlignment="Bottom"/>
+                </StackPanel>
+
+                <DataGrid Grid.Row="1" x:Name="OrdersGrid" Style="{StaticResource ModernDataGridStyle}"
+                          AutoGenerateColumns="False" SelectionChanged="OrdersGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                        <DataGridTextColumn Header="Клиент" Binding="{Binding CustomerName}" Width="120"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="120"/>
+                        <DataGridTextColumn Header="Сумма" Binding="{Binding TotalAmount, StringFormat={}{0}₽}" Width="90"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100"/>
+                        <DataGridTextColumn Header="Тип" Binding="{Binding DeliveryType}" Width="90"/>
+                        <DataGridTextColumn Header="Время" Binding="{Binding OrderTime, StringFormat={}{0:HH:mm}}" Width="80"/>
+                        <DataGridTemplateColumn Header="Действия" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="✏️" ToolTip="Редактировать" 
+                                                Click="EditOrder_Click" Margin="2" Padding="5"
+                                                Background="Transparent" BorderThickness="0"/>
+                                        <Button Content="✅" ToolTip="Завершить" 
+                                                Click="CompleteOrder_Click" Margin="2" Padding="5"
+                                                Background="Transparent" BorderThickness="0"/>
+                                        <Button Content="❌" ToolTip="Отменить" 
+                                                Click="CancelOrder_Click" Margin="2" Padding="5"
+                                                Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

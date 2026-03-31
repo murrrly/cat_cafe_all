@@ -1,0 +1,93 @@
+﻿<Window x:Class="RPM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🐱 Sushi Cats Cafe — Admin Panel"
+        Height="720" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFF4F1ED">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="70"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- HEADER -->
+		<Border Background="#7B2D26" Grid.Row="0">
+			<Grid Margin="25,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+					<TextBlock Text="🐱" FontSize="28" Margin="0,0,10,0"/>
+					<TextBlock Text="Sushi Cats Cafe — Admin"
+                               Foreground="White"
+                               FontSize="20"
+                               FontWeight="Bold"/>
+				</StackPanel>
+
+				<TextBlock Grid.Column="1"
+                           Text="Администратор: Система"
+                           Foreground="#FFE6D8CE"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+				<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+					<TextBlock Text="🟢" Margin="0,0,6,0"/>
+					<TextBlock Text="Система онлайн" Foreground="#FFE6D8CE"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+
+		<!-- MAIN -->
+		<Grid Grid.Row="1" Margin="15">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="240"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- SIDEBAR -->
+			<Border Background="White" CornerRadius="10" Padding="15">
+				<StackPanel>
+
+					<TextBlock Text="Управление"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               Foreground="#AA000000"
+                               Margin="5"/>
+
+					<Button Content="📊 Дашборд" Click="DashboardBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="📦 Заказы" Click="OrdersBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="🍣 Меню" Click="MenuBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="🎯 Акции" Click="PromotionsBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+
+					<Separator Margin="10"/>
+
+					<TextBlock Text="Структура кафе"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               Foreground="#AA000000"
+                               Margin="5"/>
+
+					<Button Content="🏢 Филиалы"  Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="👥 Сотрудники" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="⭐ Отзывы" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="📢 Реклама" Style="{StaticResource NavButtonStyle}"/>
+
+					<Separator Margin="10"/>
+
+					<Button Content="⚙ Настройки" Click="SettingsBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+					<Button Content="🚪 Выйти" Click="LogoutBtn_Click" Style="{StaticResource NavButtonStyle}"/>
+				</StackPanel>
+			</Border>
+
+			<!-- CONTENT -->
+			<Border Grid.Column="1" Background="White" CornerRadius="10" Margin="15,0,0,0">
+				<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+			</Border>
+		</Grid>
+	</Grid>
+</Window>

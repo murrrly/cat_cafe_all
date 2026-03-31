@@ -1,0 +1,346 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\userseditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:userseditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\menuview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\menuview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\neworderview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\neworderview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\ordersview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\ordersview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\usersview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\usersview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\promotioneditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:promotioneditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\advertisementsview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\advertisementsview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\menueditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:menueditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\cashierwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:cashierwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\statisticsview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\statisticsview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\pages\\promotionsview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:pages\\promotionsview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\simpleloginmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:simpleloginmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\advertisementeditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:advertisementeditwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\adminwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:adminwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|c:\\users\\pc\\onedrive\\desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\dbconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BDB2820-CDFE-48E0-BC06-7DEC2B351CEC}|RPM.csproj|solutionrelative:dbconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{73068c07-fba1-453f-99ae-6edf972119b2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrdersView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\OrdersView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\OrdersView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\OrdersView.xaml.cs",
+              "RelativeToolTip": "Pages\\OrdersView.xaml.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAjwGcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:34:29.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersEditWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\UsersEditWindow.xaml.cs",
+              "RelativeDocumentMoniker": "UsersEditWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\UsersEditWindow.xaml.cs",
+              "RelativeToolTip": "UsersEditWindow.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAMwCcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:33:40.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PromotionEditWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\PromotionEditWindow.xaml.cs",
+              "RelativeDocumentMoniker": "PromotionEditWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\PromotionEditWindow.xaml.cs",
+              "RelativeToolTip": "PromotionEditWindow.xaml.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAArwEQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:33:18.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsersView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\UsersView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\UsersView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\UsersView.xaml.cs",
+              "RelativeToolTip": "Pages\\UsersView.xaml.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAArwEwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:37:26.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NewOrderView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\NewOrderView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\NewOrderView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\NewOrderView.xaml.cs",
+              "RelativeToolTip": "Pages\\NewOrderView.xaml.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAnwF8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:34:22.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MenuView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\MenuView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\MenuView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\MenuView.xaml.cs",
+              "RelativeToolTip": "Pages\\MenuView.xaml.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAnwF0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:34:04.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdvertisementsView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\AdvertisementsView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\AdvertisementsView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\AdvertisementsView.xaml.cs",
+              "RelativeToolTip": "Pages\\AdvertisementsView.xaml.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAnwDgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:33:55.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MenuEditWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\MenuEditWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MenuEditWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\MenuEditWindow.xaml.cs",
+              "RelativeToolTip": "MenuEditWindow.xaml.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAnwDoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:33:03.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CashierWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\CashierWindow.xaml.cs",
+              "RelativeDocumentMoniker": "CashierWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\CashierWindow.xaml.cs",
+              "RelativeToolTip": "CashierWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:32:40.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "StatisticsView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\StatisticsView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\StatisticsView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\StatisticsView.xaml.cs",
+              "RelativeToolTip": "Pages\\StatisticsView.xaml.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:37:17.217Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PromotionsView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\PromotionsView.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\PromotionsView.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\Pages\\PromotionsView.xaml.cs",
+              "RelativeToolTip": "Pages\\PromotionsView.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:34:47.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SimpleLoginManager.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\SimpleLoginManager.cs",
+              "RelativeDocumentMoniker": "SimpleLoginManager.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\SimpleLoginManager.cs",
+              "RelativeToolTip": "SimpleLoginManager.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:33:35.022Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\AdminWindow.xaml.cs",
+              "RelativeDocumentMoniker": "AdminWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\AdminWindow.xaml.cs",
+              "RelativeToolTip": "AdminWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T10:59:52.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AdvertisementEditWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\AdvertisementEditWindow.xaml.cs",
+              "RelativeDocumentMoniker": "AdvertisementEditWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\AdvertisementEditWindow.xaml.cs",
+              "RelativeToolTip": "AdvertisementEditWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:26:21.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AdminWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\AdminWindow.xaml",
+              "RelativeDocumentMoniker": "AdminWindow.xaml",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\AdminWindow.xaml",
+              "RelativeToolTip": "AdminWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-12T11:25:47.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-02-12T11:23:08.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "LoginWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "LoginWindow.xaml.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAA5wCkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T10:59:57.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DbConnectionFactory.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\DbConnectionFactory.cs",
+              "RelativeDocumentMoniker": "DbConnectionFactory.cs",
+              "ToolTip": "C:\\Users\\Pc\\OneDrive\\Desktop\\\u0433\u0438\u0442\u044B\\cat_cafe_all\\\u0442\u0440\u043F\u043E \u043C\u0430\u0448\u0430 \u0432\u0438\u043A\u0430\\DbConnectionFactory.cs",
+              "RelativeToolTip": "DbConnectionFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:25:10.532Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 609,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
