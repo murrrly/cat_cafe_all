@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Подключение к БД дддддддд
+// Подключение к БД ддддддд
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '1234',
+    password: '12345',
     database: 'catcafe_db'
 });
 

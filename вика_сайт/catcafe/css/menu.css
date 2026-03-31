@@ -101,13 +101,7 @@
     margin-right: 10px;
 }
 
-/* Основные стили для всего меню */
-#app {
-    min-height: 100vh;
-    background-color: #FFF1D8;
-    display: flex;
-    flex-direction: column;
-}
+
 
 
 .header h1 {
@@ -118,47 +112,7 @@
     letter-spacing: 2px;
 }
 
-/* Категории - прилипают к верху */
-.categories {
-    position: sticky;
-    top: 0;
-    z-index: 99;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding: 15px 20px;
-    background-color: #FFF1D8 !important;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
 
-.categories button {
-    padding: 10px 24px;
-    border-radius: 25px;
-    border: 2px solid #e0c9b0;
-    background: transparent;
-    color: #5a3921;
-    font-family: 'Arial', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 80px;
-    text-align: center;
-}
-
-.categories button:hover {
-    border-color: #5a3921;
-    background: rgba(90, 57, 33, 0.05);
-    transform: translateY(-2px);
-}
-
-.categories button.active {
-    background: #5a3921;
-    color: white;
-    border-color: #5a3921;
-    box-shadow: 0 4px 8px rgba(90, 57, 33, 0.3);
-}
 
 /* Основная сетка меню */
 .menu {
