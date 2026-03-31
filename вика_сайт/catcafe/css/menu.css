@@ -143,7 +143,7 @@
 
 /* Карточка товара */
 .product-card {
-     background: #ffffff; /* это ок, они выделяются */
+     background: #383838; /* это ок, они выделяются */
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);

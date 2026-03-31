@@ -178,7 +178,9 @@ function showProducts(products) {
                     <div class="product-ingredients">${p.Composition || ''}</div>
                     <div class="product-footer">
                         <div class="product-price">${p.Price} ₽</div>
-                        <button class="add-to-cart-btn" onclick="addToCart('${p.Name.replace(/'/g, "\\'")}', ${p.Price})">В корзину</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('${p.Name.replace(/'/g, "\\'")}', ${p.Price})">
+                            <img src="Images/korzina.png" style="width: 20px; height: 20px;">
+                        </button>
                     </div>
                 </div>
             </div>`;
@@ -395,4 +397,101 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Обновляем кнопку аккаунта
     updateAuthButton();
+});
+
+
+
+
+
+
+// Плавное перемещение круга-индикатора
+function moveCategoryIndicator(button) {
+    const indicator = document.getElementById('categoryIndicator');
+    if (!indicator || !button) return;
+    
+    // Получаем все необходимые элементы
+    const categories = document.querySelector('.categories');
+    const buttonsContainer = document.querySelector('.categories-buttons');
+    
+    if (!categories || !buttonsContainer) return;
+    
+    // Получаем размеры и позиции
+    const buttonRect = button.getBoundingClientRect();
+    const containerRect = buttonsContainer.getBoundingClientRect();
+    const categoriesRect = categories.getBoundingClientRect();
+    
+    // Вычисляем центр кнопки относительно контейнера кнопок
+    const buttonCenter = buttonRect.left + buttonRect.width / 2;
+    const containerLeft = containerRect.left;
+    
+    // Вычисляем позицию для круга (центр круга должен совпадать с центром кнопки)
+    const indicatorWidth = indicator.offsetWidth;
+    let newLeft = (buttonCenter - containerLeft - indicatorWidth / 2);
+    
+    // Получаем padding слева у родительского контейнера
+    const categoriesStyle = window.getComputedStyle(categories);
+    const paddingLeft = parseFloat(categoriesStyle.paddingLeft);
+    
+    // Добавляем padding к позиции
+    newLeft += paddingLeft;
+    
+    // Применяем позицию
+    indicator.style.left = newLeft + 'px';
+    
+    console.log('Круг позиционирован на:', newLeft); // Для отладки
+}
+
+// Добавляем обработчики на кнопки категорий
+document.querySelectorAll('.categories button').forEach(button => {
+    button.addEventListener('click', function() {
+        document.querySelectorAll('.categories button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        this.classList.add('active');
+        moveCategoryIndicator(this);
+    });
+});
+
+// Инициализация - ставим круг на "Все" при загрузке
+window.addEventListener('load', function() {
+    // Даем время на полную загрузку стилей и рендеринг
+    setTimeout(() => {
+        // Находим кнопку "Все"
+        const allButton = document.querySelector('.categories button[data-category="all"]');
+        
+        if (allButton) {
+            // Убираем active со всех
+            document.querySelectorAll('.categories button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Добавляем active на "Все"
+            allButton.classList.add('active');
+            
+            // Ставим круг на "Все"
+            moveCategoryIndicator(allButton);
+            
+            // Дополнительная проверка после полной загрузки
+            setTimeout(() => {
+                moveCategoryIndicator(allButton);
+            }, 200);
+        }
+    }, 300);
+});
+
+// Обновляем позицию при ресайзе
+window.addEventListener('resize', function() {
+    const activeButton = document.querySelector('.categories button.active');
+    if (activeButton) {
+        moveCategoryIndicator(activeButton);
+    }
+});
+
+// Также обновляем после любой прокрутки (на всякий случай)
+window.addEventListener('scroll', function() {
+    const activeButton = document.querySelector('.categories button.active');
+    if (activeButton) {
+        moveCategoryIndicator(activeButton);
+    }
 });
