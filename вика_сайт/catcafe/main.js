@@ -178,7 +178,7 @@ function showProducts(products) {
                     <div class="product-ingredients">${p.Composition || ''}</div>
                     <div class="product-footer">
                         <div class="product-price">${p.Price} ₽</div>
-                        <button class="add-to-cart-btn" onclick="addToCart('${p.Name.replace(/'/g, "\\'")}', ${p.Price})">В корзину</button>
+                        <button class="add-to-cart-btn" onclick="addToCart(${p.ID}, '${p.Name.replace(/'/g, "\\'")}', ${p.Price})">В корзину</button>
                     </div>
                 </div>
             </div>`;
@@ -223,15 +223,15 @@ function setupFilters() {
     });
 }
 
-// 🛒 Добавление в корзину
-function addToCart(name, price) {
-    const existingItem = cart.find(item => item.name === name);
+// 🛒 Добавление в корзину (исправлено: теперь с ID)
+function addToCart(id, name, price) {
+    const existingItem = cart.find(item => item.id === id);
     
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         const product = {
-            id: Date.now(),
+            id: id,
             name: name,
             price: price,
             quantity: 1
@@ -250,15 +250,95 @@ function addToCart(name, price) {
     console.log("🛒 Добавлено:", name);
 }
 
+// ========== ПОИСК ==========
+function toggleSearch() {
+    const searchDropdown = document.getElementById('searchDropdown');
+    if (searchDropdown) {
+        searchDropdown.classList.toggle('active');
+        if (searchDropdown.classList.contains('active')) {
+            document.getElementById('search-input').focus();
+        } else {
+            document.getElementById('search-input').value = '';
+            filterProductsBySearch('');
+        }
+    }
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (!searchInput) return;
+    
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchTerm = this.value.toLowerCase().trim();
+            filterProductsBySearch(searchTerm);
+        }, 300);
+    });
+}
+
+function filterProductsBySearch(searchTerm) {
+    const products = document.querySelectorAll('.product-card');
+    const categoryTitles = document.querySelectorAll('.category-title');
+    
+    if (searchTerm === '') {
+        products.forEach(card => card.style.display = 'block');
+        categoryTitles.forEach(title => title.style.display = 'block');
+        
+        const noResults = document.querySelector('.no-results');
+        if (noResults) noResults.remove();
+        return;
+    }
+    
+    let hasVisibleProducts = false;
+    
+    categoryTitles.forEach(title => {
+        title.style.display = 'none';
+    });
+    
+    products.forEach(card => {
+        const title = card.querySelector('.product-title')?.textContent.toLowerCase() || '';
+        const ingredients = card.querySelector('.product-ingredients')?.textContent.toLowerCase() || '';
+        
+        if (title.includes(searchTerm) || ingredients.includes(searchTerm)) {
+            card.style.display = 'block';
+            hasVisibleProducts = true;
+            
+            const categoryId = card.dataset.category;
+            const categoryTitle = document.getElementById(categoryId);
+            if (categoryTitle) {
+                categoryTitle.style.display = 'block';
+            }
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    const noResults = document.querySelector('.no-results');
+    if (!hasVisibleProducts) {
+        if (!noResults) {
+            const container = document.getElementById('menu-container');
+            const noResultsDiv = document.createElement('div');
+            noResultsDiv.className = 'no-results';
+            noResultsDiv.innerHTML = '<p>😿 Ничего не найдено</p>';
+            container.prepend(noResultsDiv);
+        }
+    } else {
+        if (noResults) noResults.remove();
+    }
+}
+
 // ========== АВТОРИЗАЦИЯ (ЧЕРЕЗ СЕРВЕР) ==========
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
-// Открытие модалки
+// Открытие модалки авторизации
 window.openAuthModal = function() {
     document.getElementById('auth-modal').classList.add('open');
 }
 
-// Закрытие модалки
+// Закрытие модалки авторизации
 window.closeAuthModal = function() {
     document.getElementById('auth-modal').classList.remove('open');
 }
@@ -283,7 +363,7 @@ window.switchAuthTab = function(tab) {
     }
 }
 
-// Обработка входа (через сервер)
+// Обработка входа
 window.handleLogin = async function() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -317,7 +397,7 @@ window.handleLogin = async function() {
     }
 }
 
-// Обработка регистрации (через сервер)
+// Обработка регистрации
 window.handleRegister = async function() {
     const name = document.getElementById('register-name').value;
     const email = document.getElementById('register-email').value;
@@ -347,7 +427,6 @@ window.handleRegister = async function() {
             alert('Регистрация успешна! Теперь войдите.');
             switchAuthTab('login');
             
-            // Очищаем поля регистрации
             document.getElementById('register-name').value = '';
             document.getElementById('register-email').value = '';
             document.getElementById('register-password').value = '';
@@ -361,20 +440,248 @@ window.handleRegister = async function() {
     }
 }
 
+// ========== ЛИЧНЫЙ КАБИНЕТ ==========
+function openProfile() {
+    if (!currentUser) {
+        openAuthModal();
+        return;
+    }
+    
+    let profileModal = document.getElementById('profile-modal');
+    
+    if (!profileModal) {
+        profileModal = document.createElement('div');
+        profileModal.id = 'profile-modal';
+        profileModal.className = 'profile-modal';
+        profileModal.innerHTML = `
+            <div class="profile-modal-content">
+                <div class="profile-header">
+                    <h2>👤 Личный кабинет</h2>
+                    <button class="close-profile" onclick="closeProfile()">✕</button>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="Images/account.png" alt="avatar">
+                    </div>
+                    <div class="profile-details">
+                        <h3 id="profile-name"></h3>
+                        <p id="profile-email"></p>
+                    </div>
+                </div>
+                
+                <div class="profile-tabs">
+                    <button class="profile-tab active" onclick="switchProfileTab('orders')">📋 Мои заказы</button>
+                    <button class="profile-tab" onclick="switchProfileTab('settings')">⚙️ Настройки</button>
+                </div>
+                
+                <div id="profile-orders" class="profile-orders active">
+                    <div class="orders-list" id="orders-list">
+                        ⏳ Загружаем историю заказов...
+                    </div>
+                </div>
+                
+                <div id="profile-settings" class="profile-settings">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" id="profile-edit-name" class="profile-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="profile-edit-email" class="profile-input" disabled>
+                    </div>
+                    <button class="profile-save-btn" onclick="saveProfileChanges()">Сохранить изменения</button>
+                    <button class="profile-logout-btn" onclick="logout()">Выйти из аккаунта</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(profileModal);
+    }
+    
+    document.getElementById('profile-name').innerText = currentUser.name;
+    document.getElementById('profile-email').innerText = currentUser.email;
+    document.getElementById('profile-edit-name').value = currentUser.name;
+    document.getElementById('profile-edit-email').value = currentUser.email;
+    
+    loadOrderHistory();
+    
+    profileModal.classList.add('open');
+}
+
+function closeProfile() {
+    const profileModal = document.getElementById('profile-modal');
+    if (profileModal) {
+        profileModal.classList.remove('open');
+    }
+}
+
+function switchProfileTab(tab) {
+    const ordersTab = document.querySelector('.profile-tab:nth-child(1)');
+    const settingsTab = document.querySelector('.profile-tab:nth-child(2)');
+    const ordersSection = document.getElementById('profile-orders');
+    const settingsSection = document.getElementById('profile-settings');
+    
+    if (tab === 'orders') {
+        ordersTab.classList.add('active');
+        settingsTab.classList.remove('active');
+        ordersSection.classList.add('active');
+        settingsSection.classList.remove('active');
+    } else {
+        settingsTab.classList.add('active');
+        ordersTab.classList.remove('active');
+        settingsSection.classList.add('active');
+        ordersSection.classList.remove('active');
+    }
+}
+
+async function loadOrderHistory() {
+    const ordersList = document.getElementById('orders-list');
+    if (!ordersList) return;
+    
+    try {
+        const response = await fetch(`/api/orders/${currentUser.id}`);
+        const orders = await response.json();
+        
+        if (orders.length === 0) {
+            ordersList.innerHTML = '<p class="no-orders">😿 У вас пока нет заказов</p>';
+            return;
+        }
+        
+        let html = '';
+        orders.forEach(order => {
+            const date = new Date(order.OrderDate).toLocaleString('ru-RU');
+            const statusClass = order.Status === 'Новый' ? 'status-new' : 
+                               order.Status === 'Готовится' ? 'status-cooking' : 'status-done';
+            
+            html += `
+                <div class="order-card">
+                    <div class="order-header">
+                        <span class="order-id">${order.OrderNumber}</span>
+                        <span class="order-date">${date}</span>
+                    </div>
+                    <div class="order-items">
+                        ${order.items.map(item => `
+                            <div class="order-item">
+                                <span>${item.Name} x${item.Quantity}</span>
+                                <span>${item.Price * item.Quantity} ₽</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="order-total">
+                        Итого: ${order.Total} ₽
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="order-status ${statusClass}">${order.Status}</span>
+                        <span class="payment-type">💳 ${order.PaymentType}</span>
+                    </div>
+                </div>
+            `;
+        });
+        
+        ordersList.innerHTML = html;
+    } catch (err) {
+        ordersList.innerHTML = '<p>❌ Ошибка загрузки истории</p>';
+        console.error(err);
+    }
+}
+
+function saveProfileChanges() {
+    const newName = document.getElementById('profile-edit-name').value;
+    
+    if (newName && newName !== currentUser.name) {
+        fetch('/api/update-profile', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: currentUser.id,
+                name: newName
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                currentUser.name = newName;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                document.getElementById('profile-name').innerText = newName;
+                updateAuthButton();
+                alert('Имя успешно обновлено!');
+            }
+        })
+        .catch(err => {
+            alert('Ошибка при обновлении');
+            console.error(err);
+        });
+    }
+}
+
+window.logout = function() {
+    if (confirm('Вы уверены, что хотите выйти?')) {
+        localStorage.removeItem('currentUser');
+        currentUser = null;
+        updateAuthButton();
+        closeProfile();
+    }
+}
+
+// ========== ОФОРМЛЕНИЕ ЗАКАЗА ==========
+async function checkout() {
+    if (!currentUser) {
+        alert('Пожалуйста, войдите в аккаунт');
+        openAuthModal();
+        return;
+    }
+    
+    if (cart.length === 0) {
+        alert('Корзина пуста');
+        return;
+    }
+    
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    try {
+        const response = await fetch('/api/create-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: currentUser.id,
+                items: cart.map(item => ({
+                    id: item.id,
+                    quantity: item.quantity
+                })),
+                total: total,
+                paymentType: 'Карта'
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            cart = [];
+            saveCart();
+            closeCart();
+            
+            alert(`✅ Заказ ${data.orderNumber} успешно создан!`);
+            
+            if (confirm('Хотите посмотреть историю заказов?')) {
+                openProfile();
+            }
+        } else {
+            alert('Ошибка при создании заказа: ' + (data.error || 'Неизвестная ошибка'));
+        }
+    } catch (err) {
+        alert('Ошибка соединения с сервером');
+        console.error(err);
+    }
+}
+
 // Обновление кнопки аккаунта
 function updateAuthButton() {
     const accountBtn = document.querySelector('.nav__item:last-child');
     if (accountBtn) {
         const textSpan = accountBtn.querySelector('.nav__text');
-        if (currentUser) {
+        if (currentUser && currentUser.name) {
             textSpan.innerText = currentUser.name;
-            accountBtn.onclick = () => {
-                if (confirm(`Выйти, ${currentUser.name}?`)) {
-                    localStorage.removeItem('currentUser');
-                    currentUser = null;
-                    updateAuthButton();
-                }
-            };
+            accountBtn.onclick = openProfile;
         } else {
             textSpan.innerText = 'Аккаунт';
             accountBtn.onclick = openAuthModal;
@@ -384,15 +691,25 @@ function updateAuthButton() {
 
 // ========== ОБРАБОТЧИКИ ПРИ ЗАГРУЗКЕ ==========
 document.addEventListener('DOMContentLoaded', function() {
-    // Клик по кнопке корзины
     const cartButtons = document.querySelectorAll('.cart-button');
     cartButtons.forEach(btn => {
         btn.addEventListener('click', openCart);
     });
     
-    // Обновляем счетчик
-    updateCartCounter();
+    const topCartBtn = document.querySelector('.nav__item:nth-child(4)');
+    if (topCartBtn) {
+        topCartBtn.addEventListener('click', openCart);
+    }
     
-    // Обновляем кнопку аккаунта
+    const searchBtn = document.querySelector('.nav__item:nth-child(2)');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', toggleSearch);
+    }
+    
+    updateCartCounter();
     updateAuthButton();
+    setupSearch();
 });
+
+// Делаем функцию checkout глобальной
+window.checkout = checkout;

@@ -60,6 +60,11 @@
     </nav>
 </header>
 
+<!-- КОНТЕЙНЕР ДЛЯ ПОИСКА (СКРЫТ) -->
+<div class="search-dropdown" id="searchDropdown">
+    <input type="text" id="search-input" placeholder="🔍 Поиск по меню..." class="search-input">
+</div>
+
 <!-- КАТЕГОРИИ -->
 <nav class="categories">
     <button class="active" data-category="all">Все</button>
@@ -99,9 +104,7 @@
                 <span>Итого:</span>
                 <span>0 ₽</span>
             </div>
-            <button class="checkout-btn" onclick="alert('Оформление заказа будет доступно после авторизации')">
-                Оформить заказ
-            </button>
+            <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
         </div>
     </div>
 </div>
@@ -154,6 +157,7 @@
         </div>
     </div>
 </div>
+
 
 <script src="main.js"></script>
 
